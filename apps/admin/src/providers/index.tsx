@@ -1,7 +1,7 @@
 "use client";
 import { getQueryClient } from '@/client/query';
 import { getTRcpClient } from '@/client/trpc';
-import { AppRouter } from '@/server';
+import { AppRouter } from '@repo/server';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { createTRPCContext } from '@trpc/tanstack-react-query';
 import { PropsWithChildren, useState } from 'react';

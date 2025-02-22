@@ -1,8 +1,10 @@
-type User = { id: string; name: string };
+type User = { id: string; name: string, bd: Date };
  
 // Imaginary database
 const users: User[] = [{
-  id: '11', name: "Ali"
+  id: '11',
+  name: "Ali",
+  bd: new Date()
 }];
 export const db = {
   user: {

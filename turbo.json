@@ -5,6 +5,10 @@
       "dependsOn": ["^build"],
       "outputs": [".next/**", "!.next/cache/**"]
     },
+    "deploy": {
+      "dependsOn": ["^deploy"],
+      "outputs": [".next/**", "!.next/cache/**"]
+    },
     "dev": {
       "persistent": true,
       "cache": false

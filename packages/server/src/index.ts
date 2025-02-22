@@ -1,7 +1,8 @@
 import { z } from "zod";
 import { db } from "./db";
 import { publicProcedure, router } from "./trpc";
- 
+export { fetchRequestHandler } from '@trpc/server/adapters/fetch';
+
 export const appRouter = router({
   userList: publicProcedure
     .query(async ({ ctx }) => {

@@ -1,14 +1,16 @@
-import { AppRouter } from '@/server';
+import { AppRouter } from '@repo/server';
 import { isServer } from '@tanstack/react-query';
 import { createTRPCClient, httpBatchLink, TRPCClient } from '@trpc/client';
 import { getQueryClient } from './query';
 import { createTRPCOptionsProxy } from '@trpc/tanstack-react-query';
+import SuperJSON from 'superjson';
 
 function makeTRpcClient() {
   return createTRPCClient<AppRouter>({
     links: [
       httpBatchLink({
         url: '/api/trpc',
+        transformer: SuperJSON
       }),
     ],
   })

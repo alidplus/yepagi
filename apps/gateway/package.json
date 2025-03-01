@@ -9,7 +9,7 @@
 		"start": "wrangler dev --remote",
 		"test": "vitest",
 		"dts": "tsc -p ./tsgenconfig.json",
-		"typegen": "wrangler types --env-interface CloudflareEnv env.d.ts && tsc --noEmit false",
+		"typegen": "wrangler types --env-interface CloudflareEnv env.d.ts && yarn dts",
 		"db:migrations:create": "wrangler d1 migrations create venli-dev-db",
 		"db:migrations:list": "wrangler d1 migrations list venli-dev-db",
 		"db:migrations:apply": "wrangler d1 migrations apply venli-dev-db",
@@ -24,7 +24,7 @@
 		"wrangler": "^3.111.0"
 	},
 	"dependencies": {
-		"@trpc/server": "^10.45.2",
+		"@trpc/server": "^11.0.0-rc.819",
 		"dotenv": "^16.4.7",
 		"drizzle-orm": "^0.40.0",
 		"drizzle-zod": "^0.7.0",

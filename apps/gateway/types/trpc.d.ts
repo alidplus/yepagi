@@ -1,4 +1,3 @@
-import SuperJSON from 'superjson';
 export interface MyMeta {
     authRequired: boolean;
 }
@@ -6,7 +5,7 @@ export interface MyMeta {
  * Export reusable router and procedure helpers
  * that can be used throughout the router
  */
-export declare const router: <TProcRouterRecord extends import("@trpc/server").ProcedureRouterRecord>(procedures: TProcRouterRecord) => import("@trpc/server").CreateRouterInner<import("@trpc/server").RootConfig<{
+export declare const router: <TInput extends import("@trpc/server/unstable-core-do-not-import").CreateRouterOptions>(input: TInput) => import("@trpc/server/unstable-core-do-not-import").BuiltRouter<{
     ctx: {
         transport: string;
         user?: {
@@ -15,58 +14,25 @@ export declare const router: <TProcRouterRecord extends import("@trpc/server").P
         };
     };
     meta: MyMeta;
-    errorShape: import("@trpc/server").DefaultErrorShape;
-    transformer: typeof SuperJSON;
-}>, TProcRouterRecord>;
-export declare const publicProcedure: import("@trpc/server").ProcedureBuilder<{
-    _config: import("@trpc/server").RootConfig<{
-        ctx: {
-            transport: string;
-            user?: {
-                id: string;
-                isAdmin: boolean;
-            };
-        };
-        meta: MyMeta;
-        errorShape: import("@trpc/server").DefaultErrorShape;
-        transformer: typeof SuperJSON;
-    }>;
-    _ctx_out: {
-        transport: string;
-        user?: {
-            id: string;
-            isAdmin: boolean;
-        };
+    errorShape: import("@trpc/server/unstable-core-do-not-import").DefaultErrorShape;
+    transformer: true;
+}, import("@trpc/server/unstable-core-do-not-import").DecorateCreateRouterOptions<TInput>>;
+export declare const publicProcedure: import("@trpc/server/unstable-core-do-not-import").ProcedureBuilder<{
+    transport: string;
+    user?: {
+        id: string;
+        isAdmin: boolean;
     };
-    _input_in: typeof import("@trpc/server").unsetMarker;
-    _input_out: typeof import("@trpc/server").unsetMarker;
-    _output_in: typeof import("@trpc/server").unsetMarker;
-    _output_out: typeof import("@trpc/server").unsetMarker;
-    _meta: MyMeta;
-}>;
-export declare const adminProcedure: import("@trpc/server").ProcedureBuilder<{
-    _config: import("@trpc/server").RootConfig<{
-        ctx: {
-            transport: string;
-            user?: {
-                id: string;
-                isAdmin: boolean;
-            };
-        };
-        meta: MyMeta;
-        errorShape: import("@trpc/server").DefaultErrorShape;
-        transformer: typeof SuperJSON;
-    }>;
-    _meta: MyMeta;
-    _ctx_out: {
-        transport: string;
-        user: {
-            id: string;
-            isAdmin: boolean;
-        };
+}, MyMeta, object, typeof import("@trpc/server/unstable-core-do-not-import").unsetMarker, typeof import("@trpc/server/unstable-core-do-not-import").unsetMarker, typeof import("@trpc/server/unstable-core-do-not-import").unsetMarker, typeof import("@trpc/server/unstable-core-do-not-import").unsetMarker, false>;
+export declare const adminProcedure: import("@trpc/server/unstable-core-do-not-import").ProcedureBuilder<{
+    transport: string;
+    user?: {
+        id: string;
+        isAdmin: boolean;
     };
-    _input_in: typeof import("@trpc/server").unsetMarker;
-    _input_out: typeof import("@trpc/server").unsetMarker;
-    _output_in: typeof import("@trpc/server").unsetMarker;
-    _output_out: typeof import("@trpc/server").unsetMarker;
-}>;
+}, MyMeta, {
+    user: {
+        id: string;
+        isAdmin: boolean;
+    };
+}, typeof import("@trpc/server/unstable-core-do-not-import").unsetMarker, typeof import("@trpc/server/unstable-core-do-not-import").unsetMarker, typeof import("@trpc/server/unstable-core-do-not-import").unsetMarker, typeof import("@trpc/server/unstable-core-do-not-import").unsetMarker, false>;

@@ -6,7 +6,7 @@ import Image from "next/image";
 
 export default function Home() {
   const trpc = useTRPC(); // use `import { trpc } from './utils/trpc'` if you're using the singleton pattern
-  const userQuery = useQuery(trpc.userList.queryOptions());
+  const userQuery = useQuery(trpc.user.list.queryOptions());
 
   console.log('userQuery', userQuery.data);
   

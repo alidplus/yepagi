@@ -7,7 +7,7 @@ import { trpc } from "@/client/trpc.server";
 
 export default async function HomePage() {
   const queryClient = getQueryClient()
-  await queryClient.prefetchQuery(trpc.userList.queryOptions())
+  await queryClient.prefetchQuery(trpc.user.list.queryOptions())
 
   const state = dehydrate(queryClient)
   

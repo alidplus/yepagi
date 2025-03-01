@@ -1,12 +1,14 @@
 "use client";
+
 import { getQueryClient } from '@/client/query';
 import { getTRcpClient } from '@/client/trpc';
-import { AppRouter } from 'rpc-gateway';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { createTRPCContext } from '@trpc/tanstack-react-query';
 import { PropsWithChildren, useState } from 'react';
+import type { AppRouter } from 'rpc-gateway';
  
-export const { TRPCProvider, useTRPC } = createTRPCContext<AppRouter>();
+export const { TRPCProvider, useTRPC, useTRPCClient } = createTRPCContext<AppRouter>();
+ 
 
 export function Providers({ children }: PropsWithChildren) {
   const queryClient = getQueryClient();

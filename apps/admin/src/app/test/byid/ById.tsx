@@ -1,10 +1,6 @@
 "use client";
-import UserRow from "@/components/user/UserRow";
-import UserForm from "@/components/UserForm";
 import { useTRPC } from "@/providers";
 import { useQuery } from "@tanstack/react-query";
-// import { useQuery } from "@tanstack/react-query";
-import Image from "next/image";
 import { useState } from "react";
 
 export default function ById() {

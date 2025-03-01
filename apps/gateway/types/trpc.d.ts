@@ -7,6 +7,9 @@ export interface MyMeta {
  */
 export declare const router: <TInput extends import("@trpc/server/unstable-core-do-not-import").CreateRouterOptions>(input: TInput) => import("@trpc/server/unstable-core-do-not-import").BuiltRouter<{
     ctx: {
+        db: import("drizzle-orm/d1").DrizzleD1Database<TSchema> & {
+            $client: D1Database;
+        };
         transport: string;
         user?: {
             id: string;
@@ -18,6 +21,9 @@ export declare const router: <TInput extends import("@trpc/server/unstable-core-
     transformer: true;
 }, import("@trpc/server/unstable-core-do-not-import").DecorateCreateRouterOptions<TInput>>;
 export declare const publicProcedure: import("@trpc/server/unstable-core-do-not-import").ProcedureBuilder<{
+    db: import("drizzle-orm/d1").DrizzleD1Database<TSchema> & {
+        $client: D1Database;
+    };
     transport: string;
     user?: {
         id: string;
@@ -25,6 +31,9 @@ export declare const publicProcedure: import("@trpc/server/unstable-core-do-not-
     };
 }, MyMeta, object, typeof import("@trpc/server/unstable-core-do-not-import").unsetMarker, typeof import("@trpc/server/unstable-core-do-not-import").unsetMarker, typeof import("@trpc/server/unstable-core-do-not-import").unsetMarker, typeof import("@trpc/server/unstable-core-do-not-import").unsetMarker, false>;
 export declare const adminProcedure: import("@trpc/server/unstable-core-do-not-import").ProcedureBuilder<{
+    db: import("drizzle-orm/d1").DrizzleD1Database<TSchema> & {
+        $client: D1Database;
+    };
     transport: string;
     user?: {
         id: string;

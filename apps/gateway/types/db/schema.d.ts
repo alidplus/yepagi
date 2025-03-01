@@ -1,4 +1,5 @@
 import * as dz from 'drizzle-zod';
+import { z } from "zod";
 export declare const usersTable: import("drizzle-orm/sqlite-core").SQLiteTableWithColumns<{
     name: "users_table";
     schema: undefined;
@@ -226,3 +227,4 @@ export declare const zUserInsertSchema: dz.BuildSchema<"insert", {
         length: undefined;
     }>;
 }, undefined>;
+export type TUserInsert = z.infer<typeof zUserInsertSchema>;

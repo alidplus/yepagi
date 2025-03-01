@@ -12,14 +12,20 @@
  */
 
 import { appRouter, fetchRequestHandler } from "./router";
+import { drizzle } from 'drizzle-orm/d1';
 
 export default {
 	async fetch(req, env, ctx): Promise<Response> {
+    const db = drizzle(env.DB);
+    
     return fetchRequestHandler({
       endpoint: '/trpc',
       req,
       router: appRouter,
-      createContext: () => ({ transport: 'a'}),
+      createContext: () => ({
+        transport: 'rpc-gateway',
+        db
+      }),
     });
 	},
 } satisfies ExportedHandler<CloudflareEnv>;

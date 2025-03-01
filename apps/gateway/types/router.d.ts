@@ -1,6 +1,9 @@
 export { fetchRequestHandler } from '@trpc/server/adapters/fetch';
 export declare const appRouter: import("@trpc/server/unstable-core-do-not-import").BuiltRouter<{
     ctx: {
+        db: import("drizzle-orm/d1").DrizzleD1Database<TSchema> & {
+            $client: D1Database;
+        };
         transport: string;
         user?: {
             id: string;
@@ -13,6 +16,9 @@ export declare const appRouter: import("@trpc/server/unstable-core-do-not-import
 }, import("@trpc/server/unstable-core-do-not-import").DecorateCreateRouterOptions<{
     user: import("@trpc/server/unstable-core-do-not-import").BuiltRouter<{
         ctx: {
+            db: import("drizzle-orm/d1").DrizzleD1Database<TSchema> & {
+                $client: D1Database;
+            };
             transport: string;
             user?: {
                 id: string;
@@ -26,30 +32,33 @@ export declare const appRouter: import("@trpc/server/unstable-core-do-not-import
         list: import("@trpc/server").TRPCQueryProcedure<{
             input: void;
             output: {
-                id: string;
+                id: number;
                 name: string;
-                bd: Date;
+                age: number;
+                email: string;
             }[];
         }>;
-        userById: import("@trpc/server").TRPCQueryProcedure<{
-            input: string;
+        byId: import("@trpc/server").TRPCQueryProcedure<{
+            input: number;
             output: {
-                id: string;
+                id: number;
                 name: string;
-                bd: Date;
-            } | undefined;
+                age: number;
+                email: string;
+            }[];
         }>;
-        userCreate: import("@trpc/server").TRPCMutationProcedure<{
+        remoevById: import("@trpc/server").TRPCMutationProcedure<{
+            input: number;
+            output: D1Result<unknown>;
+        }>;
+        create: import("@trpc/server").TRPCMutationProcedure<{
             input: {
                 name: string;
                 age: number;
                 email: string;
                 id?: number | undefined;
             };
-            output: {
-                name: string;
-                id: string;
-            };
+            output: D1Result<unknown>;
         }>;
     }>>;
 }>>;

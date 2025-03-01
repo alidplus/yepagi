@@ -14,6 +14,7 @@
 	"devDependencies": {
 		"@cloudflare/vitest-pool-workers": "^0.6.4",
 		"@cloudflare/workers-types": "^4.20250224.0",
+		"@types/http-errors": "^2.0.4",
 		"drizzle-kit": "^0.30.5",
 		"typescript": "^5.5.2",
 		"vitest": "~2.1.9",
@@ -24,6 +25,7 @@
 		"dotenv": "^16.4.7",
 		"drizzle-orm": "^0.40.0",
 		"drizzle-zod": "^0.7.0",
+		"http-errors": "^2.0.0",
 		"superjson": "^2.2.2",
 		"zod": "^3.24.2"
 	}

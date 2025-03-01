@@ -2,6 +2,7 @@ import { z } from "zod";
 import { publicProcedure, router } from "./trpc";
 import * as def from "@repo/defs";
 import { eq } from "drizzle-orm";
+import HErr from 'http-errors'
 export { fetchRequestHandler } from '@trpc/server/adapters/fetch';
 
 export const appRouter = router({
@@ -15,7 +16,13 @@ export const appRouter = router({
     byId: publicProcedure
       .input(z.number())
       .query(async ({ input, ctx }) => {
-        const user = await ctx.db.select().from(def.user.table).where(eq(def.user.table.id, input))
+        let user = await ctx.usersCache.get(String(input))
+        if (!user) {
+          const find = await ctx.db.select().from(def.user.table).where(eq(def.user.table.id, input))
+          if (find.length) user = find[0]
+          if (user) await ctx.usersCache.put(String(input), user)
+        }
+        if (!user) throw new HErr.NotFound('user not foundeee')
         return user;
       }),
     remoevById: publicProcedure

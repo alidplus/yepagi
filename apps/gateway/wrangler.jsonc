@@ -19,7 +19,13 @@
     "database_name": "venli-dev-db",
     "migrations_table": "drizzle",
     "migrations_dir": "drizzle"
-  }]
+  }],
+  "kv_namespaces": [
+    {
+      "binding": "NS",
+      "id": "89cf89cd195945efaf4bfe854f79373c"
+    }
+  ]
   
   /**
    * Smart Placement

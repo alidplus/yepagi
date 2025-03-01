@@ -13,10 +13,13 @@
 
 import { appRouter, fetchRequestHandler } from "./router";
 import { drizzle } from 'drizzle-orm/d1';
+import { KvStore } from "./utils/kv-store";
+import * as defs from "@repo/defs";
 
 export default {
 	async fetch(req, env, ctx): Promise<Response> {
     const db = drizzle(env.DB);
+    const usersCache = new KvStore<defs.user.TSelect>('ns', env.NS);
     
     return fetchRequestHandler({
       endpoint: '/trpc',
@@ -24,7 +27,8 @@ export default {
       router: appRouter,
       createContext: () => ({
         transport: 'rpc-gateway',
-        db
+        db,
+        usersCache
       }),
     });
 	},

@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 
 export default function UserForm() {
   const queryClient = useQueryClient();
-  const { register, handleSubmit, formState: { errors } } = useForm<defs.user.TInsert>({ resolver: zodResolver(defs.user.zInsertSchema) });
+  const { register, handleSubmit } = useForm<defs.user.TInsert>({ resolver: zodResolver(defs.user.zInsertSchema) });
   const trpc = useTRPC()
 
   const options = trpc.user.create.mutationOptions({

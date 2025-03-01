@@ -1,7 +1,8 @@
 import { useTRPC } from "@/providers";
+import * as defs from "@repo/defs";
 import { useQueryClient, useMutation } from "@tanstack/react-query";
 
-export default function UserRow({ user }: { user: any }) {
+export default function UserRow({ user }: { user: defs.user.TSelect }) {
   return (
     <div key={user.id} className="flex flex-row gap-2 w-full">
       <strong className="w-5">#{user.id}</strong>
@@ -12,7 +13,7 @@ export default function UserRow({ user }: { user: any }) {
   )
 }
 
-function RemoveUserBtn({ user }: { user: any }) {
+function RemoveUserBtn({ user }: { user: defs.user.TSelect }) {
   const queryClient = useQueryClient();
   const trpc = useTRPC()
   const options = trpc.user.remoevById.mutationOptions({
@@ -23,6 +24,6 @@ function RemoveUserBtn({ user }: { user: any }) {
   })
   const mutation = useMutation(options)
   return (
-    <button className="bg-red-500 text-black" onClick={() => mutation.mutate(user.id)}>Remove</button>
+    <button className="bg-red-500 text-black" onClick={() => mutation.mutate(user.id!)}>Remove</button>
   )
 }

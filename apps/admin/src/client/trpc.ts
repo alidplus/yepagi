@@ -1,15 +1,13 @@
-import { AppRouter } from '@repo/server';
 import { isServer } from '@tanstack/react-query';
-import { createTRPCClient, httpBatchLink, TRPCClient } from '@trpc/client';
-import { getQueryClient } from './query';
-import { createTRPCOptionsProxy } from '@trpc/tanstack-react-query';
+import { createTRPCClient, httpLink, TRPCClient } from '@trpc/client';
 import SuperJSON from 'superjson';
+import { AppRouter } from 'rpc-gateway';
 
-function makeTRpcClient() {
+export function makeTRpcClient() {
   return createTRPCClient<AppRouter>({
     links: [
-      httpBatchLink({
-        url: '/api/trpc',
+      httpLink({
+        url: `${process.env.NEXT_PUBLIC_API_HOST ?? process.env.API_HOST ?? ''}/trpc`,
         transformer: SuperJSON
       }),
     ],
@@ -32,13 +30,13 @@ export function getTRcpClient() {
   }
 }
 
-export function getPrefetchKit() {
-  const queryClient = getQueryClient()
-  const trpcClient = getTRcpClient()
-  const trpc = createTRPCOptionsProxy<AppRouter>({
-    client: trpcClient,
-    queryClient,
-  });
+// export function getPrefetchKit() {
+//   const queryClient = getQueryClient()
+//   const trpcClient = getTRcpClient()
+//   const trpc = createTRPCOptionsProxy<AppRouter>({
+//     client: trpcClient,
+//     queryClient,
+//   });
 
-  return { queryClient, trpcClient, trpc }
-}
+//   return { queryClient, trpcClient, trpc }
+// }

@@ -12,7 +12,6 @@ export const db = {
     findById: async (id: string) => users.find((user) => user.id === id),
     create: async (data: { name: string }) => {
       const user = { id: String(users.length + 1), ...data };
-      users.push(user);
       return user;
     },
   },

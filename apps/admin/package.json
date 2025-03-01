@@ -9,10 +9,9 @@
     "pages:build": "npx @cloudflare/next-on-pages",
     "preview": "npm run pages:build && wrangler pages dev",
     "deploy": "npm run pages:build && wrangler pages deploy",
-    "cf-typegen": "wrangler types --env-interface CloudflareEnv env.d.ts"
+    "typegen": "wrangler types --env-interface CloudflareEnv env.d.ts"
   },
   "dependencies": {
-    "@repo/server": "*",
     "@tanstack/react-query": "^5.66.8",
     "@trpc/client": "^11.0.0-rc.795",
     "@trpc/tanstack-react-query": "^11.0.0-rc.795",
@@ -31,6 +30,7 @@
     "eslint": "^9",
     "eslint-config-next": "15.1.7",
     "postcss": "^8",
+    "rpc-gateway": "*",
     "tailwindcss": "^3.4.1",
     "typescript": "^5",
     "wrangler": "^3.109.2"

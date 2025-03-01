@@ -4,17 +4,23 @@
  */
 {
 	"$schema": "../../node_modules/wrangler/config-schema.json",
-	"name": "venli-next-app",
-	"compatibility_date": "2025-02-14",
-	"compatibility_flags": [
-		"nodejs_compat"
-	],
-	"pages_build_output_dir": ".vercel/output/static",
+	"name": "venli-rpc-worker",
+	"main": "src/index.ts",
+	"compatibility_date": "2025-02-24",
 	"observability": {
 		"enabled": true
 	},
-  "vars": {
-  }
+  "dev": {
+    "port": 3030
+  },
+  "d1_databases": [{
+    "binding": "DB",
+    "database_id": "1ca56b95-736c-4e1f-a0ad-724f49728850",
+    "database_name": "venli-dev-db",
+    "migrations_table": "drizzle",
+    "migrations_dir": "drizzle"
+  }]
+  
   /**
    * Smart Placement
    * Docs: https://developers.cloudflare.com/workers/configuration/smart-placement/#smart-placement

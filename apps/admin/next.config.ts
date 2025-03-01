@@ -12,6 +12,14 @@ if (process.env.NODE_ENV === 'development') {
 
 const nextConfig: NextConfig = {
   /* config options here */
+  async rewrites() {
+    return [
+      {
+        source: "/trpc/:path*",
+        destination: `${process.env.NEXT_PUBLIC_API_HOST ?? process.env.API_HOST ?? 'http://localhost:3030'}/trpc/:path*`,
+      },
+    ]
+  }
 };
 
 export default nextConfig;

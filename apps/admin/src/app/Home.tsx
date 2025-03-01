@@ -24,6 +24,7 @@ export default function Home() {
         <h1>Client Home</h1>
         <kbd>& nothing else matter</kbd>
         <pre>{JSON.stringify(userQuery.data, null, 2)}</pre>
+        <button onClick={() => userQuery.refetch()}>refetch</button>
       </main>
       <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
         <a

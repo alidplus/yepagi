@@ -1,13 +1,9 @@
-import { int, sqliteTable, text } from "drizzle-orm/sqlite-core";
 import * as dz from 'drizzle-zod';
 import { z } from "zod";
+import { socialLinks, socialLinksRelations } from "./schema";
 
-export const table = sqliteTable("users_table", {
-  id: int().primaryKey({ autoIncrement: true }),
-  name: text().notNull(),
-  age: int().notNull(),
-  email: text().notNull().unique(),
-});
+export const table = socialLinks
+export const relations = socialLinksRelations
 
 export const zSelectSchema = dz.createSelectSchema(table);
 export type TSelect = z.infer<typeof zInsertSchema>;

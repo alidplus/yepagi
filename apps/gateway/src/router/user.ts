@@ -7,9 +7,9 @@ export { fetchRequestHandler } from '@trpc/server/adapters/fetch';
 
 export const userRouter = router({
   list: publicProcedure
-    .output( z.array(def.user.zSelectSchema) )
+    .output( z.array(def.users.zSelectSchema) )
     .query(async ({ ctx }) => {
-      const users = await ctx.db.select().from(def.user.table).all()
+      const users = await ctx.db.select().from(def.users.table).all()
       return users;
     }),
   byId: publicProcedure
@@ -17,7 +17,7 @@ export const userRouter = router({
     .query(async ({ input, ctx }) => {
       let user = await ctx.usersCache.get(String(input))
       if (!user) {
-        const find = await ctx.db.select().from(def.user.table).where(eq(def.user.table.id, input))
+        const find = await ctx.db.select().from(def.users.table).where(eq(def.users.table.id, input))
         if (find.length) user = find[0]
         if (user) await ctx.usersCache.put(String(input), user)
       }
@@ -27,12 +27,12 @@ export const userRouter = router({
   remoevById: publicProcedure
     .input(z.number())
     .mutation(async ({ input, ctx }) => {
-      const user = await ctx.db.delete(def.user.table).where(eq(def.user.table.id, input))
+      const user = await ctx.db.delete(def.users.table).where(eq(def.users.table.id, input))
       return user;
     }),
   create: publicProcedure
-    .input(def.user.zInsertSchema)
+    .input(def.users.zInsertSchema)
     .mutation(async ({ ctx, input }) => {
-      return ctx.db.insert(def.user.table).values(input);
+      return ctx.db.insert(def.users.table).values(input);
     }),
 })

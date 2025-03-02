@@ -5,9 +5,9 @@ export { fetchRequestHandler } from '@trpc/server/adapters/fetch';
 
 export const tenantRouter = router({
   list: publicProcedure
-    .output( z.array(def.user.zSelectSchema) )
+    .output( z.array(def.users.zSelectSchema) )
     .query(async ({ ctx }) => {
-      const users = await ctx.db.select().from(def.user.table).all()
+      const users = await ctx.db.select().from(def.users.table).all()
       return users;
     }),
 })

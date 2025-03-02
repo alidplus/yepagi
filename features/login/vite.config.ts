@@ -1,20 +1,10 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
-import dts from "vite-plugin-dts";
-import tailwindcss from "@tailwindcss/vite";
-import * as path from "path";
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import preserveDirectives from 'rollup-preserve-directives'
 
+// https://vite.dev/config/
 export default defineConfig({
-  root: __dirname,
-  cacheDir: "./node_modules/.vite/libs/atoms",
-  plugins: [
-    react(),
-    tailwindcss(),
-    dts({
-      entryRoot: "src",
-      tsconfigPath: path.join(__dirname, "tsconfig.app.json"),
-    }),
-  ],
+  plugins: [react(), preserveDirectives()],
   build: {
     outDir: "./dist",
     emptyOutDir: true,
@@ -24,8 +14,8 @@ export default defineConfig({
     },
     lib: {
       // Could also be a dictionary or array of multiple entry points.
-      entry: "src/main.ts",
-      name: "ui",
+      entry: "src/LoginForm.tsx",
+      name: "LoginForm",
       fileName: "index",
       // Change this to the formats you want to support.
       // Don't forget to update your package.json as well.
@@ -36,4 +26,4 @@ export default defineConfig({
       external: ["react", "react-dom", "react/jsx-runtime", "tailwindcss", "clsx", "tailwind-merge"],
     },
   },
-});
+})

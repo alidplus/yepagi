@@ -1,35 +1,67 @@
 {
   "name": "@repo/ui",
-  "private": true,
   "version": "0.0.0",
   "type": "module",
-  "types": "./dist/main.d.ts",
+  "files": [
+    "./dist"
+  ],
   "exports": {
     ".": {
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
+      "style": "./src/global.css"
     },
-    "./style.css": {
-      "import": "./dist/style.css",
-      "require": "./dist/style.css"
-    }
+    "./utils": {
+      "import": "./dist/utils.js",
+      "types": "./dist/lib/utils.d.ts"
+    },
+    "./atoms": {
+      "import": "./dist/atoms.js",
+      "types": "./dist/atoms/index.d.ts"
+    },
+    "./button": {
+      "import": "./dist/button.js",
+      "types": "./dist/button/index.d.ts"
+    },
+    "./skeleton": {
+      "import": "./dist/skeleton.js",
+      "types": "./dist/skeleton/index.d.ts"
+    },
+    "./input": {
+      "import": "./dist/input.js",
+      "types": "./dist/input/index.d.ts"
+    },
+    "./label": {
+      "import": "./dist/label.js",
+      "types": "./dist/label/index.d.ts"
+    },
+    "./mols": {
+      "import": "./dist/mols.js",
+      "types": "./dist/mols/index.d.ts"
+    },
+    "./card": {
+      "import": "./dist/card.js",
+      "types": "./dist/card/index.d.ts"
+    },
+    "./package.json": "./package.json"
   },
   "scripts": {
-    "bbb": "tsc -b",
-    "dev": "turbo run build",
     "build": "tsc -b && vite build",
-    "live:build": "vite build --watch",
+    "dev": "vite build --watch",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "sb": "storybook dev -p 6006",
-    "storybook": "storybook dev -p 6006"
+    "storybook": "storybook dev -p 6006",
+    "sb": "yarn storybook --ci"
+  },
+  "peerDependencies": {
+    "class-variance-authority": "*",
+    "clsx": "*",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tailwind-merge": "*",
+    "tailwindcss": "*",
+    "tailwindcss-animate": "*"
   },
   "dependencies": {
-    "@radix-ui/react-slot": "^1.1.2",
-    "@storybook/addon-themes": "^8.5.8",
-    "class-variance-authority": "^0.7.1",
-    "tailwind-variants": "^0.3.1",
-    "tailwindcss-animate": "^1.0.7"
+    "@radix-ui/react-label": "^2.1.2",
+    "@radix-ui/react-slot": "^1.1.2"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.4",
@@ -37,6 +69,7 @@
     "@storybook/addon-essentials": "^8.5.8",
     "@storybook/addon-interactions": "^8.5.8",
     "@storybook/addon-postcss": "^2.0.0",
+    "@storybook/addon-themes": "^8.5.8",
     "@storybook/blocks": "^8.5.8",
     "@storybook/react": "^8.5.8",
     "@storybook/react-vite": "^8.5.8",
@@ -49,6 +82,8 @@
     "@types/react-dom": "^19.0.4",
     "@vitejs/plugin-react": "^4.3.4",
     "autoprefixer": "^10.4.20",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
     "color": "^5.0.0",
     "eslint": "^9.20.1",
     "eslint-config-prettier": "^10.0.1",
@@ -65,19 +100,22 @@
     "react-dom": "^19.0.0",
     "sass-embedded": "^1.85.0",
     "storybook": "^8.5.8",
+    "tailwind-merge": "^3.0.2",
     "tailwindcss": "^4.0.7",
+    "tailwindcss-animate": "^1.0.7",
     "ts-xor": "^1.3.0",
     "tsup": "^8.3.6",
     "typescript": "~5.7.3",
     "typescript-eslint": "^8.24.1",
     "vite": "^6.1.1",
     "vite-plugin-dts": "^4.5.0",
+    "vite-plugin-static-copy": "^2.3.0",
+    "vite-tsconfig-paths": "^5.1.4",
     "vitest": "^3.0.6"
   },
   "packageManager": "yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610",
   "eslintConfig": {
     "extends": [
-      "plugin:storybook/recommended",
       "plugin:storybook/recommended"
     ]
   }

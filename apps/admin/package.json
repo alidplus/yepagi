@@ -13,9 +13,9 @@
     "typegen": "wrangler types --env-interface CloudflareEnv env.d.ts"
   },
   "dependencies": {
-    "@features/login": "workspace:^",
     "@hookform/resolvers": "^4.1.2",
-    "@repo/defs": "workspace:^",
+    "@repo/auth": "*",
+    "@repo/defs": "*",
     "@tanstack/react-query": "^5.66.11",
     "@trpc/client": "^11.0.0-rc.819",
     "@trpc/server": "^11.0.0-rc.819",

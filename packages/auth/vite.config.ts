@@ -1,10 +1,12 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import preserveDirectives from 'rollup-preserve-directives'
+import tailwindcss from "@tailwindcss/vite";
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), preserveDirectives()],
+  plugins: [react(), tailwindcss(), preserveDirectives()],
+  publicDir: '../../public',
   build: {
     outDir: "./dist",
     emptyOutDir: true,

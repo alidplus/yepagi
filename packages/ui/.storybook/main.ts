@@ -1,5 +1,6 @@
 import type { StorybookConfig } from "@storybook/react-vite";
 import { join, dirname } from "path";
+import { name } from "../package.json";
 
 /**
  * This function is used to resolve the absolute path of a package.
@@ -29,7 +30,7 @@ const config: StorybookConfig = {
     <style>
     .sidebar-header { margin-bottom: 20px; }
     .sidebar-header::after {
-      content: 'Atoms';
+      content: '${name}';
       position: absolute;
       top: 2rem;
       left: 2rem;

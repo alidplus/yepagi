@@ -8,7 +8,6 @@
   "workspaces": [
     "configs/*",
     "packages/*",
-    "features/*",
     "apps/*"
   ]
 }

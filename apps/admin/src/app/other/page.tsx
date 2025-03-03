@@ -1,4 +1,4 @@
-import Login from "@features/login";
+import Login from "@repo/auth";
 
 export default async function HomePage() {
   

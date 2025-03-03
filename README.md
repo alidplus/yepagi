@@ -22,7 +22,7 @@ example: Button, Icon, Alert, Card and ...
   - Exceptionally, they can use very simple internal state
   - they expose named props as slots<ReactNode>
   - naming: Atom naming + ending with "Temp"
-- location: @repo/ui/atoms/templates
+- location: @repo/ui/atoms
 
 ## Mols (Molecules)
 Molecules are polymers made out of other atoms & molecules
@@ -60,20 +60,20 @@ They handle SEO, SSR, prefetch and ...
 They have very special responsibility and behavior.
 - location: @repo/core
 
+0. ApiClientProvider:
+  Combination of **All** Providers. Required to render **ANY** Organism. usable for app and test suite
+  - EventHubProvider
+  - QueryClientProvider
+  - RPCProvider
+
 1. AppContext:
   Combination of **All** Providers. Required to render **ANY** Organism. usable for app and test suite
-  - AuthProvider
-  - EventHubProvider
-  - QueryClientProvider
-  - RPCProvider
 
-2. PublicContext:
+2. PublicContextProvider:
+  Preloads AppContext with initial data.
   Combination of **All** Providers. Required to render **ANY** Organism.
-  - AuthProvider
-  - EventHubProvider
-  - QueryClientProvider
-  - RPCProvider
 
-3. ProtectedContext:
-  Slice of AppContext, Re-bind some Providers with **protected** values for dashboard users.
-  - AuthProvider
+3. ProtectedContextProvider:
+  Slice of AppContext.
+  Re-bind some Providers with **protected** values for dashboard users.
+  Preloads AppContext with protected data after we autorize the user

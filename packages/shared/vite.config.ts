@@ -3,7 +3,6 @@ import react from "@vitejs/plugin-react";
 import dts from "vite-plugin-dts";
 import tailwindcss from "@tailwindcss/vite";
 import tsconfigPaths from "vite-tsconfig-paths";
-import { viteStaticCopy } from 'vite-plugin-static-copy'
 import * as path from "path";
 
 export default defineConfig({
@@ -15,17 +14,9 @@ export default defineConfig({
     tailwindcss(),
     dts({
       entryRoot: "src",
-      exclude: ["story.tsx", "./**/story.tsx", "*.mdx"],
+      exclude: ["./**/*.test.*"],
       tsconfigPath: path.join(__dirname, "tsconfig.app.json"),
     }),
-    viteStaticCopy({
-      targets: [
-        {
-          src: 'src/global.css',
-          dest: '.',
-        }
-      ]
-    })
   ],
   build: {
     outDir: "./dist",
@@ -37,16 +28,7 @@ export default defineConfig({
     lib: {
       // Could also be a dictionary or array of multiple entry points.
       entry: {
-        utils: "src/lib",
-
-        atoms: "src/atoms",
-        skeleton: "src/atoms/skeleton",
-        button: "src/atoms/button",
-        input: "src/atoms/input",
-        label: "src/atoms/label",
-
-        mols: "src/mols",
-        card: "src/mols/card",
+        AppContext: "src/AppContext",
       },
       // Change this to the formats you want to support.
       // Don't forget to update your package.json as well.
@@ -54,13 +36,7 @@ export default defineConfig({
     },
     rollupOptions: {
       // External packages that should not be bundled into your library.
-      external: [
-        "react",
-        "react-dom",
-        "react/jsx-runtime",
-        "tailwindcss",
-        "@repo/utils",
-      ],
+      external: ["react", "react-dom", "react/jsx-runtime"],
     },
   },
 });

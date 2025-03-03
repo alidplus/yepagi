@@ -1,0 +1,22 @@
+{
+  "extends": "@repo/typescript/vite.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    /*"tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",*/
+    "useDefineForClassFields": true,
+    /* Bundler mode */
+    "moduleDetection": "force",
+    "noEmit": true,
+    /* Linting */
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedSideEffectImports": true,
+    "types": ["@testing-library/jest-dom", "vitest/globals"],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["src"]
+}

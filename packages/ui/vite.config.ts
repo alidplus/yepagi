@@ -3,7 +3,7 @@ import react from "@vitejs/plugin-react";
 import dts from "vite-plugin-dts";
 import tailwindcss from "@tailwindcss/vite";
 import tsconfigPaths from "vite-tsconfig-paths";
-import { viteStaticCopy } from 'vite-plugin-static-copy'
+import { viteStaticCopy } from "vite-plugin-static-copy";
 import * as path from "path";
 
 export default defineConfig({
@@ -21,11 +21,11 @@ export default defineConfig({
     viteStaticCopy({
       targets: [
         {
-          src: 'src/global.css',
-          dest: '.',
-        }
-      ]
-    })
+          src: "src/global.css",
+          dest: ".",
+        },
+      ],
+    }),
   ],
   build: {
     outDir: "./dist",
@@ -37,16 +37,14 @@ export default defineConfig({
     lib: {
       // Could also be a dictionary or array of multiple entry points.
       entry: {
-        utils: "src/lib",
-
         atoms: "src/atoms",
         skeleton: "src/atoms/skeleton",
         button: "src/atoms/button",
         input: "src/atoms/input",
         label: "src/atoms/label",
+        card: "src/atoms/card",
 
         mols: "src/mols",
-        card: "src/mols/card",
       },
       // Change this to the formats you want to support.
       // Don't forget to update your package.json as well.

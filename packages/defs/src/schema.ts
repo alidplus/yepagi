@@ -21,7 +21,7 @@ export const profiles = sqliteTable('profiles', {
   fullName: text('full_name', { length: 100 }),
   bio: text('bio'),
   avatarUrl: text('avatar_url', { length: 255 }),
-  backgroundImageUrl: text('background_image_url', { length: 255 }),
+  coverUrl: text('cover_url', { length: 255 }),
   slug: text('slug', { length: 50 }).notNull().unique(),
   createdAt: timestamp("created_at"),
   updatedAt: timestamp("updated_at"),

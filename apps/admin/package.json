@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
+		"turboDev": "yarn dev",
     "build": "next build",
     "lint": "next lint",
     "tsck": "tsc --noEmit",

@@ -16,12 +16,14 @@
   },
   "scripts": {
     "dev": "vite",
+    "turboDev": "vite build --watch",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
-    "@repo/ui": "workspace:^",
+    "@repo/ui": "*",
+    "@repo/utils": "*",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },

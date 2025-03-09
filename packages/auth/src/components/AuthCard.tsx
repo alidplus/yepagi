@@ -1,5 +1,5 @@
-import { Card, CardContent } from "@repo/ui/mols";
-import { cn } from "@repo/ui/utils";
+import { Card, CardContent } from "@repo/ui/atoms";
+import { cn } from "@repo/utils";
 
 export default function AuthCard({
   className,

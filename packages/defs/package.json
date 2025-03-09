@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "build": "tsup",
-    "dev": "tsup --watch",
+    "turboDev": "turbo watch build",
     "db:migr:create": "wrangler d1 migrations create venli-dev-db",
     "db:migr:list": "wrangler d1 migrations list venli-dev-db",
     "db:migr:apply": "wrangler d1 migrations apply venli-dev-db",

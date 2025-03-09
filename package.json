@@ -5,6 +5,9 @@
   "engines": {
     "node": ">=18"
   },
+  "scripts": {
+    "dev": "turbo turboDev"
+  },
   "workspaces": [
     "configs/*",
     "packages/*",

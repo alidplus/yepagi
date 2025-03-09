@@ -2,11 +2,16 @@
   "$schema": "https://turbo.build/schema.json",
   "extends": ["//"],
   "tasks": {
-    "sb": {
-      "dependsOn": ["build"]
+    "dev": {
+      "persistent": true
+    },
+    "test": {
+      "dependsOn": ["build"],
+      "persistent": true
     },
     "build": {
-      "outputs": ["dist/**"]
+      "outputs": ["dist/**"],
+      "dependsOn": ["test", "lint"]
     }
   }
 }

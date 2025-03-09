@@ -6,6 +6,7 @@
 	"scripts": {
 		"deploy": "wrangler deploy",
 		"dev": "wrangler dev",
+		"turboDev": "yarn dev",
 		"start": "wrangler dev --remote",
 		"test": "vitest",
 		"dts": "tsc -p ./tsgenconfig.json",

@@ -9,10 +9,6 @@
     ".": {
       "style": "./dist/global.css"
     },
-    "./utils": {
-      "import": "./dist/utils.js",
-      "types": "./dist/lib/utils.d.ts"
-    },
     "./atoms": {
       "import": "./dist/atoms.js",
       "types": "./dist/atoms/index.d.ts"
@@ -45,10 +41,10 @@
   },
   "scripts": {
     "build": "tsc -b && vite build",
-    "dev": "vite build --watch",
-    "lint": "eslint .",
+    "turboDev": "turbo watch build",
+    "lint": "eslint . --fix",
     "storybook": "storybook dev -p 6006",
-    "sb": "yarn storybook --ci"
+    "dev": "yarn storybook --ci"
   },
   "peerDependencies": {
     "@repo/utils": "*",
@@ -111,7 +107,7 @@
     "vite-tsconfig-paths": "^5.1.4",
     "vitest": "^3.0.7"
   },
-  "packageManager": "yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610",
+  "epackageManager": "yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610",
   "eslintConfig": {
     "extends": [
       "plugin:storybook/recommended"

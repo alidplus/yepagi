@@ -1,11 +1,8 @@
-import { LoginForm } from "@repo/auth";
+import { SigninForm } from "@repo/auth";
 
-export default async function HomePage() {
+export default async function SigninFormPage() {
   
   return (
-    <div>
-      <h1>other page</h1>
-      <LoginForm />
-    </div>
+    <SigninForm />
   );
 }

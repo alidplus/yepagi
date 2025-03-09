@@ -1,0 +1,5 @@
+@import "@repo/ui";
+
+@source "../../../packages/ui";
+@source "../../../packages/auth";
+@source ".";

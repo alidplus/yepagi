@@ -6,11 +6,20 @@
     "node": ">=18"
   },
   "scripts": {
-    "dev": "turbo turboDev"
+    "dev": "turbo turboDev",
+    "commit": "cz"
   },
   "workspaces": [
     "configs/*",
     "packages/*",
     "apps/*"
-  ]
+  ],
+  "devDependencies": {
+    "cz-conventional-changelog": "^3.3.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
 }

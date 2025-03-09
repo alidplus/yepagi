@@ -1,28 +1,28 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import preserveDirectives from 'rollup-preserve-directives'
-import tailwindcss from "@tailwindcss/vite";
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
 import dts from "vite-plugin-dts";
+import tailwindcss from "@tailwindcss/vite";
+import tsconfigPaths from "vite-tsconfig-paths";
+import { viteStaticCopy } from "vite-plugin-static-copy";
 import * as path from "path";
 
-// https://vite.dev/config/
 export default defineConfig({
+  root: __dirname,
+  cacheDir: "./node_modules/.vite/libs/atoms",
   plugins: [
+    tsconfigPaths(),
     react(),
     tailwindcss(),
-    preserveDirectives(),
     dts({
       entryRoot: "src",
-      exclude: ["src/main.ts", "./**/story.tsx", "*.mdx"],
+      exclude: ["./**/stories.tsx", "docs.mdx"],
       tsconfigPath: path.join(__dirname, "tsconfig.app.json"),
     })
   ],
-  publicDir: '../../public',
   build: {
     outDir: "./dist",
     emptyOutDir: true,
     reportCompressedSize: true,
-    sourcemap: true,
     commonjsOptions: {
       transformMixedEsModules: true,
     },
@@ -33,7 +33,13 @@ export default defineConfig({
     },
     rollupOptions: {
       // External packages that should not be bundled into your library.
-      external: ["react", "react-dom", "react/jsx-runtime", "@repo/ui", "@repo/utils"],
+      external: [
+        "react",
+        "react-dom",
+        "react/jsx-runtime",
+        "tailwindcss",
+        "@repo/utils",
+      ],
     },
   },
-})
+});

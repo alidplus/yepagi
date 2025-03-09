@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Providers } from "@/providers";
-import {  } from "@repo/auth";
+import { AuthLayout, AuthCard } from "@repo/auth";
 
 
 export const metadata: Metadata = {
@@ -21,7 +21,9 @@ export default function RootLayout({
           className={`antialiased`}
         >
           <AuthLayout>
-            {children}
+            <AuthCard src="">
+              {children}
+            </AuthCard>
           </AuthLayout>
         </body>
       </html>

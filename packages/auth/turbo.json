@@ -2,11 +2,19 @@
   "$schema": "https://turbo.build/schema.json",
   "extends": ["//"],
   "tasks": {
-    "turboDev": {
+    "build": {
       "outputs": [
         "dist/**"
       ],
-      "dependsOn": ["@repo/utils#build", "@repo/ui#build"]
+      "dependsOn": ["@repo/utils#build", "@repo/ui#build"],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        "./package.json",
+        "./vite.config.ts",
+        "./tsconfig.ts",
+        "./tsconfig.app.ts",
+        "./tsconfig.node.ts"
+      ]
     },
     "lint": {},
     "test": {

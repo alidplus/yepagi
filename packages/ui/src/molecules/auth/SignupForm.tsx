@@ -12,25 +12,17 @@ export default function SignupForm({
       <div className="flex flex-col gap-6">
         <div className="flex flex-col items-center text-center">
           <h1 className="text-2xl font-bold">Welcome</h1>
-          <p className="text-balance text-muted-foreground">
+          <p className="text-muted-foreground text-balance">
             Login to your Acme Inc account
           </p>
         </div>
         <div className="grid gap-2">
           <Label htmlFor="name">Name</Label>
-          <Input
-            id="name"
-            required
-          />
+          <Input id="name" required />
         </div>
         <div className="grid gap-2">
           <Label htmlFor="email">Email</Label>
-          <Input
-            id="email"
-            type="email"
-            placeholder="m@example.com"
-            required
-          />
+          <Input id="email" type="email" placeholder="m@example.com" required />
         </div>
         <div className="grid gap-2">
           <div className="flex items-center">
@@ -47,8 +39,8 @@ export default function SignupForm({
         <Button type="submit" className="w-full">
           Login
         </Button>
-        <div className="relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t after:border-border">
-          <span className="relative z-10 bg-background px-2 text-muted-foreground">
+        <div className="after:border-border relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t">
+          <span className="bg-background text-muted-foreground relative z-10 px-2">
             Or continue with
           </span>
         </div>
@@ -89,5 +81,5 @@ export default function SignupForm({
         </div>
       </div>
     </form>
-  )
+  );
 }

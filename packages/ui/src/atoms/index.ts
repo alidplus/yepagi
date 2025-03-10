@@ -11,6 +11,16 @@ import {
   CardHeader,
   CardTitle,
 } from "./card";
+import {
+  useFormField,
+  Form,
+  FormItem,
+  FormLabel,
+  FormControl,
+  FormDescription,
+  FormMessage,
+  FormField,
+} from "./form";
 
 export {
   Icon,
@@ -25,4 +35,12 @@ export {
   Label,
   Button,
   Input,
+  useFormField,
+  Form,
+  FormItem,
+  FormLabel,
+  FormControl,
+  FormDescription,
+  FormMessage,
+  FormField,
 };

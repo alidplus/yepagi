@@ -38,14 +38,9 @@ export default defineConfig({
       // Could also be a dictionary or array of multiple entry points.
       entry: {
         atoms: "src/atoms",
+        molecules: "src/molecules",
+        templates: "src/templates",
         skeleton: "src/atoms/skeleton",
-        icon: "src/atoms/icon",
-        button: "src/atoms/button",
-        input: "src/atoms/input",
-        label: "src/atoms/label",
-        card: "src/atoms/card",
-
-        mols: "src/mols",
       },
       // Change this to the formats you want to support.
       // Don't forget to update your package.json as well.
@@ -59,6 +54,9 @@ export default defineConfig({
         "react/jsx-runtime",
         "tailwindcss",
         "@repo/utils",
+        "@repo/defs",
+        "@hookform/resolvers",
+        "react-hook-form",
       ],
     },
   },

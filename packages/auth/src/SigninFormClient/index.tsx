@@ -4,7 +4,7 @@ import { Label, Input, Button } from "@repo/ui/atoms";
 import { cn } from "@repo/utils";
 import Link from 'next/link'
 
-export default function SigninForm({
+export default function SigninFormClient({
   className,
   ...props
 }: React.ComponentProps<"form">) {

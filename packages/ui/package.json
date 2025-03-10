@@ -9,37 +9,21 @@
     ".": {
       "style": "./dist/global.css"
     },
-    "./atoms": {
-      "import": "./dist/atoms.js",
-      "types": "./dist/atoms/index.d.ts"
-    },
-    "./icon": {
-      "import": "./dist/icon.js",
-      "types": "./dist/icon/index.d.ts"
-    },
-    "./button": {
-      "import": "./dist/button.js",
-      "types": "./dist/button/index.d.ts"
-    },
     "./skeleton": {
       "import": "./dist/skeleton.js",
       "types": "./dist/skeleton/index.d.ts"
     },
-    "./input": {
-      "import": "./dist/input.js",
-      "types": "./dist/input/index.d.ts"
+    "./atoms": {
+      "import": "./dist/atoms.js",
+      "types": "./dist/atoms/index.d.ts"
     },
-    "./label": {
-      "import": "./dist/label.js",
-      "types": "./dist/label/index.d.ts"
+    "./templates": {
+      "import": "./dist/templates.js",
+      "types": "./dist/templates/index.d.ts"
     },
-    "./mols": {
-      "import": "./dist/mols.js",
-      "types": "./dist/mols/index.d.ts"
-    },
-    "./card": {
-      "import": "./dist/card.js",
-      "types": "./dist/card/index.d.ts"
+    "./molecules": {
+      "import": "./dist/molecules.js",
+      "types": "./dist/molecules/index.d.ts"
     },
     "./package.json": "./package.json"
   },
@@ -48,7 +32,7 @@
     "turboDev": "turbo watch build",
     "lint": "eslint . --fix",
     "storybook": "storybook dev -p 6006",
-    "dev": "yarn storybook --ci"
+    "dev:ui": "yarn storybook --ci"
   },
   "peerDependencies": {
     "@repo/utils": "*",

@@ -2,10 +2,13 @@
   "$schema": "https://turbo.build/schema.json",
   "extends": ["//"],
   "tasks": {
-    "build": {
-      "outputs": ["dist/**"],
+    "lint": {},
+    "test": {
       "dependsOn": ["lint"]
     },
-    "lint": {}
+    "test:ui": {
+      "dependsOn": ["@repo/utils#build"],
+      "persistent": true
+    }
   }
 }

@@ -8,12 +8,12 @@ const config: StorybookConfig = {
   ],
   staticDirs: ['../../../public'],
   addons: [
-    "@storybook/addon-links",
-    "@storybook/addon-essentials",
-    "@chromatic-com/storybook",
-    "@storybook/addon-themes",
-    "@storybook/addon-actions",
-    "@storybook/addon-interactions",
+    // "@storybook/addon-links",
+    // "@storybook/addon-essentials",
+    // "@chromatic-com/storybook",
+    // "@storybook/addon-themes",
+    // "@storybook/addon-actions",
+    // "@storybook/addon-interactions",
   ],
   framework: {
     name: "@storybook/nextjs",

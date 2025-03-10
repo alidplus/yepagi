@@ -22,7 +22,7 @@ example: Button, Icon, Alert, Card and ...
   - Exceptionally, they can use very simple internal state
   - they expose named props as slots<ReactNode>
   - naming: Atom naming + ending with "Temp"
-- location: @repo/ui/atoms
+- location: @repo/ui/templates
 
 ## Mols (Molecules)
 Molecules are polymers made out of other atoms & molecules

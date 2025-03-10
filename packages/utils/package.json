@@ -11,30 +11,23 @@
   "scripts": {
     "build": "tsup",
     "lint": "eslint . --fix",
-    "turboDev": "turbo watch build",
-    "test": "vitest run --silent",
-    "test:ui": "vitest --ui",
-    "test:coverage": "vitest --ui run --coverage"
+    "dev": "turbo watch build"
   },
   "devDependencies": {
-    "@eslint/js": "^9.21.0",
+    "@eslint/js": "^9.22.0",
     "@jest/globals": "^29.7.0",
     "@repo/typescript": "*",
     "@types/node": "^22.13.4",
-    "@vitest/coverage-v8": "^3.0.7",
-    "@vitest/ui": "^3.0.7",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "es-toolkit": "^1.32.0",
-    "eslint": "^9.21.0",
-    "eslint-config-prettier": "^10.0.2",
+    "eslint": "^9.0.0",
+    "eslint-config-prettier": "^10.1.1",
     "eslint-plugin-prettier": "^5.2.3",
     "globals": "^16.0.0",
-    "jest": "^29.7.0",
     "tailwind-merge": "^3.0.2",
     "tsup": "^8.3.6",
-    "typescript": "5.7.3",
-    "typescript-eslint": "^8.25.0",
-    "vitest": "^3.0.7"
+    "typescript": "^5.0.0",
+    "typescript-eslint": "^8.26.0"
   }
 }

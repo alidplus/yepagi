@@ -1,0 +1,71 @@
+import { Canvas, Meta, Controls, IconGallery, IconItem, CodeOrSourceMdx, Source } from '@storybook/blocks';
+
+import * as AuthCardStories from './story.tsx';
+import selection from './selection.json';
+import { Icon, IconStack } from "./index";
+
+<Meta of={AuthCardStories} />
+
+<Canvas />
+
+<Controls />
+
+## Sizes
+<IconGallery>
+  <div className='w-1/8 flex flex-col gap-5 justify-center items-center'>
+    <Icon name="file-empty" size={16} />
+    <strong>16px</strong>
+  </div>
+  <div className='w-1/8 flex flex-col gap-5 justify-center items-center'>
+    <Icon name="file-empty" size={20} />
+    <strong>20px</strong>
+  </div>
+  <div className='w-1/8 flex flex-col gap-5 justify-center items-center'>
+    <Icon name="file-empty" size={24} />
+    <strong>24px</strong>
+  </div>
+  <div className='w-1/8 flex flex-col gap-5 justify-center items-center'>
+    <Icon name="file-empty" size={28} />
+    <strong>28px</strong>
+  </div>
+  <div className='w-1/8 flex flex-col gap-5 justify-center items-center'>
+    <Icon name="file-empty" size={32} />
+    <strong>32px</strong>
+  </div>
+  <div className='w-1/8 flex flex-col gap-5 justify-center items-center'>
+    <Icon name="file-empty" size={48} />
+    <strong>48px</strong>
+  </div>
+  <div className='w-1/8 flex flex-col gap-5 justify-center items-center'>
+    <Icon name="file-empty" size={64} />
+    <strong>64px</strong>
+  </div>
+</IconGallery>
+
+## Icon Stack
+Combination if <b>file-empty</b> (24px) and <b>facebook</b> (16px) icons.
+
+<div className='grid grid-cols-2'>
+  <IconStack>
+    <Icon name="file-empty" size={24} />
+    <Icon name="facebook" size={16} />
+  </IconStack>
+  <Source
+    language='tsx'
+    format
+    code={`<IconStack>
+    <Icon name="file-empty" size={24} />
+    <Icon name="facebook" size={16} />
+  </IconStack>`}
+  />
+</div>
+
+## Gallery
+To add/edit icon gallery visit [svgps](https://svgps.app).
+<IconGallery>
+  {selection.icons.map(({ properties }) => (
+    <IconItem key={properties.name} name={properties.name}>
+      <Icon name={properties.name} />
+    </IconItem>
+  ))}
+</IconGallery>

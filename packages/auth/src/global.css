@@ -1,4 +1,4 @@
 @import "@repo/ui";
 
-@source "../../../node_modules/@repo/ui";
-@source "src";
+@source "../../ui/src";
+@source ".";

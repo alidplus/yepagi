@@ -2,6 +2,7 @@
 
 import { Label, Input, Button } from "@repo/ui/atoms";
 import { cn } from "@repo/utils";
+import Link from 'next/link'
 
 export default function SigninForm({
   className,
@@ -76,9 +77,9 @@ export default function SigninForm({
         </div>
         <div className="text-center text-sm">
           Don&apos;t have an account?{" "}
-          <a href="/signup" className="underline underline-offset-4">
+          <Link href="/signup" className="underline underline-offset-4">
             Sign up
-          </a>
+          </Link>
         </div>
       </div>
     </form>

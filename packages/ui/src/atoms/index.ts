@@ -1,3 +1,4 @@
+import { Icon, IconStack } from "./icon";
 import { Label } from "./label";
 import { Input } from "./input";
 import { Button } from "./button";
@@ -12,6 +13,8 @@ import {
 } from "./card";
 
 export {
+  Icon,
+  IconStack,
   Card,
   CardContent,
   CardDescription,

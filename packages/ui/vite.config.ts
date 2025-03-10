@@ -39,6 +39,7 @@ export default defineConfig({
       entry: {
         atoms: "src/atoms",
         skeleton: "src/atoms/skeleton",
+        icon: "src/atoms/icon",
         button: "src/atoms/button",
         input: "src/atoms/input",
         label: "src/atoms/label",

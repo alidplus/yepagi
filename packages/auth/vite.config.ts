@@ -3,7 +3,6 @@ import react from "@vitejs/plugin-react";
 import dts from "vite-plugin-dts";
 import tailwindcss from "@tailwindcss/vite";
 import tsconfigPaths from "vite-tsconfig-paths";
-import { viteStaticCopy } from "vite-plugin-static-copy";
 import * as path from "path";
 
 export default defineConfig({

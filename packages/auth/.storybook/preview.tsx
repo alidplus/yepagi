@@ -1,9 +1,14 @@
 import type { Preview } from "@storybook/react";
 import "../src/global.css";
-import "./styles.css";
 
 const preview: Preview = {
   parameters: {
+    nextjs: {
+      appDirectory: true
+    },
+    docs: {
+      toc: true
+    },
     controls: {
       matchers: {
         color: /(background|color)$/i,

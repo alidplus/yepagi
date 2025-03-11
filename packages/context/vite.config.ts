@@ -4,6 +4,10 @@ import dts from "vite-plugin-dts";
 import tailwindcss from "@tailwindcss/vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 import * as path from "path";
+// @ts-ignore
+import peerDepsExternals from 'rollup-plugin-peer-deps-external'
+import nodeExternals from 'rollup-plugin-node-externals'
+
 
 export default defineConfig({
   root: __dirname,
@@ -12,11 +16,6 @@ export default defineConfig({
     tsconfigPaths(),
     react(),
     tailwindcss(),
-    dts({
-      entryRoot: "src",
-      exclude: ["./**/*.test.*"],
-      tsconfigPath: path.join(__dirname, "tsconfig.app.json"),
-    }),
   ],
   build: {
     outDir: "./dist",
@@ -27,16 +26,24 @@ export default defineConfig({
     },
     lib: {
       // Could also be a dictionary or array of multiple entry points.
-      entry: {
-        AppContext: "src/AppContext",
-      },
+      entry: "src",
+      fileName: "index",
       // Change this to the formats you want to support.
       // Don't forget to update your package.json as well.
       formats: ["es"],
     },
     rollupOptions: {
-      // External packages that should not be bundled into your library.
-      external: ["react", "react-dom", "react/jsx-runtime"],
+      plugins: [
+        dts({
+          entryRoot: "src",
+          exclude: ["./**/*.test.*"],
+          tsconfigPath: path.join(__dirname, "tsconfig.app.json"),
+        }),
+        { enforce: 'pre', ...nodeExternals() },
+        { enforce: 'pre', ...peerDepsExternals() },
+      ]
     },
   },
 });
+
+// "superjson", "@trpc/client", "@tanstack/react-query", "@trpc/tanstack-react-query"

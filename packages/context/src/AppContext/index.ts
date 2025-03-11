@@ -8,9 +8,7 @@ const AppContextValue: AppContext = {
   translationMap: {},
 };
 
-const AppContext = React.createContext(AppContextValue);
-
-export default AppContext;
+export const AppContext = React.createContext(AppContextValue);
 
 export const useAppContext = () => useContext(AppContext);
 

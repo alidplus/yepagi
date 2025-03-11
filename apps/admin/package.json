@@ -37,11 +37,11 @@
     "@types/node": "^22.13.4",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "eslint": "^9.0.0",
+    "eslint": "^9.20.1",
     "eslint-config-next": "15.1.7",
     "postcss": "^8.5.3",
     "rpc-gateway": "*",
-    "typescript": "^5.0.0",
+    "typescript": "^5.7.3",
     "wrangler": "^3.111.0"
   }
 }

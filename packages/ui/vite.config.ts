@@ -5,6 +5,9 @@ import tailwindcss from "@tailwindcss/vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 import { viteStaticCopy } from "vite-plugin-static-copy";
 import * as path from "path";
+// @ts-ignore
+import peerDepsExternals from 'rollup-plugin-peer-deps-external'
+import nodeExternals from 'rollup-plugin-node-externals'
 
 export default defineConfig({
   root: __dirname,
@@ -13,11 +16,6 @@ export default defineConfig({
     tsconfigPaths(),
     react(),
     tailwindcss(),
-    dts({
-      entryRoot: "src",
-      exclude: ["story.tsx", "./**/story.tsx", "*.mdx"],
-      tsconfigPath: path.join(__dirname, "tsconfig.app.json"),
-    }),
     viteStaticCopy({
       targets: [
         {
@@ -47,17 +45,15 @@ export default defineConfig({
       formats: ["es"],
     },
     rollupOptions: {
-      // External packages that should not be bundled into your library.
-      external: [
-        "react",
-        "react-dom",
-        "react/jsx-runtime",
-        "tailwindcss",
-        "@repo/utils",
-        "@repo/defs",
-        "@hookform/resolvers",
-        "react-hook-form",
-      ],
+      plugins: [
+        dts({
+          entryRoot: "src",
+          exclude: ["story.tsx", "./**/story.tsx", "*.mdx"],
+          tsconfigPath: path.join(__dirname, "tsconfig.app.json"),
+        }),
+        { enforce: 'pre', ...nodeExternals() },
+        { enforce: 'pre', ...peerDepsExternals() },
+      ]
     },
   },
 });

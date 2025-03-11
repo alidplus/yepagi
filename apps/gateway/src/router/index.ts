@@ -1,10 +1,12 @@
 import { router } from "../trpc";
+import { authRouter } from "./auth";
 import { tenantRouter } from "./tenant";
 import { userRouter } from "./user";
 export { fetchRequestHandler } from '@trpc/server/adapters/fetch';
 
 export const appRouter = router({
   user: userRouter,
+  auth: authRouter,
   tenant: tenantRouter
 });
  

@@ -16,7 +16,7 @@ export type Context = Awaited<ReturnType<typeof createContext>> & {
   db: DrizzleD1Database & {
     $client: D1Database;
   };
-  usersCache: KvStore<defs.user.TSelect>
+  usersCache: KvStore<defs.users.TSelect>
   transport: string;
   user?: {
     id: string;

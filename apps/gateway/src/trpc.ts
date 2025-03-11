@@ -19,7 +19,7 @@ const t = initTRPC.context<Context>().meta<MyMeta>().create({
  * that can be used throughout the router
  */
 export const router = t.router;
-export const publicProcedure = t.procedure;
+export const publicProcedure = t.procedure
  
 export const adminProcedure = publicProcedure.use(async (opts) => {
   const { ctx } = opts;

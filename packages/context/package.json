@@ -6,9 +6,9 @@
     "./dist"
   ],
   "exports": {
-    "./AppContext": {
-      "import": "./dist/AppContext.js",
-      "types": "./dist/AppContext.d.ts"
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
     },
     "./package.json": "./package.json"
   },

@@ -19,7 +19,7 @@ import * as defs from "@repo/defs";
 export default {
 	async fetch(req, env, ctx): Promise<Response> {
     const db = drizzle(env.DB);
-    const usersCache = new KvStore<defs.user.TSelect>('ns', env.NS);
+    const usersCache = new KvStore<defs.users.TSelect>('ns', env.NS);
     
     return fetchRequestHandler({
       endpoint: '/trpc',

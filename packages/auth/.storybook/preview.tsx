@@ -1,5 +1,7 @@
+import { Providers } from "@repo/context";
 import type { Preview } from "@storybook/react";
 import "../src/global.css";
+import React, { ComponentType } from "react";
 
 const preview: Preview = {
   parameters: {
@@ -16,6 +18,9 @@ const preview: Preview = {
       },
     },
   },
+  decorators: [
+    (Story: ComponentType) => <Providers><Story /></Providers>
+  ]
 };
 
 export default preview;

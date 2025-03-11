@@ -2,7 +2,7 @@
   "name": "rpc-gateway",
   "version": "0.0.0",
   "private": true,
-  "types": "./types/router.d.ts",
+  "types": "./types/router/index.d.ts",
   "scripts": {
     "deploy": "wrangler deploy",
     "dev": "yarn dev",

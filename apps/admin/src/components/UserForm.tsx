@@ -1,4 +1,4 @@
-import { useTRPC } from "@/providers";
+import { useTRPC } from "@repo/context";
 import * as defs from "@repo/defs";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -19,7 +19,7 @@ export default function UserForm() {
   
   return (
     <form onSubmit={handleSubmit((data) => mutation.mutate(data))} className="flex flex-col gap-3">
-      <input className="text-black" type="text" placeholder="Name" {...register("name", {required: true})} />
+      <input className="text-black" type="text" placeholder="Name" {...register("username", {required: true})} />
       <input className="text-black" type="number" placeholder="Age" {...register("age", {required: true, valueAsNumber: true})} />
       <input className="text-black" type="text" placeholder="Email" {...register("email", {required: true, pattern: /^\S+@\S+$/i})} />
 

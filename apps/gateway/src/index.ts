@@ -18,15 +18,13 @@ import * as defs from "@repo/defs";
 
 export default {
   async fetch(request, env, ctx): Promise<Response> {
+    const isMockCall = !!request.headers.get('x-mock-api-call')
+    
     const corsHeaders = {
       "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Methods": "GET,HEAD,POST,OPTIONS",
       "Access-Control-Max-Age": "86400",
     };
-
-    // The URL for the remote third party API you want to fetch from
-    // but does not implement CORS
-    const API_URL = "https://examples.cloudflareworkers.com/demos/demoapi";
 
     // The endpoint you want the CORS reverse proxy to be on
     const PROXY_ENDPOINT = '/trpc';
@@ -49,23 +47,24 @@ export default {
       </html>
     `;
 
-    async function handleRequest(_req: Request, _env: any) {
-      const db = drizzle(_env.DB);
-      const usersCache = new KvStore<defs.users.TSelect>('ns', _env.NS);
+    async function handleRequest() {
+      const db = drizzle(env.DB);
+      const usersCache = new KvStore<defs.users.TSelect>('ns', env.NS);
       
       return fetchRequestHandler({
         endpoint: PROXY_ENDPOINT,
-        req: _req,
+        req: request,
         router: appRouter,
         createContext: () => ({
           transport: 'rpc-gateway',
+          isMock: isMockCall,
           db,
           usersCache
         }),
       });
     }
 
-    async function handleOptions(request: Request) {
+    async function handleOptions() {
       if (
         request.headers.get("Origin") !== null &&
         request.headers.get("Access-Control-Request-Method") !== null &&
@@ -92,21 +91,24 @@ export default {
 
     const url = new URL(request.url);
     if (url.pathname.startsWith(PROXY_ENDPOINT)) {
-      if (request.method === "OPTIONS") {
+      if (request.method === "OPTIONS" && isMockCall) {
         // Handle CORS preflight requests
-        return handleOptions(request);
+        return handleOptions();
       } else if (
         request.method === "GET" ||
         request.method === "HEAD" ||
         request.method === "POST"
       ) {
         // Handle requests to the API server
-        const res = await handleRequest(request, env);
-        res.headers.append('Access-Control-Allow-Origin', '*')
-        res.headers.append('Access-Control-Allow-Methods', 'GET,HEAD,POST,OPTIONS')
-        res.headers.append('Access-Control-Max-Age', '86400')
-
-        return res
+        if (isMockCall) {
+          const res = await handleRequest();
+          res.headers.append('Access-Control-Allow-Origin', '*')
+          res.headers.append('Access-Control-Allow-Methods', 'GET,HEAD,POST,OPTIONS')
+          res.headers.append('Access-Control-Max-Age', '86400')
+  
+          return res
+        }
+        return handleRequest()
       } else {
         return new Response(null, {
           status: 405,
@@ -117,4 +119,4 @@ export default {
       return rawHtmlResponse(DEMO_PAGE);
     }
   },
-} satisfies ExportedHandler;
+} satisfies ExportedHandler<CloudflareEnv>;

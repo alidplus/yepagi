@@ -1,9 +1,6 @@
 "use server";
 
-import { getQueryClient } from './query';
-import { trpc } from './trpc/server';
+import { getQueryClient } from "./query";
+import { trpc } from "./trpc/server";
 
-export {
-  getQueryClient,
-  trpc
-}
+export { getQueryClient, trpc };

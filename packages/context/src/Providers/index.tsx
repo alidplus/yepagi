@@ -15,9 +15,9 @@ export function Providers({
   mock,
 }: PropsWithChildren<{ mock?: true }>) {
   const queryClient = getQueryClient();
-  
+
   const [trpcClient] = useState(() => getTRcpClient(mock));
-  console.log({ queryClient, trpcClient, mock }, 'on llllllll');
+  console.log({ queryClient, trpcClient, mock }, "on llllllll");
   return (
     <QueryClientProvider client={queryClient}>
       <TRPCProvider trpcClient={trpcClient} queryClient={queryClient}>

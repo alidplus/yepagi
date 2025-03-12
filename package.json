@@ -7,6 +7,7 @@
   },
   "scripts": {
     "dev": "turbo admin#dev rpc-gateway#dev",
+    "build:deps": "turbo @repo/utils#build @repo/ui#build @repo/defs#build @repo/context#build @repo/auth#build & yarn workspace rpc-gateway dts",
     "lint:deps": "npx check-dependency-version-consistency . --fix",
     "commit": "cz"
   },

@@ -4,8 +4,8 @@ export default {
     return [
       {
         source: "/trpc/:path*",
-        destination: 'http://localhost:3030/trpc/:path*',
+        destination: "http://localhost:3030/trpc/:path*",
       },
-    ]
-  }
-}
+    ];
+  },
+};

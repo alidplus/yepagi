@@ -1,10 +1,10 @@
 import { isServer } from "@tanstack/react-query";
 import { createTRPCClient, httpLink, TRPCClient } from "@trpc/client";
 import { type AppRouter } from "rpc-gateway";
-// import SuperJSON from "superjson";
+import SuperJSON from "superjson";
 
-const url = `${process.env.NEXT_PUBLIC_API_HOST ?? process.env.API_HOST ?? ""}/trpc`
-const mockUrl = 'http://localhost:3030/trpc'
+const url = `${process.env.NEXT_PUBLIC_API_HOST ?? process.env.API_HOST ?? ""}/trpc`;
+const mockUrl = "http://localhost:3030/trpc";
 
 export function makeTRpcClient(mock?: true) {
   if (mock) {
@@ -15,31 +15,29 @@ export function makeTRpcClient(mock?: true) {
     links: [
       mock
         ? httpLink({
-          url: mockUrl,
-          // transformer: SuperJSON,
-          // headers: {
-          //   'Content-Type': 'application/json'
-          // },
-          // fetch(url, options) {
-          //   return fetch(url, {
-          //     ...options,
-          //     mode: 'no-cors',
-          //     headers: {
-          //       'Content-Type': 'application/json'
-          //     }
-          //   });
-          // },
-        })
+            url: mockUrl,
+            transformer: SuperJSON,
+            headers: {
+              "X-Mock-Api-Call": "mock",
+            },
+          })
         : httpLink({
-          url,
-          // transformer: SuperJSON,
-        })
+            url,
+            transformer: SuperJSON,
+          }),
     ],
   });
 
-  console.log('trpcC', trpcC, 'API_HOST:', process.env.API_HOST, 'NEXT_PUBLIC_API_HOST:', process.env.NEXT_PUBLIC_API_HOST);
-  
-  return trpcC
+  console.log(
+    "trpcC",
+    trpcC,
+    "API_HOST:",
+    process.env.API_HOST,
+    "NEXT_PUBLIC_API_HOST:",
+    process.env.NEXT_PUBLIC_API_HOST,
+  );
+
+  return trpcC;
 }
 
 let tRpcClient: TRPCClient<AppRouter> | undefined = undefined;

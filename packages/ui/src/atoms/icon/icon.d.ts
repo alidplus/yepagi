@@ -3,4 +3,5 @@ export type IconNames =
   | "linkedin"
   | "twitter"
   | "plus"
-  | "file-empty";
+  | "file-empty"
+  | "dismiss";

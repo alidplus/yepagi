@@ -23,6 +23,18 @@ import {
   FormMessage,
   FormField,
 } from "./form";
+import {
+  Dialog,
+  DialogPortal,
+  DialogOverlay,
+  DialogTrigger,
+  DialogClose,
+  DialogContent,
+  DialogTitle,
+  DialogDescription,
+  DialogHeader,
+  DialogFooter,
+} from "./dialog";
 
 export {
   Icon,
@@ -45,4 +57,14 @@ export {
   FormDescription,
   FormMessage,
   FormField,
+  Dialog,
+  DialogPortal,
+  DialogOverlay,
+  DialogTrigger,
+  DialogClose,
+  DialogContent,
+  DialogHeader,
+  DialogFooter,
+  DialogTitle,
+  DialogDescription,
 };

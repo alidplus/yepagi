@@ -25,6 +25,11 @@ export default defineConfig({
         },
       ],
     }),
+    dts({
+      entryRoot: "src",
+      exclude: ["story.tsx", "./**/story.tsx", "*.mdx"],
+      tsconfigPath: path.join(__dirname, "tsconfig.app.json"),
+    }),
   ],
   build: {
     outDir: "./dist",

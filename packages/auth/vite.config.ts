@@ -12,11 +12,7 @@ import preserveDirectives from "rollup-preserve-directives";
 export default defineConfig({
   root: __dirname,
   cacheDir: "./node_modules/.vite/libs/atoms",
-  plugins: [
-    tsconfigPaths(),
-    react(),
-    tailwindcss(),
-  ],
+  plugins: [tsconfigPaths(), react(), tailwindcss()],
   build: {
     outDir: "./dist",
     emptyOutDir: true,

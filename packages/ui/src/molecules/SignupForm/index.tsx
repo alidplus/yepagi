@@ -21,9 +21,9 @@ export default function SigninForm({
   className,
   onSubmit,
   ...props
-}: TypedHTMLFormProps<auth.TSignin>) {
-  const form = useForm<auth.TSignin>({
-    resolver: zodResolver(auth.zSigninSchema),
+}: TypedHTMLFormProps<auth.TSignup>) {
+  const form = useForm<auth.TSignup>({
+    resolver: zodResolver(auth.zSignupSchema),
     resetOptions: {
       keepIsSubmitSuccessful: false,
     },
@@ -47,6 +47,22 @@ export default function SigninForm({
       >
         <FormField
           control={form.control}
+          name="name"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Username</FormLabel>
+              <FormControl>
+                <Input placeholder="Your Name" {...field} />
+              </FormControl>
+              <FormDescription>
+                This is your public display name.
+              </FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
           name="email"
           render={({ field }) => (
             <FormItem>
@@ -54,9 +70,7 @@ export default function SigninForm({
               <FormControl>
                 <Input placeholder="name@example.com" {...field} />
               </FormControl>
-              <FormDescription>
-                This is your public display name.
-              </FormDescription>
+              <FormDescription>This is your uniq identifier</FormDescription>
               <FormMessage />
             </FormItem>
           )}
@@ -78,7 +92,7 @@ export default function SigninForm({
           )}
         />
         <Button type="submit" className="w-full">
-          Login
+          Sign Up!
         </Button>
       </form>
     </Form>

@@ -1,11 +1,10 @@
-import { PropsWithChildren } from "react";
 import TenantClient from "./Client";
 
 type TenantParams = {
   name: string
 }
 
-export default async function TenantPage({ children, params }: PropsWithChildren<RouteParams<TenantParams>>) {
+export default async function TenantPage({ params }: RouteParams<TenantParams>) {
   const { name } = await params
   
   return (

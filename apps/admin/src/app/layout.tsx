@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Providers } from "@repo/context/client";
 import "../globals.css";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -18,6 +19,11 @@ export default function RootLayout({
         <body
           className={`antialiased`}
         >
+          <div className="h-15 w-full flex flex-row justify-around fixed bottom-0 shadow shadow bg-white">
+            <Link href="/signup">signup</Link>
+            <Link href="/">Home</Link>
+            <Link href="/signin">signin</Link>
+          </div>
           {children}
         </body>
       </html>

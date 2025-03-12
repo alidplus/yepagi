@@ -4,7 +4,8 @@
   "private": true,
   "types": "./types/router/index.d.ts",
   "scripts": {
-    "dev": "wrangler dev",
+    "wr": "wrangler --persist-to ../../.wrangler/state",
+    "dev": "yarn wr dev",
     "deploy": "wrangler deploy",
     "start": "wrangler dev --remote",
     "test": "vitest",
@@ -15,6 +16,7 @@
     "@cloudflare/vitest-pool-workers": "^0.6.4",
     "@cloudflare/workers-types": "^4.20250224.0",
     "@types/http-errors": "^2.0.4",
+    "better-sqlite3": "^11.8.1",
     "drizzle-kit": "^0.30.5",
     "typescript": "^5.7.3",
     "vitest": "^3.0.8",

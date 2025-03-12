@@ -3,7 +3,7 @@
 
 export default function NameClient() {
   return (
-    <div className="">
+    <div>
       home Client
     </div>
   );

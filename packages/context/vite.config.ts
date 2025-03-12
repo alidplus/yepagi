@@ -9,8 +9,6 @@ import peerDepsExternals from "rollup-plugin-peer-deps-external";
 import nodeExternals from "rollup-plugin-node-externals";
 import preserveDirectives from "rollup-preserve-directives";
 
-
-
 export default defineConfig({
   root: __dirname,
   cacheDir: "./node_modules/.vite/libs/atoms",

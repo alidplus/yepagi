@@ -2,7 +2,6 @@ import type { StorybookConfig } from "@storybook/nextjs";
 import { name } from "../package.json";
 import path from "path";
 
-
 const config: StorybookConfig = {
   stories: [
     // "../readme/**/*.mdx",
@@ -21,7 +20,7 @@ const config: StorybookConfig = {
   framework: {
     name: "@storybook/nextjs",
     options: {
-      nextConfigPath: path.resolve(__dirname, './next.config.js'),
+      nextConfigPath: path.resolve(__dirname, "./next.config.js"),
     },
   },
   managerHead: (headHtmlContent) => {

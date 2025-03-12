@@ -14,4 +14,14 @@ export const authRouter = router({
         accessToken: 'some token'
       }
     }),
+  signup: publicProcedure
+    .input(def.auth.zSignupSchema)
+    // .output(def.users.zSelectSchema.optional())
+    .mutation(async ({ input, ctx }) => {
+      return ctx.db.insert(def.users.table).values({
+        email: input.email,
+        username: input.name,
+        passwordHash: input.password,
+      });
+    }),
 })

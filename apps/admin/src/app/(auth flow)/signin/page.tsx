@@ -1,5 +1,6 @@
 import { SigninFormClient } from "@repo/auth";
 import { Button } from "@repo/ui/atoms";
+import Link from "next/link";
 
 export default async function SigninFormPage() {
   
@@ -48,9 +49,9 @@ export default async function SigninFormPage() {
       </div>
       <div className="text-center text-sm">
         Don&apos;t have an account?{" "}
-        <a href="#" className="underline underline-offset-4">
+        <Link href="/signup" className="underline underline-offset-4">
           Sign up
-        </a>
+        </Link>
       </div>
     </div>
   );

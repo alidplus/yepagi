@@ -18,6 +18,7 @@ export type Context = Awaited<ReturnType<typeof createContext>> & {
   };
   usersCache: KvStore<defs.users.TSelect>
   transport: string;
+  isMock?: boolean;
   user?: {
     id: string;
     isAdmin: boolean

@@ -1,14 +1,14 @@
 "use client";
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { SigninForm } from "@repo/ui/molecules";
+import { SignupForm } from "@repo/ui/molecules";
 import { useTRPC } from "@repo/context/client";
 
-export default function SigninFormClient() {
+export default function SignupFormClient() {
   const queryClient = useQueryClient();
 
   const trpc = useTRPC();
-  const options = trpc.auth.signin.mutationOptions({
+  const options = trpc.auth.signup.mutationOptions({
     async onSuccess() {
       const userlistQueryKey = trpc.user.list.queryKey();
       await queryClient.invalidateQueries({ queryKey: userlistQueryKey });
@@ -19,7 +19,7 @@ export default function SigninFormClient() {
   });
   const mutation = useMutation(options);
   return (
-    <SigninForm
+    <SignupForm
       onSubmit={(d) => {
         console.log("mutating....", d, typeof d);
         mutation.mutate(d);

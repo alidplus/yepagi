@@ -14,13 +14,8 @@
       "outputs": [".next/**", "!.next/cache/**"]
     },
     "dev": {
-      "persistent": true,
-      "cache": false
+      "persistent": true
     },
-    "lint": {
-    },
-    "typegen": {
-      "cache": false
-    }
+    "lint": {}
   }
 }

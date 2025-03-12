@@ -24,19 +24,26 @@ export default function SigninForm({
 }: TypedHTMLFormProps<auth.TSignin>) {
   const form = useForm<auth.TSignin>({
     resolver: zodResolver(auth.zSigninSchema),
+    resetOptions: {
+      keepIsSubmitSuccessful: false
+    }
   });
 
-  const { isValid, isLoading, isSubmitting, isSubmitSuccessful } =
+  const { isValid, isLoading, isSubmitting, isSubmitSuccessful, errors } =
     form.formState;
 
   const disabled = !isValid || isLoading || isSubmitting || isSubmitSuccessful;
   // const loading = isLoading || isSubmitting
+
+  console.log({ disabled, errors, onSubmit }, 'errors');
+  
 
   return (
     <Form {...form}>
       <form
         className={cn(className, "flex flex-col gap-2")}
         onSubmit={onSubmit ? form.handleSubmit(onSubmit) : undefined}
+        onReset={() => form.reset()}
         {...props}
       >
         <FormField
@@ -71,7 +78,7 @@ export default function SigninForm({
             </FormItem>
           )}
         />
-        <Button type="submit" className="w-full" disabled={disabled}>
+        <Button type="submit" className="w-full">
           Login
         </Button>
       </form>

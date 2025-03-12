@@ -7,7 +7,9 @@ export const authRouter = router({
   signin: publicProcedure
     .input(def.auth.zSigninSchema)
     .output(def.auth.zAccessSchema)
-    .mutation(async ({ ctx }) => {
+    .mutation(async ({ input }) => {
+      console.log('unnnnnn', input);
+      
       return {
         accessToken: 'some token'
       }

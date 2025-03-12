@@ -5,9 +5,10 @@ import tailwindcss from "@tailwindcss/vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 import { viteStaticCopy } from "vite-plugin-static-copy";
 import * as path from "path";
-// @ts-ignore
-import peerDepsExternals from 'rollup-plugin-peer-deps-external'
-import nodeExternals from 'rollup-plugin-node-externals'
+// @ts-expect-error: @types/rollup-plugin-peer-deps-external is not installed
+import peerDepsExternals from "rollup-plugin-peer-deps-external";
+import nodeExternals from "rollup-plugin-node-externals";
+import preserveDirectives from "rollup-preserve-directives";
 
 export default defineConfig({
   root: __dirname,
@@ -51,9 +52,10 @@ export default defineConfig({
           exclude: ["story.tsx", "./**/story.tsx", "*.mdx"],
           tsconfigPath: path.join(__dirname, "tsconfig.app.json"),
         }),
-        { enforce: 'pre', ...nodeExternals() },
-        { enforce: 'pre', ...peerDepsExternals() },
-      ]
+        { enforce: "pre", ...nodeExternals() },
+        { enforce: "pre", ...peerDepsExternals() },
+        { enforce: "pre", ...preserveDirectives() },
+      ],
     },
   },
 });

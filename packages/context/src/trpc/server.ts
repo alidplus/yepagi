@@ -1,8 +1,9 @@
-import 'server-only'; // <-- ensure this file cannot be imported from the client
+"use server";
 
 import { createTRPCOptionsProxy } from '@trpc/tanstack-react-query';
 import { cache } from 'react';
-import { makeTRpcClient, makeQueryClient } from '@repo/context';
+import { makeTRpcClient } from '.';
+import { makeQueryClient } from '@/query';
 
 export const getQueryClient = cache(makeQueryClient);
 

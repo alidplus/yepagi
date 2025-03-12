@@ -1,13 +1,13 @@
 // Replace your-framework with the name of your framework
-import type { Meta, StoryObj } from '@storybook/react';
-import Component from '.';
+import type { Meta, StoryObj } from "@storybook/react";
+import Component from ".";
 
 const meta: Meta<typeof Component> = {
-  title: 'forms/Signin',
+  title: "forms/Signin",
   component: Component,
   argTypes: {
-    name: { type: "string" }
-  }
+    name: { type: "string" },
+  },
 };
 
 export default meta;
@@ -18,13 +18,12 @@ export const Default: Story = {
     nextjs: {
       appDirectory: true,
       navigation: {
-        pathname: '/signin',
+        pathname: "/signin",
         query: {
-          user: '1',
+          user: "1",
         },
       },
     },
   },
-  args: {
-  },
+  args: {},
 };

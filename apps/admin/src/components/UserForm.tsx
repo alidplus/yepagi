@@ -1,4 +1,4 @@
-import { useTRPC } from "@repo/context";
+import { useTRPC } from "@repo/context/client";
 import * as defs from "@repo/defs";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { zodResolver } from "@hookform/resolvers/zod"

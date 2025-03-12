@@ -1,7 +1,7 @@
 "use client";
 import UserRow from "@/components/user/UserRow";
 import UserForm from "@/components/UserForm";
-import { useTRPC } from "@repo/context";
+import { useTRPC } from "@repo/context/client";
 import { useQuery } from "@tanstack/react-query";
 // import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";

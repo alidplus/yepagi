@@ -3,7 +3,7 @@
 ## Lint
 run command below in root package to lint of all dependencies versions.
 ```sh
-yarn lint:deps:fix
+yarn lint:deps
 ```
 
 ## internal packages bundeling

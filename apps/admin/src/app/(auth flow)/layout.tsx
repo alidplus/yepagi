@@ -1,4 +1,4 @@
-import { AuthLayout, AuthCard } from "@repo/auth";
+import { AuthCardTemp, AuthLayoutTemp } from "@repo/ui/templates";
 
 export default function Layout({
   children,
@@ -6,10 +6,10 @@ export default function Layout({
   children: React.ReactNode;
 }>) {
   return (
-    <AuthLayout>
-      <AuthCard src="/fingerprint.svg">
+    <AuthLayoutTemp>
+      <AuthCardTemp src="/fingerprint.svg">
         {children}
-      </AuthCard>
-    </AuthLayout>
+      </AuthCardTemp>
+    </AuthLayoutTemp>
   );
 }

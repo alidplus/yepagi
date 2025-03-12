@@ -3,21 +3,15 @@
   "extends": ["//"],
   "tasks": {
     "build": {
-      "outputs": [
-        "dist/**"
-      ],
-      "dependsOn": ["@repo/utils#build", "@repo/ui#build"],
-      "inputs": [
-        "$TURBO_DEFAULT$",
-        "./package.json",
-        "./vite.config.ts",
-        "./tsconfig.ts",
-        "./tsconfig.app.ts",
-        "./tsconfig.node.ts"
-      ]
+      "outputs": ["dist/**"]
+    },
+    "build:live": {
+      "persistent": true
     },
     "lint": {},
-    "test": {
+    "dev": {
+      "persistent": true,
+      "dependsOn": ["^build"]
     }
   }
 }

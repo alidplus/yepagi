@@ -3,16 +3,16 @@
   "extends": ["//"],
   "tasks": {
     "build": {
-      "outputs": ["dist/**"]
+      "outputs": ["dist/**"],
+      "dependsOn": ["lint"]
     },
     "build:live": {
       "persistent": true
     },
     "lint": {},
-    "test": {},
     "dev": {
-      "persistent": true,
-      "dependsOn": ["^build"]
+      "dependsOn": ["^build"],
+      "persistent": true
     }
   }
 }

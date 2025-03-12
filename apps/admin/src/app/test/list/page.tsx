@@ -3,7 +3,7 @@ import Home from "./Home";
 import { Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { getQueryClient } from "@repo/context";
-import { trpc } from "@/ssr/trpc.server";
+import { trpc } from "@repo/context/server";
 
 export default async function HomePage() {
   const queryClient = getQueryClient()

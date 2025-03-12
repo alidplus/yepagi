@@ -1,3 +1,5 @@
+"use client";
+
 import { Icon, IconStack } from "./icon";
 import { Label } from "./label";
 import { Input } from "./input";

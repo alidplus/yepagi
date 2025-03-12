@@ -1,6 +1,6 @@
 "use client";
 
-import { Label, Input, Button } from "@repo/ui/atoms";
+import { Label, Input, Button } from "@/atoms";
 import { cn } from "@repo/utils";
 
 export default function SignupForm({

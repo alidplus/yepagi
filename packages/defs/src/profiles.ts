@@ -1,9 +1,9 @@
-import * as dz from 'drizzle-zod';
+import * as dz from "drizzle-zod";
 import { z } from "zod";
 import { profiles, profilesRelations } from "./schema";
 
-export const table = profiles
-export const relations = profilesRelations
+export const table = profiles;
+export const relations = profilesRelations;
 
 export const zSelectSchema = dz.createSelectSchema(table);
 export type TSelect = z.infer<typeof zInsertSchema>;

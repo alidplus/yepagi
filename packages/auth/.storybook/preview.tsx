@@ -1,4 +1,4 @@
-import { Providers } from "@repo/context";
+import { Providers } from "@repo/context/client";
 import type { Preview } from "@storybook/react";
 import "../src/global.css";
 import React, { ComponentType } from "react";
@@ -6,10 +6,10 @@ import React, { ComponentType } from "react";
 const preview: Preview = {
   parameters: {
     nextjs: {
-      appDirectory: true
+      appDirectory: true,
     },
     docs: {
-      toc: true
+      toc: true,
     },
     controls: {
       matchers: {
@@ -19,8 +19,12 @@ const preview: Preview = {
     },
   },
   decorators: [
-    (Story: ComponentType) => <Providers><Story /></Providers>
-  ]
+    (Story: ComponentType) => (
+      <Providers mock>
+        <Story />
+      </Providers>
+    ),
+  ],
 };
 
 export default preview;

@@ -6,9 +6,8 @@
     "node": ">=18"
   },
   "scripts": {
-    "dev": "turbo dev",
-    "lint:deps": "npx check-dependency-version-consistency .",
-    "lint:deps:fix": "npx check-dependency-version-consistency . --fix",
+    "dev": "turbo admin#dev rpc-gateway#dev",
+    "lint:deps": "npx check-dependency-version-consistency . --fix",
     "commit": "cz"
   },
   "workspaces": [

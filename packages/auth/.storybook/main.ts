@@ -1,13 +1,15 @@
-import type { StorybookConfig } from "@storybook/experimental-nextjs-vite";
+import type { StorybookConfig } from "@storybook/nextjs";
 import { name } from "../package.json";
+import path from "path";
+
 
 const config: StorybookConfig = {
   stories: [
     // "../readme/**/*.mdx",
     "../src/**/docs.mdx",
-    "../src/**/stories.@(ts|tsx)"
+    "../src/**/stories.@(ts|tsx)",
   ],
-  staticDirs: ['../../../public'],
+  staticDirs: ["../../../public"],
   addons: [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
@@ -17,8 +19,9 @@ const config: StorybookConfig = {
     "@storybook/addon-interactions",
   ],
   framework: {
-    name: "@storybook/experimental-nextjs-vite",
+    name: "@storybook/nextjs",
     options: {
+      nextConfigPath: path.resolve(__dirname, './next.config.js'),
     },
   },
   managerHead: (headHtmlContent) => {
@@ -35,6 +38,7 @@ const config: StorybookConfig = {
       font-weight: normal;
     }
     </style>
+    <meta name="referrer" content="no-referrer">
     `;
     return `${headHtmlContent}\n${style}`;
   },

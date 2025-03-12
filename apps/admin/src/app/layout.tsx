@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Providers } from "@repo/context";
+import { Providers } from "@repo/context/client";
 import "../globals.css";
 
 export const metadata: Metadata = {

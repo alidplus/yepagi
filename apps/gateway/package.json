@@ -4,8 +4,8 @@
   "private": true,
   "types": "./types/router/index.d.ts",
   "scripts": {
+    "dev": "wrangler dev",
     "deploy": "wrangler deploy",
-    "dev": "yarn dev",
     "start": "wrangler dev --remote",
     "test": "vitest",
     "dts": "tsc -p ./tsgenconfig.json",

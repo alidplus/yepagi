@@ -1,5 +1,5 @@
 "use client";
-import { useTRPC } from "@repo/context";
+import { useTRPC } from "/shared/client";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 

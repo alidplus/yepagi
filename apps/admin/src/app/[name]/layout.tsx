@@ -1,5 +1,5 @@
 import { getQueryClient } from "@repo/context";
-import { trpc } from "@/ssr/trpc.server";
+import { trpc } from "@repo/context/server";
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 import { PropsWithChildren, Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";

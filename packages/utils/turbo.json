@@ -3,9 +3,15 @@
   "extends": ["//"],
   "tasks": {
     "build": {
-      "outputs": ["dist/**"],
-      "dependsOn": ["lint"]
+      "outputs": ["dist/**"]
     },
-    "lint": {}
+    "build:live": {
+      "persistent": true
+    },
+    "lint": {},
+    "test": {},
+    "dev": {
+      "persistent": true
+    }
   }
 }

@@ -1,8 +1,9 @@
-import { SignupForm } from "@repo/auth";
+// import { SignupFormClient } from "@repo/auth";
 
 export default async function SignupFormPage() {
   
   return (
-    <SignupForm />
+    // <SignupFormClient />
+    <div>SignupFormClient</div>
   );
 }

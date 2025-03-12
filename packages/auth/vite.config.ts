@@ -4,6 +4,10 @@ import dts from "vite-plugin-dts";
 import tailwindcss from "@tailwindcss/vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 import * as path from "path";
+// @ts-expect-error: @types/rollup-plugin-peer-deps-external is not installed
+import peerDepsExternals from "rollup-plugin-peer-deps-external";
+import nodeExternals from "rollup-plugin-node-externals";
+import preserveDirectives from "rollup-preserve-directives";
 
 export default defineConfig({
   root: __dirname,
@@ -12,11 +16,6 @@ export default defineConfig({
     tsconfigPaths(),
     react(),
     tailwindcss(),
-    dts({
-      entryRoot: "src",
-      exclude: ["./**/stories.tsx", "docs.mdx"],
-      tsconfigPath: path.join(__dirname, "tsconfig.app.json"),
-    })
   ],
   build: {
     outDir: "./dist",
@@ -26,18 +25,20 @@ export default defineConfig({
       transformMixedEsModules: true,
     },
     lib: {
-      entry: 'src/index.ts',
-      fileName: 'index',
+      entry: "src/index.ts",
+      fileName: "index",
       formats: ["es"],
     },
     rollupOptions: {
-      // External packages that should not be bundled into your library.
-      external: [
-        "react",
-        "react-dom",
-        "react/jsx-runtime",
-        "tailwindcss",
-        "@repo/utils",
+      plugins: [
+        dts({
+          entryRoot: "src",
+          exclude: ["./**/*.test.*"],
+          tsconfigPath: path.join(__dirname, "tsconfig.app.json"),
+        }),
+        { enforce: "pre", ...nodeExternals() },
+        { enforce: "pre", ...peerDepsExternals() },
+        { enforce: "pre", ...preserveDirectives() },
       ],
     },
   },

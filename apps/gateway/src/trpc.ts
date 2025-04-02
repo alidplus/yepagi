@@ -1,6 +1,7 @@
 import { initTRPC, TRPCError } from '@trpc/server';
 import SuperJSON from 'superjson';
-import type { Context } from './context';
+import type { Context, ProtectedContext } from './context';
+import * as defs from "@repo/defs";
 
 export interface MyMeta {
   authRequired: boolean;
@@ -20,15 +21,18 @@ const t = initTRPC.context<Context>().meta<MyMeta>().create({
  */
 export const router = t.router;
 export const publicProcedure = t.procedure
- 
-export const adminProcedure = publicProcedure.use(async (opts) => {
-  const { ctx } = opts;
-  if (!ctx.user?.isAdmin) {
-    throw new TRPCError({ code: 'UNAUTHORIZED' });
+
+// Middleware to check if user is authenticated
+const isAuthenticated = t.middleware(({ ctx, next }) => {
+  if (!ctx.user) {
+    throw new TRPCError({
+      code: "UNAUTHORIZED",
+      message: "You must be logged in to access this resource",
+    });
   }
-  return opts.next({
-    ctx: {
-      user: ctx.user,
-    },
-  });
+
+  return next({ ctx });
 });
+
+// Using the middleware, create a protected procedure
+export const protectedProcedure = publicProcedure.use<ProtectedContext>(isAuthenticated);

@@ -20,7 +20,14 @@ export const zSigninSchema = z.object({
 export type TSignin = z.infer<typeof zSigninSchema>;
 
 export const zAccessSchema = z.object({
-  accessToken: z.string({}),
+  // accessToken: z.string({}),
+  refreshToken: z.string({}),
 });
 
 export type TAccess = z.infer<typeof zAccessSchema>;
+
+export const zRefreshSchema = z.object({
+  refreshToken: z.string({}),
+});
+
+export type TRefresh = z.infer<typeof zRefreshSchema>;

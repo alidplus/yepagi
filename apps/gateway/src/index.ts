@@ -1,24 +1,24 @@
 /**
  * Welcome to Cloudflare Workers! This is your first worker.
- *
- * - Run `npm run dev` in your terminal to start a development server
- * - Open a browser tab at http://localhost:8787/ to see your worker in action
- * - Run `npm run deploy` to publish your worker
- *
- * Bind resources to your worker in `wrangler.jsonc`. After adding bindings, a type definition for the
- * `Env` object can be regenerated with `npm run cf-typegen`.
- *
- * Learn more at https://developers.cloudflare.com/workers/
- */
+*
+* - Run `npm run dev` in your terminal to start a development server
+* - Open a browser tab at http://localhost:8787/ to see your worker in action
+* - Run `npm run deploy` to publish your worker
+*
+* Bind resources to your worker in `wrangler.jsonc`. After adding bindings, a type definition for the
+* `Env` object can be regenerated with `npm run cf-typegen`.
+*
+* Learn more at https://developers.cloudflare.com/workers/
+*/
 
+import { createWorkerContext } from "./context";
 import { appRouter, fetchRequestHandler } from "./router";
-import { drizzle } from 'drizzle-orm/d1';
-import { KvStore } from "./utils/kv-store";
-import * as defs from "@repo/defs";
 
 export default {
   async fetch(request, env, ctx): Promise<Response> {
     const isMockCall = !!request.headers.get('x-mock-api-call')
+    process.env.ACCESS_TOKEN_SECRET = env.ACCESS_TOKEN_SECRET
+    process.env.REFRESH_TOKEN_SECRET = env.REFRESH_TOKEN_SECRET
     
     const corsHeaders = {
       "Access-Control-Allow-Origin": "*",
@@ -48,9 +48,7 @@ export default {
     `;
 
     async function handleRequest() {
-      const db = drizzle(env.DB);
-      const usersCache = new KvStore<defs.users.TSelect>('ns', env.NS);
-      
+      const ctxt = await createWorkerContext(env, request)
       return fetchRequestHandler({
         endpoint: PROXY_ENDPOINT,
         req: request,
@@ -58,9 +56,14 @@ export default {
         createContext: () => ({
           transport: 'rpc-gateway',
           isMock: isMockCall,
-          db,
-          usersCache
+          ...ctxt,
         }),
+      })
+      .then((res) => {
+        ctxt.cookies.headers.forEach(([name, value]) => {
+          res.headers.append(name, value)
+        })
+        return res
       });
     }
 

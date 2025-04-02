@@ -3,6 +3,7 @@ import { publicProcedure, router } from "../trpc";
 import * as def from "@repo/defs";
 import { eq } from "drizzle-orm";
 import HErr from 'http-errors'
+import UsersController from "./controller";
 export { fetchRequestHandler } from '@trpc/server/adapters/fetch';
 
 export const userRouter = router({
@@ -15,14 +16,14 @@ export const userRouter = router({
   byId: publicProcedure
     .input(z.number())
     .query(async ({ input, ctx }) => {
-      let user = await ctx.usersCache.get(String(input))
-      if (!user) {
-        const find = await ctx.db.select().from(def.users.table).where(eq(def.users.table.id, input))
-        if (find.length) user = find[0]
-        if (user) await ctx.usersCache.put(String(input), user)
-      }
-      if (!user) throw new HErr.NotFound('user not foundeee')
-      return user;
+      // let user = await ctx.usersCache.get(String(input))
+      // if (!user) {
+      //   const find = await ctx.db.select().from(def.users.table).where(eq(def.users.table.id, input))
+      //   if (find.length) user = find[0]
+      //   if (user) await ctx.usersCache.put(String(input), user)
+      // }
+      // if (!user) throw new HErr.NotFound('user not foundeee')
+      // return user;
     }),
   remoevById: publicProcedure
     .input(z.number())
@@ -32,7 +33,6 @@ export const userRouter = router({
     }),
   create: publicProcedure
     .input(def.users.zInsertSchema)
-    .mutation(async ({ ctx, input }) => {
-      return ctx.db.insert(def.users.table).values(input);
-    }),
+    .output(def.users.zSelectSchema)
+    .mutation(({ ctx, input }) => new UsersController(ctx).create(input)),
 })

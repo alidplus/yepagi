@@ -7,3 +7,9 @@ export const timestamp = (name: string) =>
     .$defaultFn(() => sql`CURRENT_TIMESTAMP`);
 
 export const pk = () => integer().primaryKey({ autoIncrement: true });
+
+export const COMMON_SCHEMA_FIELDS = {
+  id: true,
+  createdAt: true,
+  updatedAt: true,
+} as const

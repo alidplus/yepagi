@@ -2,7 +2,7 @@
   "name": "rpc-gateway",
   "version": "0.0.0",
   "private": true,
-  "types": "./types/router/index.d.ts",
+  "types": "./types/router.d.ts",
   "scripts": {
     "wr": "wrangler --persist-to ../../.wrangler/state",
     "dev": "yarn wr dev",
@@ -16,6 +16,7 @@
     "@cloudflare/vitest-pool-workers": "^0.6.4",
     "@cloudflare/workers-types": "^4.20250224.0",
     "@types/http-errors": "^2.0.4",
+    "@types/jsonwebtoken": "^9",
     "better-sqlite3": "^11.8.1",
     "drizzle-kit": "^0.30.5",
     "typescript": "^5.7.3",
@@ -23,11 +24,15 @@
     "wrangler": "^3.111.0"
   },
   "dependencies": {
+    "@repo/defs": "*",
     "@trpc/server": "^11.0.0-rc.819",
+    "@worker-tools/request-cookie-store": "^0.6.0-pre.3",
+    "bcryptjs": "^3.0.2",
     "dotenv": "^16.4.7",
     "drizzle-orm": "^0.40.0",
     "drizzle-zod": "^0.7.0",
     "http-errors": "^2.0.0",
+    "jsonwebtoken": "^9.0.2",
     "superjson": "^2.2.2",
     "zod": "^3.24.2"
   }

@@ -1,7 +1,7 @@
-import { router } from "../trpc";
+import { router } from "./trpc";
 import { authRouter } from "./auth";
-import { tenantRouter } from "./tenant";
-import { userRouter } from "./user";
+import { tenantRouter } from "./tenats";
+import { userRouter } from "./users";
 export { fetchRequestHandler } from '@trpc/server/adapters/fetch';
 
 export const appRouter = router({

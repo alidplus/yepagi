@@ -1,7 +1,7 @@
-import { Card, CardContent } from "@/atoms";
+import { Card, CardContent } from "@repo/ui/atoms";
 import { cn } from "@repo/utils";
 
-export function AuthCardTemp({
+export function AuthCard({
   className,
   children,
   src,
@@ -25,24 +25,6 @@ export function AuthCardTemp({
         By clicking continue, you agree to our <a href="#">Terms of Service</a>{" "}
         and <a href="#">Privacy Policy</a>.
       </div>
-    </div>
-  );
-}
-
-export function AuthLayoutTemp({
-  className,
-  children,
-  ...props
-}: React.ComponentProps<"div">) {
-  return (
-    <div
-      className={cn(
-        "bg-muted flex min-h-svh flex-col items-center justify-center p-6 md:p-10",
-        className,
-      )}
-      {...props}
-    >
-      <div className="w-full max-w-sm md:max-w-3xl">{children}</div>
     </div>
   );
 }

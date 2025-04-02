@@ -17,10 +17,6 @@
       "import": "./dist/atoms.js",
       "types": "./dist/atoms/index.d.ts"
     },
-    "./templates": {
-      "import": "./dist/templates.js",
-      "types": "./dist/templates/index.d.ts"
-    },
     "./molecules": {
       "import": "./dist/molecules.js",
       "types": "./dist/molecules/index.d.ts"

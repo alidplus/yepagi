@@ -43,7 +43,6 @@ export default defineConfig({
       entry: {
         atoms: "src/atoms",
         molecules: "src/molecules",
-        templates: "src/templates",
         skeleton: "src/atoms/skeleton",
       },
       // Change this to the formats you want to support.

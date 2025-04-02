@@ -3797,7 +3797,6 @@ __metadata:
     sass-embedded: "npm:^1.85.0"
     storybook: "npm:^8.5.8"
     tailwindcss: "npm:*"
-    tailwindcss-animate: "npm:*"
     ts-xor: "npm:^1.3.0"
     tsup: "npm:^8.3.6"
     typescript: "npm:^5.7.3"
@@ -3814,7 +3813,7 @@ __metadata:
     react: ^19.0.0
     react-dom: ^19.0.0
     tailwindcss: "*"
-    tailwindcss-animate: "*"
+    tailwindcss-animated: "*"
   languageName: unknown
   linkType: soft
 
@@ -3939,7 +3938,6 @@ __metadata:
     sass-embedded: "npm:^1.85.0"
     storybook: "npm:^8.5.8"
     tailwindcss: "npm:^4.0.7"
-    tailwindcss-animate: "npm:^1.0.7"
     ts-xor: "npm:^1.3.0"
     tsup: "npm:^8.3.6"
     typescript: "npm:^5.7.3"
@@ -3954,7 +3952,7 @@ __metadata:
     react: ^19.0.0
     react-dom: ^19.0.0
     tailwindcss: "*"
-    tailwindcss-animate: "*"
+    tailwindcss-animated: "*"
   languageName: unknown
   linkType: soft
 
@@ -12981,6 +12979,7 @@ __metadata:
     rpc-gateway: "npm:*"
     superjson: "npm:^2.2.2"
     tailwindcss: "npm:*"
+    tailwindcss-animated: "npm:*"
     typescript: "npm:^5.7.3"
     wrangler: "npm:^3.111.0"
   languageName: unknown
@@ -16740,12 +16739,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tailwindcss-animate@npm:*, tailwindcss-animate@npm:^1.0.7":
-  version: 1.0.7
-  resolution: "tailwindcss-animate@npm:1.0.7"
+"tailwindcss-animated@npm:*":
+  version: 2.0.0
+  resolution: "tailwindcss-animated@npm:2.0.0"
   peerDependencies:
-    tailwindcss: "*"
-  checksum: 10c0/ec7dbd1631076b97d66a1fbaaa06e0725fccfa63119221e8d87a997b02dcede98ad88bb1ef6665b968f5d260fcefb10592e0299ca70208d365b37761edf5e19a
+    tailwindcss: ">=3.1.0 || >=4.0.0"
+  checksum: 10c0/b405e48d625740c8f320f97424e7261cf7e449afffe0a495552578e3f0797906d62c8b4e9e92ee809764ae8eb4c515455d63a2aaeebed32b8ebfd762f3272d0b
   languageName: node
   linkType: hard
 

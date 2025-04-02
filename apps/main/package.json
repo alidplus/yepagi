@@ -29,7 +29,8 @@
     "react-error-boundary": "^5.0.0",
     "react-hook-form": "^7.54.2",
     "superjson": "^2.2.2",
-    "tailwindcss": "*"
+    "tailwindcss": "*",
+    "tailwindcss-animated": "*"
   },
   "devDependencies": {
     "@cloudflare/next-on-pages": "^1.13.8",

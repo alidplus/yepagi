@@ -17,9 +17,6 @@ export const createWorkerContext = async (env: CloudflareEnv, req: Request) => {
   const cookies = new RequestCookieStore(req);
   const AuthorizationHeader = req.headers.get('Authorization')
 
-  console.log({ AuthorizationHeader });
-  
-
   try {
     if (!AuthorizationHeader) throw '';
     const [, accessToken] = AuthorizationHeader.split(' ')

@@ -1,5 +1,4 @@
-"use client";
-
+import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 import LiveAppContext from "@/AppContext/LiveAppContext";
 import { getQueryClient } from "@/query";
 import { getTRcpClient } from "@/trpc";
@@ -11,7 +10,7 @@ import type { AppRouter } from "rpc-gateway";
 export const { TRPCProvider, useTRPC, useTRPCClient } =
   createTRPCContext<AppRouter>();
 
-export function Providers({
+export async function Providers({
   children,
   mock,
 }: PropsWithChildren<{ mock?: true }>) {
@@ -20,12 +19,18 @@ export function Providers({
   const [trpcClient] = useState(() => getTRcpClient(mock));
   // console.log({ queryClient, trpcClient, mock }, "on llllllll");
   
+  // await queryClient.prefetchQuery(trpc.auth.whoami.queryOptions())
+  const state = dehydrate(queryClient)
+  
+  // console.log('??????', trpc, state);
   return (
     <QueryClientProvider client={queryClient}>
       <TRPCProvider trpcClient={trpcClient} queryClient={queryClient}>
-        <LiveAppContext>
-          {children}
-        </LiveAppContext>
+        <HydrationBoundary state={state}>
+          <LiveAppContext>
+            {children}
+          </LiveAppContext>
+        </HydrationBoundary>
       </TRPCProvider>
     </QueryClientProvider>
   );

@@ -24,7 +24,7 @@ export default async function HomePage({
               </div>
 
               <div className="hidden md:flex items-center space-x-1">
-                <Link href="/dash" className="py-5 px-3 text-gray-700 hover:text-gray-900">Dashboard</Link>
+                <Link href="/-" className="py-5 px-3 text-gray-700 hover:text-gray-900">Dashboard</Link>
                 <Link href="/ali-web-dev" className="py-5 px-3 text-gray-700 hover:text-gray-900">Profile</Link>
               </div>
             </div>
@@ -46,7 +46,7 @@ export default async function HomePage({
         </div>
 
         <div className="mobile-menu hidden md:hidden">
-          <Link href="/dash" className="block py-2 px-4 text-sm hover:bg-gray-200">Dashboard</Link>
+          <Link href="/-" className="block py-2 px-4 text-sm hover:bg-gray-200">Dashboard</Link>
           <Link href="/ali-web-dev" className="block py-2 px-4 text-sm hover:bg-gray-200">Profile</Link>
         </div>
       </nav>

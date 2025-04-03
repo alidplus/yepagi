@@ -1,5 +1,5 @@
+"use client";
 import { PropsWithChildren, useEffect, useMemo } from "react";
-
 import { useTRPC } from "@/Providers";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { AppContext } from ".";

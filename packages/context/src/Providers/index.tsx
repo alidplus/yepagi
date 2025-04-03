@@ -5,10 +5,9 @@ import { getTRcpClient } from "@/trpc";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { createTRPCContext } from "@trpc/tanstack-react-query";
 import { PropsWithChildren, useState } from "react";
-import type { AppRouter } from "rpc-gateway";
+import type { AppRouter } from "@repo/rpc";
 
-export const { TRPCProvider, useTRPC, useTRPCClient } =
-  createTRPCContext<AppRouter>();
+export const { TRPCProvider, useTRPC, useTRPCClient } = createTRPCContext<AppRouter>();
 
 export async function Providers({
   children,

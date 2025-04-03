@@ -1,15 +1,13 @@
 import { accessTokenStore } from "@/stores";
 import { isServer } from "@tanstack/react-query";
 import { createTRPCClient, httpLink, TRPCClient } from "@trpc/client";
-import { type AppRouter } from "rpc-gateway";
+import type { AppRouter } from "@repo/rpc";
 import SuperJSON from "superjson";
 import { handleTrpcUnauthError } from "./errors";
 // import { handleTrpcUnauthError } from "./errors";
 
 const url = `${process.env.NEXT_PUBLIC_API_HOST ?? process.env.API_HOST ?? ""}/trpc`;
 const mockUrl = "http://localhost:3030/trpc";
-
-
 
 const routesWithAllowedCredentials = [
   '/trpc/auth.signin',
@@ -51,8 +49,6 @@ export function makeTRpcClient(mock?: true) {
                 credentials: routesWithAllowedCredentials.includes(url.toString()) ? 'include' : 'omit',
               });
 
-              console.log('ffffffffffff', res.status);
-              
   
               // if the response is a multi-status, we need to check all the responses
               // if (res.status === MULTI_STATUS) {
@@ -75,15 +71,6 @@ export function makeTRpcClient(mock?: true) {
           }),
     ],
   });
-
-  // console.log(
-  //   "trpcC",
-  //   trpcC,
-  //   "API_HOST:",
-  //   process.env.API_HOST,
-  //   "NEXT_PUBLIC_API_HOST:",
-  //   process.env.NEXT_PUBLIC_API_HOST,
-  // );
 
   return trpcC;
 }

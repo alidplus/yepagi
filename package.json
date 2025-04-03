@@ -6,9 +6,9 @@
     "node": ">=18"
   },
   "scripts": {
-    "dev": "turbo main#dev rpc-gateway#dev",
-    "dev:deps": "turbo @repo/utils#build:live @repo/ui#build:live @repo/defs#build:live @repo/context#build:live @repo/auth#build:live",
-    "build:deps": "turbo @repo/utils#build @repo/ui#build @repo/defs#build @repo/context#build @repo/auth#build & yarn workspace rpc-gateway dts",
+    "dev": "turbo main#dev worker#dev",
+    "dev:deps": "turbo @repo/utils#build:live @repo/ui#build:live @repo/defs#build:live @repo/context#build:live @repo/auth#build:live @repo/rpc#build:live",
+    "build:deps": "turbo @repo/utils#build @repo/ui#build @repo/defs#build @repo/context#build @repo/auth#build @repo/rpc#build",
     "lint:deps": "npx check-dependency-version-consistency . --fix",
     "commit": "cz"
   },

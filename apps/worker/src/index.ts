@@ -11,8 +11,7 @@
 * Learn more at https://developers.cloudflare.com/workers/
 */
 
-import { createWorkerContext } from "./context";
-import { appRouter, fetchRequestHandler } from "./router";
+import { appRouter, fetchRequestHandler, createWorkerContext } from "@repo/rpc";
 
 export default {
   async fetch(request, env, ctx): Promise<Response> {
@@ -54,7 +53,7 @@ export default {
         req: request,
         router: appRouter,
         createContext: () => ({
-          transport: 'rpc-gateway',
+          transport: 'worker',
           isMock: isMockCall,
           ...ctxt,
         }),

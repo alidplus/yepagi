@@ -15,12 +15,17 @@ export const createWorkerContext = async (env: CloudflareEnv, req: Request) => {
     }
   );
   const cookies = new RequestCookieStore(req);
+  const AuthorizationHeader = req.headers.get('Authorization')
+
+  console.log({ AuthorizationHeader });
+  
 
   try {
-    const accessToken = await cookies.get("accessToken");
+    if (!AuthorizationHeader) throw '';
+    const [, accessToken] = AuthorizationHeader.split(' ')
     if (!accessToken) throw '';
   
-    const userId = JWT.verifyAccessToken(accessToken.value);
+    const userId = JWT.verifyAccessToken(accessToken);
     if (!userId) throw '';
   
     const user = await authUsersKv.get(userId);

@@ -18,9 +18,8 @@ export const authRouter = router({
     .mutation(({ ctx, input }) => new AuthController(ctx).signup(input)),
 
   refreshToken: publicProcedure
-    .input(def.auth.zRefreshSchema)
-    .output(zGeneralSuccesResponse)
-    .mutation(({ input, ctx }) => new AuthController(ctx).refreshToken(input)),
+    .output(def.auth.zAccessSchema)
+    .mutation(({ input, ctx }) => new AuthController(ctx).refreshToken()),
 
   whoami: protectedProcedure
     .output(def.users.zSelectSchema)

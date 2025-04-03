@@ -10,6 +10,13 @@ import { TGeneralSuccesResponse } from "../utils/schema";
 import JWT from "./jwt";
 
 const users = defs.users.table
+const oneDay_ms = 24 * 60 * 60 * 1000;
+const refreshTokenOptions = {
+  name: 'refreshToken',
+  httpOnly: true,
+  path: '/',
+  sameSite: 'strict',
+} as const
 
 export default class AuthController {
   constructor(protected ctx: Context, protected signal?: AbortSignal) {
@@ -89,12 +96,14 @@ export default class AuthController {
       // Store refresh token in redis to track active sessions
       authUsersKv.put(String(user.id), user)
 
-      cookies.set('accessToken', accessToken)
-      // cookies.set('refreshToken', refreshToken)
+      cookies.set({
+        ...refreshTokenOptions,
+        value: refreshToken,
+        expires: Date.now() + 7 * oneDay_ms,
+      })
 
       return {
-        // accessToken,
-        refreshToken,
+        accessToken,
       };
     } catch (error) {
       console.log(error);
@@ -107,11 +116,12 @@ export default class AuthController {
     }
   }
 
-  public async refreshToken(input: defs.auth.TRefresh): Promise<TGeneralSuccesResponse> {
-    const { refreshToken } = input;
+  public async refreshToken(): Promise<defs.auth.TAccess> {
     const { authUsersKv, cookies } = this.ctx;
+    const refreshToken = await cookies.get('refreshToken');
+    if (!refreshToken) throw getTrpcError('Missing refreshToken')
     try {
-      const userId = AuthService.verifyRefreshToken(refreshToken);
+      const userId = AuthService.verifyRefreshToken(refreshToken.value);
       if (!userId) {
         throw new TRPCError({
           code: "UNAUTHORIZED",
@@ -127,10 +137,15 @@ export default class AuthController {
       }
 
       const accessToken = JWT.createAccessToken(parseInt(userId));
+      const nextRefreshToken = JWT.createRefreshToken(parseInt(userId));
   
-      cookies.set('accessToken', accessToken)
+      cookies.set({
+        ...refreshTokenOptions,
+        value: nextRefreshToken,
+        expires: Date.now() + 7 * oneDay_ms,
+      })
   
-      return { success: true };
+      return { accessToken };
 
     } catch (error) {
       throw getTrpcError(error)
@@ -143,7 +158,11 @@ export default class AuthController {
 
     try {
       authUsersKv.drop(String(user.id))
-      cookies.set("accessToken", "");
+      cookies.set({
+        ...refreshTokenOptions,
+        value: '',
+        expires: Date.now() - 1000,
+      })
 
       return { success: true };
     } catch (error) {

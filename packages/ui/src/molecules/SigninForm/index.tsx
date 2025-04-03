@@ -29,13 +29,13 @@ export default function SigninForm({
     },
   });
 
-  const { isValid, isLoading, isSubmitting, isSubmitSuccessful, errors } =
-    form.formState;
+  // const { isValid, isLoading, isSubmitting, isSubmitSuccessful, errors } =
+  //   form.formState;
 
-  const disabled = !isValid || isLoading || isSubmitting || isSubmitSuccessful;
+  // const disabled = !isValid || isLoading || isSubmitting || isSubmitSuccessful;
   // const loading = isLoading || isSubmitting
 
-  console.log({ disabled, errors, onSubmit }, "errors");
+  // console.log({ disabled, errors, onSubmit }, "errors");
 
   return (
     <Form {...form}>

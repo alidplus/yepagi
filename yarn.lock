@@ -3822,6 +3822,7 @@ __metadata:
   resolution: "@repo/context@workspace:packages/context"
   dependencies:
     "@eslint/js": "npm:^9.22.0"
+    "@tanstack/react-query-devtools": "npm:^5.71.3"
     "@tanstack/react-store": "npm:^0.7.0"
     "@tanstack/store": "npm:^0.7.0"
     "@testing-library/jest-dom": "npm:^6.6.3"
@@ -3853,7 +3854,7 @@ __metadata:
     vitest: "npm:^3.0.8"
   peerDependencies:
     "@repo/utils": "*"
-    "@tanstack/react-query": "*"
+    "@tanstack/react-query": ^5.66.11
     "@trpc/client": "*"
     "@trpc/tanstack-react-query": "*"
     react: ^19.0.0
@@ -5130,6 +5131,25 @@ __metadata:
   version: 5.66.11
   resolution: "@tanstack/query-core@npm:5.66.11"
   checksum: 10c0/0d8b6356fc282b11e731be9fecdcd0f9571b202bcacd079bf30274a3b951ff45c136b9892a1b93ae426782f7cb8d82f06028bbae0b1eb46a578318ab07ac081e
+  languageName: node
+  linkType: hard
+
+"@tanstack/query-devtools@npm:5.71.3":
+  version: 5.71.3
+  resolution: "@tanstack/query-devtools@npm:5.71.3"
+  checksum: 10c0/10c633965bad4cac592ccfa1f0ea491064ca23531c79b90498ea165110107a72bd2e3059e763437376ed4729e059e3bff717b208470c986d97a187ecba1d31cb
+  languageName: node
+  linkType: hard
+
+"@tanstack/react-query-devtools@npm:^5.71.3":
+  version: 5.71.3
+  resolution: "@tanstack/react-query-devtools@npm:5.71.3"
+  dependencies:
+    "@tanstack/query-devtools": "npm:5.71.3"
+  peerDependencies:
+    "@tanstack/react-query": ^5.71.3
+    react: ^18 || ^19
+  checksum: 10c0/c93a5ec3417f1cc0a93de51b8103e613d2a5ac1209d5d19e56ef7ba1443c6b20c5c12c22397b2ea710af1fe5d69bc850e270b12d894c9ac836d055c91257a6bc
   languageName: node
   linkType: hard
 

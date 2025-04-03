@@ -1,10 +1,21 @@
+import { accessTokenStore } from "@/stores";
 import { isServer } from "@tanstack/react-query";
 import { createTRPCClient, httpLink, TRPCClient } from "@trpc/client";
 import { type AppRouter } from "rpc-gateway";
 import SuperJSON from "superjson";
+import { handleTrpcUnauthError } from "./errors";
+// import { handleTrpcUnauthError } from "./errors";
 
 const url = `${process.env.NEXT_PUBLIC_API_HOST ?? process.env.API_HOST ?? ""}/trpc`;
 const mockUrl = "http://localhost:3030/trpc";
+
+
+
+const routesWithAllowedCredentials = [
+  '/trpc/auth.signin',
+  '/trpc/auth.refreshToken',
+  '/trpc/auth.logout',
+]
 
 export function makeTRpcClient(mock?: true) {
   if (mock) {
@@ -24,18 +35,55 @@ export function makeTRpcClient(mock?: true) {
         : httpLink({
             url,
             transformer: SuperJSON,
+            headers() {
+              let authHeaders: { Authorization?: string } = {};
+              const token = accessTokenStore.state
+              if (token) {
+                authHeaders = {
+                  Authorization: `Bearer ${token}`,
+                };
+              }
+              return authHeaders;
+            },
+            fetch: async (url, options): Promise<Response> => {
+              const res = await fetch(url, {
+                ...options,
+                credentials: routesWithAllowedCredentials.includes(url.toString()) ? 'include' : 'omit',
+              });
+
+              console.log('ffffffffffff', res.status);
+              
+  
+              // if the response is a multi-status, we need to check all the responses
+              // if (res.status === MULTI_STATUS) {
+              //   const responses = await res.json();
+              //   // if any of the responses is an unauthorized
+              //   if (responses.some((r) => r.error.data.code === 'UNAUTHORIZED')) {
+              //     // then try to rerun all the requests after auth (some of them might not be UNAUTHORIZED, but not the end of the world)
+              //     return await handleTrpcUnauthError(res, url, options);
+              //   }
+              // }
+  
+              // in this case all the batched requests have the same code, the the whole batch can be handled
+              if (res.status === 401) {
+                return await handleTrpcUnauthError(res, url, options);
+              }
+  
+              // if nothing happens, carry on with the procedure
+              return res;
+            },
           }),
     ],
   });
 
-  console.log(
-    "trpcC",
-    trpcC,
-    "API_HOST:",
-    process.env.API_HOST,
-    "NEXT_PUBLIC_API_HOST:",
-    process.env.NEXT_PUBLIC_API_HOST,
-  );
+  // console.log(
+  //   "trpcC",
+  //   trpcC,
+  //   "API_HOST:",
+  //   process.env.API_HOST,
+  //   "NEXT_PUBLIC_API_HOST:",
+  //   process.env.NEXT_PUBLIC_API_HOST,
+  // );
 
   return trpcC;
 }

@@ -1,8 +1,22 @@
 import { SigninFormClient } from "@repo/auth";
+import { useTRPC } from "@repo/context/client";
 import { Button } from "@repo/ui/atoms";
+import { useMutationState, useQuery } from "@tanstack/react-query";
 import Link from "next/link";
 
 export default async function SigninFormPage() {
+
+  // const trpc = useTRPC();
+
+  // const signinMutationKey = trpc.auth.signin.mutationKey();
+  // const data = useMutationState({
+  //   // this mutation key needs to match the mutation key of the given mutation (see above)
+  //   filters: { mutationKey: signinMutationKey },
+  //   select: (mutation) => mutation.state.data,
+  // })
+
+  // console.log('>>>>', data);
+  
   
   return (
     <div className="p-6 md:p-8 flex flex-col gap-3 md:gap-4">
@@ -12,7 +26,7 @@ export default async function SigninFormPage() {
           Login to your Acme Inc account
         </p>
       </div>
-      <SigninFormClient />
+      <SigninFormClient  />
       <div className="relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t after:border-border">
         <span className="relative z-10 bg-background px-2 text-muted-foreground">
           Or continue with

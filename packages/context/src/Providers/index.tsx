@@ -1,5 +1,6 @@
 "use client";
 
+import LiveAppContext from "@/AppContext/LiveAppContext";
 import { getQueryClient } from "@/query";
 import { getTRcpClient } from "@/trpc";
 import { QueryClientProvider } from "@tanstack/react-query";
@@ -17,11 +18,14 @@ export function Providers({
   const queryClient = getQueryClient();
 
   const [trpcClient] = useState(() => getTRcpClient(mock));
-  console.log({ queryClient, trpcClient, mock }, "on llllllll");
+  // console.log({ queryClient, trpcClient, mock }, "on llllllll");
+  
   return (
     <QueryClientProvider client={queryClient}>
       <TRPCProvider trpcClient={trpcClient} queryClient={queryClient}>
-        {children}
+        <LiveAppContext>
+          {children}
+        </LiveAppContext>
       </TRPCProvider>
     </QueryClientProvider>
   );

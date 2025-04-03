@@ -1,7 +1,9 @@
 import React, { useCallback, useContext } from "react";
+import * as defs from "@repo/defs";
 
 export interface AppContext {
   translationMap: Record<string, string>;
+  me?: defs.users.TSelect
 }
 
 const AppContextValue: AppContext = {
@@ -23,6 +25,7 @@ export const useTranslation = () => {
   return { t };
 };
 
-export function uncoverFunction() {
-  return "unoce";
-}
+export const useMe = () => {
+  const ctx = useAppContext();
+  return ctx.me
+};

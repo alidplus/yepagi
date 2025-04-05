@@ -1,6 +1,4 @@
-import { getQueryClient } from "@repo/context";
-import { trpc } from "@repo/context/server";
-import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
+import { prefetch, trpc, HydrateClient } from "@repo/context/server";
 import Link from "next/link";
 import { PropsWithChildren, Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
@@ -12,12 +10,10 @@ type TenantParams = {
 export default async function TenantLayout({ children, params }: PropsWithChildren<RouteParams<TenantParams>>) {
   const { tenant } = await params
 
-  const queryClient = getQueryClient()
-  await queryClient.prefetchQuery(trpc.user.list.queryOptions())
+  await prefetch(trpc.user.list.queryOptions())
 
-  const state = dehydrate(queryClient)
   return (
-    <HydrationBoundary state={state}>
+    <HydrateClient>
       <ErrorBoundary fallback={<div>Something went wrong</div>}>
         <Suspense fallback={<div>Loading...</div>}>
           <div className="flex flex-col w-56 border-s border-gray-300 fixed end-0 top-0 h-full">
@@ -49,7 +45,7 @@ export default async function TenantLayout({ children, params }: PropsWithChildr
           {children}
         </Suspense>
       </ErrorBoundary>
-    </HydrationBoundary>
+    </HydrateClient>
   );
 }
 

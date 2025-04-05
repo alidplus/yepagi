@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Providers } from "@repo/context/client";
+import { TRPCReactProvider } from "@repo/context/client";
 import "../globals.css";
 import Link from "next/link";
 
@@ -14,7 +14,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <Providers>
+    <TRPCReactProvider>
       <html lang="en">
         <body
           className={`antialiased`}
@@ -22,6 +22,6 @@ export default function RootLayout({
           {children}
         </body>
       </html>
-    </Providers>
+    </TRPCReactProvider>
   );
 }

@@ -1,6 +1,6 @@
 import { initTRPC, TRPCError } from '@trpc/server';
-import SuperJSON from 'superjson';
 import type { Context, ProtectedContext } from './context';
+import { superjson } from '@repo/utils';
 
 export interface MyMeta {
 	authRequired: boolean;
@@ -11,7 +11,7 @@ export interface MyMeta {
  * Should be done only once per backend!
  */
 const t = initTRPC.context<Context>().meta<MyMeta>().create({
-	transformer: SuperJSON,
+	transformer: superjson,
 });
 
 /**

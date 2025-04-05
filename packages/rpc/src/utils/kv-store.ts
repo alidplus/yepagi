@@ -1,4 +1,4 @@
-import SuperJSON from 'superjson';
+import { superjson } from "@repo/utils";
 
 const defaultOptions: KVNamespacePutOptions = {
 	expirationTtl: 720000,
@@ -20,13 +20,13 @@ export class KvStore<T = object> {
 		const k = this.getFullKey(key);
 		const v = await this.ns.get(k, 'text');
 		if (v) {
-			return SuperJSON.parse(v) as T;
+			return superjson.parse(v) as T;
 		}
 		return null;
 	}
 	async put(key: string, value: T) {
 		const k = this.getFullKey(key);
-		const v = SuperJSON.stringify(value);
+		const v = superjson.stringify(value);
 		return this.ns.put(k, v, this.options);
 	}
 	async drop(key: string) {

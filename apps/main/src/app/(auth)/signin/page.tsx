@@ -1,8 +1,9 @@
 import { SigninFormClient } from "@repo/auth";
-import { useTRPC } from "@repo/context/client";
+// import { useTRPC } from "@repo/context/client";
 import { Button } from "@repo/ui/atoms";
-import { useMutationState, useQuery } from "@tanstack/react-query";
+// import { useMutationState, useQuery } from "@tanstack/react-query";
 import Link from "next/link";
+import RedirectOnToken from "./RedirectOnToken";
 
 export default async function SigninFormPage() {
 
@@ -26,7 +27,8 @@ export default async function SigninFormPage() {
           Login to your Acme Inc account
         </p>
       </div>
-      <SigninFormClient  />
+      <RedirectOnToken />
+      <SigninFormClient />
       <div className="relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t after:border-border">
         <span className="relative z-10 bg-background px-2 text-muted-foreground">
           Or continue with

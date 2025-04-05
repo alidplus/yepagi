@@ -1,25 +1,24 @@
+import { superjson } from '@repo/utils';
 import {
   defaultShouldDehydrateQuery,
   isServer,
   QueryClient,
-} from "@tanstack/react-query";
+} from '@tanstack/react-query';
 
 export function makeQueryClient(mock?: true) {
   return new QueryClient({
     defaultOptions: {
       queries: {
-        // With SSR, we usually want to set some default staleTime
-        // above 0 to avoid refetching immediately on the client
         staleTime: mock ? Infinity : 60 * 1000,
       },
       dehydrate: {
-        // serializeData: superjson.serialize,
+        serializeData: superjson.serialize,
         shouldDehydrateQuery: (query) =>
           defaultShouldDehydrateQuery(query) ||
-          query.state.status === "pending",
+          query.state.status === 'pending',
       },
       hydrate: {
-        // deserializeData: superjson.deserialize,
+        deserializeData: superjson.deserialize,
       },
     },
   });

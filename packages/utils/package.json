@@ -21,8 +21,6 @@
     "@repo/typescript": "*",
     "@testing-library/jest-dom": "^6.6.3",
     "@types/node": "^22.13.4",
-    "class-variance-authority": "^0.7.1",
-    "es-toolkit": "^1.33.0",
     "eslint": "^9.22.0",
     "eslint-config-prettier": "^10.1.1",
     "eslint-plugin-prettier": "^5.2.3",
@@ -33,7 +31,10 @@
     "vitest": "^3.0.8"
   },
   "dependencies": {
+    "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "es-toolkit": "^1.33.0",
+    "superjson": "^2.2.2",
     "tailwind-merge": "^3.0.2"
   }
 }

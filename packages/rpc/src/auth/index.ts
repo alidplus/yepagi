@@ -14,9 +14,13 @@ export const authRouter = router({
 		.output(def.users.zSelectSchema)
 		.mutation(({ ctx, input }) => new AuthController(ctx).signup(input)),
 
-	refreshToken: publicProcedure.output(def.auth.zAccessSchema).mutation(({ ctx }) => new AuthController(ctx).refreshToken()),
+	refreshToken: publicProcedure.output(def.auth.zAccessSchema).query(({ ctx }) => new AuthController(ctx).refreshToken()),
 
-	whoami: protectedProcedure.output(def.users.zSelectSchema).query(({ ctx }) => ctx.user),
+	whoami: protectedProcedure.output(def.users.zSelectSchema).query(({ ctx }) => {
+		console.log('-------- whoami --------');
+		
+		return ctx.user
+	}),
 
 	logout: protectedProcedure.output(zGeneralSuccesResponse).mutation(({ ctx }) => new AuthController(ctx).logout()),
 

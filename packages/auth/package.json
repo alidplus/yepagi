@@ -43,8 +43,6 @@
     "@storybook/test": "^8.5.8",
     "@tailwindcss/postcss": "*",
     "@tailwindcss/vite": "^4.0.7",
-    "@tanstack/react-store": "^0.7.0",
-    "@tanstack/store": "^0.7.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.2.0",
     "@types/color": "^4.2.0",

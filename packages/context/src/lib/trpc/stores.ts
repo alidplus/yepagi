@@ -1,14 +1,15 @@
 import { superjson } from "@repo/utils";
 import { Store } from "@tanstack/react-store";
+import { getUrl } from "./trpc-options";
 
 export const accessTokenStore = new Store<string | undefined>(undefined);
 
 export function setToken (t?: string) { accessTokenStore.setState(() => t) }
 export function getToken () { return accessTokenStore.state }
 
-export async function refreshToken () {
+export async function refreshToken (mock?: true) {
   return fetch(
-    '/trpc/auth.refreshToken',
+    getUrl(mock) + '/auth.refreshToken',
     {
       method: 'GET',
       credentials: 'include',

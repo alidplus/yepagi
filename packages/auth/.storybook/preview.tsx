@@ -1,4 +1,4 @@
-import { Providers } from "@repo/context/client";
+import { TRPCReactProvider } from "@repo/context/client";
 import type { Preview } from "@storybook/react";
 import "../src/global.css";
 import React, { ComponentType } from "react";
@@ -20,9 +20,9 @@ const preview: Preview = {
   },
   decorators: [
     (Story: ComponentType) => (
-      <Providers mock>
+      <TRPCReactProvider mock>
         <Story />
-      </Providers>
+      </TRPCReactProvider>
     ),
   ],
 };

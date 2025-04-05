@@ -93,7 +93,7 @@ export default {
 
     const url = new URL(request.url);
     if (url.pathname.startsWith(PROXY_ENDPOINT)) {
-      if (request.method === "OPTIONS" && isMockCall) {
+      if (request.method === "OPTIONS") {
         // Handle CORS preflight requests
         return handleOptions();
       } else if (

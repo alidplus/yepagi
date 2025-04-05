@@ -6,12 +6,12 @@ import { createTRPCClient } from '@trpc/react-query';
 import { createTRPCOptionsProxy, TRPCQueryOptions } from '@trpc/tanstack-react-query';
 import { getQueryClient } from './query-client';
 import { AppRouter } from '@repo/rpc';
-import { sharedTRPCClientOptions } from './trpc-options';
+import { getSharedTRPCClientOptions } from './trpc-options';
 // IMPORTANT: Create a stable getter for the query client that
 //            will return the same client during the same request.
 
 export const trpc = createTRPCOptionsProxy<AppRouter>({
-  client: createTRPCClient(sharedTRPCClientOptions),
+  client: createTRPCClient(getSharedTRPCClientOptions()),
   queryClient: getQueryClient,
 });
 

@@ -4,17 +4,19 @@ import { setToken, useTRPC } from "@repo/context/client";
 import { Button } from "@repo/ui/atoms";
 import { SigninForm } from "@repo/ui/molecules";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useRouter } from "next/navigation";
 
 export default function SigninFormClient() {
   const queryClient = useQueryClient();
 
+  const router = useRouter();
   const trpc = useTRPC();
   const options = trpc.auth.signin.mutationOptions({
     async onSuccess(data) {
       setToken(data.accessToken)
       const whoamiQueryKey = trpc.auth.whoami.queryKey();
       await queryClient.invalidateQueries({ queryKey: whoamiQueryKey });
-      // router.refresh()
+      router.refresh()
     },
     onSettled(data, error, variables, context) {
       console.log({ data, error, variables, context }, "on onSettled");

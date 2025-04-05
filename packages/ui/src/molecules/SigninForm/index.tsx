@@ -52,7 +52,7 @@ export default function SigninForm({
             <FormItem>
               <FormLabel>Email</FormLabel>
               <FormControl>
-                <Input placeholder="name@example.com" {...field} />
+                <Input placeholder="name@example.com" {...field} data-testid="email" />
               </FormControl>
               <FormDescription>
                 This is your public display name.
@@ -68,7 +68,7 @@ export default function SigninForm({
             <FormItem>
               <FormLabel>Password</FormLabel>
               <FormControl>
-                <Input type="password" {...field} />
+                <Input type="password" {...field} data-testid="password" />
               </FormControl>
               <FormDescription>
                 This is your public display name.
@@ -77,7 +77,7 @@ export default function SigninForm({
             </FormItem>
           )}
         />
-        <Button type="submit" className="w-full">
+        <Button type="submit" className="w-full"  data-testid="submit">
           Login
         </Button>
       </form>

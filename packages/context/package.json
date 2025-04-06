@@ -18,7 +18,7 @@
     "dev": "next dev",
     "build": "tsc -b && vite build",
     "analyzer": "vite build -m analyzer",
-    "build:live": "turbo watch build",
+    "build:hot": "turbo watch build",
     "lint": "next lint"
   },
   "peerDependencies": {

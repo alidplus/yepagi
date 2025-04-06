@@ -26,7 +26,7 @@
   "scripts": {
     "lint": "eslint . --fix",
     "build": "tsc -b && vite build",
-    "build:live": "turbo watch build",
+    "build:hot": "turbo watch build",
     "storybook": "storybook dev -p 6006",
     "dev": "yarn storybook --ci"
   },

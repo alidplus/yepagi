@@ -20,7 +20,7 @@
     "deploy": "wrangler deploy",
     "lint": "eslint . --fix",
     "build": "tsup",
-    "build:live": "turbo watch build",
+    "build:hot": "turbo watch build",
     "start": "wrangler dev --remote",
     "test": "vitest",
     "dts": "tsc -p ./tsgenconfig.json",

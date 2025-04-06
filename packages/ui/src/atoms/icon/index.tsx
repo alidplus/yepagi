@@ -1,12 +1,12 @@
 import IcoMoon, { IcoMoonProps } from "react-icomoon";
 import iconSet from "./selection.json";
-import { IconNames } from "./icon";
+import type { IconNames } from "./icon";
 import { PropsWithChildren } from "react";
 
 const Icon = ({
   name,
   ...props
-}: Omit<IcoMoonProps, "iconSet" | "icon"> & { name: IconNames }) => (
+}: Omit<IcoMoonProps, "iconSet" | "icon" | "name"> & { name: IconNames }) => (
   <IcoMoon width={32} iconSet={iconSet} {...props} icon={name} />
 );
 

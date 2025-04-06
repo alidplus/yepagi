@@ -5,7 +5,7 @@
     "build": {
       "outputs": ["dist/**"]
     },
-    "build:live": {
+    "build:hot": {
       "persistent": true
     },
     "lint": {},

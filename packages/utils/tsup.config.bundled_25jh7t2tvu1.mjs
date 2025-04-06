@@ -15,7 +15,7 @@ var package_default = {
   scripts: {
     lint: "eslint . --fix",
     build: "tsup",
-    "build:live": "turbo watch build",
+    "build:hot": "turbo watch build",
     test: "vitest run --silent",
     dev: "vitest --ui --coverage"
   },

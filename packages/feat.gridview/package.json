@@ -1,0 +1,61 @@
+{
+  "name": "@repo/gridview",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./client": {
+      "import": "./dist/client.js",
+      "types": "./dist/lib/index.client.d.ts"
+    },
+    "./server": {
+      "import": "./dist/server.js",
+      "types": "./dist/lib/index.server.d.ts"
+    },
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "tsc -b && vite build",
+    "analyzer": "vite build -m analyzer",
+    "build:hot": "turbo watch build",
+    "lint": "next lint"
+  },
+  "peerDependencies": {
+    "@repo/utils": "*",
+    "@repo/context": "*",
+    "@tanstack/query-core": "*",
+    "@tanstack/react-query": "*",
+    "@tanstack/react-table": "*",
+    "@trpc/client": "*",
+    "@trpc/react-query": "*",
+    "@trpc/tanstack-react-query": "*",
+    "next": "15.2.4",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "server-only": "*"
+  },
+  "devDependencies": {
+    "@repo/utils": "*",
+    "@repo/context": "*",
+    "@eslint/eslintrc": "^3",
+    "@repo/rpc": "*",
+    "@tanstack/query-core": "^5.71.10",
+    "@tanstack/react-store": "^0.7.0",
+    "@trpc/client": "^11.0.2",
+    "@trpc/react-query": "^11.0.2",
+    "@trpc/tanstack-react-query": "^11.0.2",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@vitejs/plugin-react": "*",
+    "eslint": "^9",
+    "eslint-config-next": "15.2.4",
+    "next": "^15.2.4",
+    "server-only": "^0.0.1",
+    "typescript": "^5",
+    "vite": "*",
+    "vite-bundle-analyzer": "^0.18.1",
+    "vite-tsconfig-paths": "*"
+  }
+}

@@ -22,8 +22,8 @@
     "lint": "next lint"
   },
   "peerDependencies": {
-    "@repo/utils": "*",
     "@repo/context": "*",
+    "@repo/utils": "*",
     "@tanstack/query-core": "*",
     "@tanstack/react-query": "*",
     "@tanstack/react-table": "*",
@@ -36,10 +36,10 @@
     "server-only": "*"
   },
   "devDependencies": {
-    "@repo/utils": "*",
-    "@repo/context": "*",
     "@eslint/eslintrc": "^3",
+    "@repo/context": "*",
     "@repo/rpc": "*",
+    "@repo/utils": "*",
     "@tanstack/query-core": "^5.71.10",
     "@tanstack/react-store": "^0.7.0",
     "@trpc/client": "^11.0.2",

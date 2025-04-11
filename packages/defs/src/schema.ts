@@ -1,6 +1,7 @@
 import { relations } from "drizzle-orm";
-import { int, sqliteTable, text, uniqueIndex } from "drizzle-orm/sqlite-core";
+import { int, sqliteTable, text, uniqueIndex, SQLiteTextJson, blob } from "drizzle-orm/sqlite-core";
 import { pk, timestamp } from "./utils";
+import { type Field } from "@repo/utils";
 
 // User Table
 export const users = sqliteTable("users", {
@@ -73,3 +74,13 @@ export const socialLinksRelations = relations(socialLinks, ({ one }) => ({
     references: [profiles.id],
   }),
 }));
+
+// User Table
+export const collections = sqliteTable("collections", {
+  id: pk(),
+  title: text("title", { length: 255 }).notNull(),
+  slug: text("slug", { length: 50 }).notNull().unique(),
+  fields: blob({ mode: 'json' }).$type<Field[]>(),
+  createdAt: timestamp("created_at"),
+  updatedAt: timestamp("updated_at"),
+});

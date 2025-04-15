@@ -1,5 +1,11 @@
 import { relations } from "drizzle-orm";
-import { int, sqliteTable, text, uniqueIndex, SQLiteTextJson, blob } from "drizzle-orm/sqlite-core";
+import {
+  int,
+  sqliteTable,
+  text,
+  uniqueIndex,
+  blob,
+} from "drizzle-orm/sqlite-core";
 import { pk, timestamp } from "./utils";
 import { type Field } from "@repo/utils";
 
@@ -8,7 +14,7 @@ export const users = sqliteTable("users", {
   id: pk(),
   email: text("email", { length: 255 }).notNull().unique(),
   username: text("username", { length: 50 }).notNull().unique(),
-  passwordHash: text("password_hash", { length: 255 }).notNull(),
+  password: text("password_hash", { length: 255 }).notNull(),
   createdAt: timestamp("created_at"),
   updatedAt: timestamp("updated_at"),
 });
@@ -80,7 +86,7 @@ export const collections = sqliteTable("collections", {
   id: pk(),
   title: text("title", { length: 255 }).notNull(),
   slug: text("slug", { length: 50 }).notNull().unique(),
-  fields: blob({ mode: 'json' }).$type<Field[]>(),
+  fields: blob({ mode: "json" }).$type<Field[]>(),
   createdAt: timestamp("created_at"),
   updatedAt: timestamp("updated_at"),
 });

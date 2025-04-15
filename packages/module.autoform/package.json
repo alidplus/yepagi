@@ -1,0 +1,62 @@
+{
+  "name": "@repo/autoform",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./client": {
+      "import": "./dist/client.js",
+      "types": "./dist/lib/index.d.ts"
+    },
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "tsc -b && vite build",
+    "analyzer": "vite build -m analyzer",
+    "build:hot": "turbo watch build",
+    "lint": "next lint"
+  },
+  "peerDependencies": {
+    "@repo/ui": "*",
+    "@repo/utils": "*",
+    "@tanstack/react-form": "*",
+    "lodash": "*",
+    "lodash-es": "*",
+    "next": "15.2.4",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "zod": "*"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@repo/ui": "*",
+    "@repo/utils": "*",
+    "@tanstack/react-form": "^1.3.3",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@vitejs/plugin-react": "*",
+    "eslint": "^9",
+    "eslint-config-next": "15.2.4",
+    "next": "^15.2.4",
+    "rollup-plugin-node-externals": "^8.0.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-preserve-directives": "^1.1.3",
+    "server-only": "^0.0.1",
+    "typescript": "*",
+    "vite": "^6.2.6",
+    "vite-bundle-analyzer": "^0.18.1",
+    "vite-plugin-dts": "^4.5.3",
+    "vite-tsconfig-paths": "^5.1.4"
+  },
+  "optionalDependencies": {
+    "@repo/defs": "workspace:^"
+  },
+  "dependencies": {
+    "@rjsf/core": "^5.24.8",
+    "@rjsf/utils": "^5.24.8",
+    "@rjsf/validator-ajv8": "^5.24.8",
+    "zod-to-json-schema": "^3.24.5"
+  }
+}

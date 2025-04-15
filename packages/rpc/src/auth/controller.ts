@@ -47,7 +47,7 @@ export default class AuthController {
 
 			return new UsersController(this.ctx).create({
 				email,
-				passwordHash,
+				password: passwordHash,
 				username: email,
 			});
 		} catch (error) {
@@ -76,7 +76,7 @@ export default class AuthController {
 				});
 			}
 
-			const isPasswordCorrect = await bcrypt.compare(password, user.passwordHash);
+			const isPasswordCorrect = await bcrypt.compare(password, user.password);
 
 			if (!isPasswordCorrect) {
 				throw new TRPCError({

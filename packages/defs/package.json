@@ -18,7 +18,7 @@
     "build:hot": "turbo watch build",
     "test": "vitest run --silent",
     "dev": "vitest --ui --coverage",
-    "wr": "wrangler --persist-to ../../.wrangler/state",
+    "wr": "wrangler --local --persist-to ../../.wrangler/state",
     "migration": "yarn wr d1 migrations",
     "migration:generate": "drizzle-kit generate",
     "migration:create": "yarn migration create venli-dev-db",

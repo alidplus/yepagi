@@ -1,8 +1,7 @@
+import { BaseInputTemplateProps, getInputProps } from "@rjsf/utils";
 import { ChangeEvent, FocusEvent } from "react";
-import { getInputProps, RJSFSchema, BaseInputTemplateProps } from "@rjsf/utils";
-import validator from "@rjsf/validator-ajv8";
 
-import { ATOMs } from "@repo/atoms";
+import { Input } from "@repo/ui/atoms";
 
 export function BaseInputTemplate(props: BaseInputTemplateProps) {
   const {
@@ -42,20 +41,20 @@ export function BaseInputTemplate(props: BaseInputTemplateProps) {
   }: FocusEvent<HTMLInputElement>) => onFocus(id, val);
 
   const inputProps = { ...rest, ...getInputProps(schema, type, options) };
-  const hasError = rawErrors.length > 0 && !hideError;
+  // const hasError = rawErrors.length > 0 && !hideError;
 
   return (
-    <ATOMs.TextInput
+    <Input
       id={id}
       data-test="BaseInputTemplate"
-      label={label}
+      // label={label}
       value={value}
       placeholder={placeholder}
       disabled={disabled}
       readOnly={readonly}
       autoFocus={autofocus}
-      error={hasError}
-      errors={hasError ? rawErrors : undefined}
+      // error={hasError}
+      // errors={hasError ? rawErrors : undefined}
       onChange={onChangeOverride || onTextChange}
       onBlur={onTextBlur}
       onFocus={onTextFocus}

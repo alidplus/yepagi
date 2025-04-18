@@ -27,6 +27,8 @@ export function makeQueryClient(mock?: true) {
 let browserQueryClient: QueryClient | undefined = undefined;
 
 export function getQueryClient(mock?: true) {
+  console.log('isServer?', isServer);
+  
   if (isServer) {
     // Server: always make a new query client
     return makeQueryClient(mock);

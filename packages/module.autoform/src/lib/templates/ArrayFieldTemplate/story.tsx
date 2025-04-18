@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import Form from "../../main";
+import Form from "../..";
+import { z } from "zod";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
@@ -15,12 +16,7 @@ const meta = {
   argTypes: {},
   // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args
   args: {
-    schema: {
-      type: "array",
-      items: {
-        type: "string",
-      },
-    },
+    schema: z.array(z.string())
   },
 } satisfies Meta<typeof Form>;
 

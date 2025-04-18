@@ -1,7 +1,5 @@
 import { FieldTemplateProps } from "@rjsf/utils";
 
-import { LAYOUTs, ATOMs } from "@repo/atoms";
-
 export function FieldTemplate(props: FieldTemplateProps) {
   const {
     id,
@@ -15,21 +13,22 @@ export function FieldTemplate(props: FieldTemplateProps) {
     children,
   } = props;
   return (
-    <ATOMs.Box gap="md">
-      <LAYOUTs.Fieldset
-        className={classNames}
-        label={label}
-        footer={description}
-        // legend={}
-        // search={}
-        // dropdown={}
-        // prefix={}
-        // suffix={}
-        // startIcon={}
-        // endIcon={}
-      >
-        {children}
-      </LAYOUTs.Fieldset>
-    </ATOMs.Box>
+    null
+    // <ATOMs.Box gap="md">
+    //   <LAYOUTs.Fieldset
+    //     className={classNames}
+    //     label={label}
+    //     footer={description}
+    //     // legend={}
+    //     // search={}
+    //     // dropdown={}
+    //     // prefix={}
+    //     // suffix={}
+    //     // startIcon={}
+    //     // endIcon={}
+    //   >
+    //     {children}
+    //   </LAYOUTs.Fieldset>
+    // </ATOMs.Box>
   );
 }

@@ -32,8 +32,9 @@ export abstract class BaseCRUD<T extends SQLiteTableWithColumns<any>, Select, In
 		return res[0];
 	}
 
-	async read(id: number): Promise<Select | undefined> {
+	async read(id: number): Promise<Select> {
 		const find = (await this.ctx.db.select().from(this.table).where(eq(this.table.id, id))) as Select[];
+		if (!find[0]) throw '404';
 		return find[0];
 	}
 

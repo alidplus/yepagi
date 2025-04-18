@@ -29,7 +29,7 @@ export default function DashboardLayout({
         <Link className="flex items-center justify-center flex-shrink-0 w-10 h-10 mt-auto rounded hover:bg-gray-300" href="/-/entities">
           <Icon name="config" size={20} />
         </Link>
-        <Link className="flex items-center justify-center flex-shrink-0 w-10 h-10 mt-4 rounded hover:bg-gray-300" href='/-/'>
+        <Link className="flex items-center justify-center flex-shrink-0 w-10 h-10 mt-4 rounded hover:bg-gray-300" href='/-/test'>
           <Icon name="user-cog" size={20} />
         </Link>
       </div>
@@ -48,9 +48,8 @@ export default function DashboardLayout({
               <Icon name="more-vertical" size={22} />
             </div>
             <div className="absolute right-0 flex-col items-start hidden w-40 pb-1 bg-white border border-gray-300 shadow-lg group-focus:flex">
-              <a className="w-full px-4 py-2 text-left hover:bg-gray-300" href="#">Menu Item 1</a>
+              <Link className="w-full px-4 py-2 text-left hover:bg-gray-300" href="/-/test">Test list</Link>
               <a className="w-full px-4 py-2 text-left hover:bg-gray-300" href="#">Menu Item 22</a>
-              <a className="w-full px-4 py-2 text-left hover:bg-gray-300" href="#">Menu Item 333</a>
             </div>
           </button>
         </div>

@@ -1,12 +1,12 @@
 import * as dz from "drizzle-zod";
 import { z } from "zod";
-import { collections } from "./schema";
+import { collections, collectionsRelations } from "./schema";
 import { COMMON_SCHEMA_FIELDS } from "./utils";
 
 const PROTECTED_SCHEMA_FIELDS = {} as const;
 
 export const table = collections;
-// export const relations = usersRelations;
+export const relations = collectionsRelations;
 
 export const zSelectSchema = dz
   .createSelectSchema(table)

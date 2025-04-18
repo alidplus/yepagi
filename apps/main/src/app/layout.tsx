@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { TRPCReactProvider } from "@repo/context/client";
 import "../globals.css";
-import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Create Next App",

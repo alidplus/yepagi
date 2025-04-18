@@ -30,7 +30,7 @@ export default function Entities() {
           <span className="leading-none">Item 6</span>
         </a>
         <Link className="flex items-center flex-shrink-0 h-10 px-3 mt-auto text-sm font-medium bg-gray-200 rounded hover:bg-gray-300"
-            href="/-/entities/*">
+            href="/-/entities/new">
           <Icon name="plus" size={22} />
           <span className="ml-2 leading-none">New Item</span>
         </Link>

@@ -15,6 +15,13 @@
       "when": 1740908195519,
       "tag": "0001_melted_captain_flint",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1744728800892,
+      "tag": "0002_crazy_klaw",
+      "breakpoints": true
     }
   ]
 }

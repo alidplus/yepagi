@@ -7,11 +7,12 @@ import { useMemo } from 'react';
 import { type ZodTypeAny } from 'zod';
 import zodToJsonSchema, { jsonDescription } from 'zod-to-json-schema';
 
-import * as templates from "./templates";
-import * as fields from "./fields";
-import * as widgets from "./widgets";
+// import * as templates from "./templates";
+// import * as fields from "./fields";
+// import * as widgets from "./widgets";
 
-const theme: ThemeProps = { templates, fields, widgets };
+// const theme: ThemeProps = { templates, fields, widgets };
+const theme: ThemeProps = {};
 
 const ThemedForm = withTheme(theme);
 

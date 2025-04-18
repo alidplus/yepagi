@@ -18,8 +18,7 @@ export const authRouter = router({
 
 	whoami: protectedProcedure.output(def.users.zSelectSchema).query(({ ctx }) => {
 		console.log('-------- whoami --------');
-		
-		return ctx.user
+		return ctx.user;
 	}),
 
 	logout: protectedProcedure.output(zGeneralSuccesResponse).mutation(({ ctx }) => new AuthController(ctx).logout()),

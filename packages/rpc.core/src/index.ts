@@ -1,7 +1,8 @@
+export { TRPCError } from '@trpc/server';
 export { fetchRequestHandler } from '@trpc/server/adapters/fetch';
-export { createCoreContext, assertProtectedContext } from './context';
+export { createCoreContext, assertProtectedContext, RequestCookieStore } from './context';
 export type { Context, ProtectedContext } from './context';
-export { router, protectedProcedure, publicProcedure } from './trpc';
+export { router, protectedProcedure, publicProcedure, health } from './trpc';
 export type { Meta } from './trpc';
 
 // util exports

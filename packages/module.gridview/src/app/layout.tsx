@@ -1,4 +1,4 @@
-import { TRPCReactProvider } from "@repo/context";
+import { TRPCReactProvider } from "@repo/feat.context";
 
 export default function RootLayout({
   children,

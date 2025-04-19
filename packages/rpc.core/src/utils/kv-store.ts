@@ -1,4 +1,4 @@
-import { superjson } from '@repo/utils';
+import { superjson } from '@repo/utils/superjson';
 
 const defaultOptions: KVNamespacePutOptions = {
 	expirationTtl: 720000,

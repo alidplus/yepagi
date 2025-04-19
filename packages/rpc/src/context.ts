@@ -3,7 +3,13 @@ import { type WithRequiredProperty } from '@repo/utils';
 import { RequestCookieStore } from '@worker-tools/request-cookie-store';
 import { drizzle } from 'drizzle-orm/d1';
 import JWT from './auth/jwt';
-import { KvStore } from './utils/kv-store';
+import { KvStore } from '@repo/rpc.core';
+
+declare module '@repo/rpc.core' {
+	interface Context {
+		user?: defs.users.TSelect;
+	}
+}
 
 export const createWorkerContext = async (env: CloudflareEnv, req: Request) => {
 	const db = drizzle(env.DB);

@@ -1,4 +1,4 @@
-import { useTRPC } from "@repo/context/client";
+import { useTRPC } from "@/trpc/client";
 import { useSuspenseQuery } from "@tanstack/react-query";
 
 export default function ItemCard({ id }: { id: number }) {

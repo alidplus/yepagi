@@ -2,5 +2,8 @@
   "launch": {
     "configurations": [],
     "compounds": []
-  }
+  },
+  "typescript.updateImportsOnPaste.enabled": false,
+  "javascript.updateImportsOnPaste.enabled": false,
+  "typescript.tsdk": "node_modules/typescript/lib"
 }

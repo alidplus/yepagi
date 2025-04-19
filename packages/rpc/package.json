@@ -29,6 +29,7 @@
   "devDependencies": {
     "@cloudflare/vitest-pool-workers": "^0.6.4",
     "@cloudflare/workers-types": "*",
+    "@repo/rpc.core": "*",
     "@types/http-errors": "^2.0.4",
     "@types/jsonwebtoken": "^9",
     "better-sqlite3": "^11.8.1",
@@ -49,5 +50,8 @@
     "http-errors": "^2.0.0",
     "jsonwebtoken": "^9.0.2",
     "zod": "*"
+  },
+  "peerDependencies": {
+    "@repo/rpc.core": "*"
   }
 }

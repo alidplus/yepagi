@@ -1,15 +1,14 @@
-import { router } from './trpc';
+import { router } from '@repo/rpc.core';
 import { authRouter } from './auth';
 import { tenantRouter } from './tenats';
 import { userRouter } from './users';
-import { collectionRouter } from './collections';
-export { fetchRequestHandler } from '@trpc/server/adapters/fetch';
+import { entitiesRouter } from './entities';
 
 export const appRouter = router({
 	user: userRouter,
 	auth: authRouter,
 	tenant: tenantRouter,
-	collections: collectionRouter,
+	entities: entitiesRouter,
 });
 
 export type AppRouter = typeof appRouter;

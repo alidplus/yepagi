@@ -1,5 +1,5 @@
 import { formatQuery, RuleGroupTypeAny } from "react-querybuilder";
-import { superjson } from ".";
+import { superjson } from "./superjson";
 
 export const toSQL = (rq: RuleGroupTypeAny) => formatQuery(rq, "sql");
 export const encode = (rq: RuleGroupTypeAny) =>

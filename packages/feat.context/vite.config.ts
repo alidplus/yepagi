@@ -24,11 +24,12 @@ export default defineConfig({
     },
     lib: {
       entry: {
-        client: "src/lib/index.client.ts",
-        server: "src/lib/index.server.ts"
+        client: "src/lib/index.client.tsx",
+        server: "src/lib/index.server.tsx"
       },
       formats: ["es"],
     },
+    sourcemap: true,
     rollupOptions: {
       plugins: [
         dts({

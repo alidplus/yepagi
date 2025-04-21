@@ -121,4 +121,4 @@ export default {
       return rawHtmlResponse(DEMO_PAGE);
     }
   },
-} satisfies ExportedHandler<CFWorkerEnv>;
+} satisfies ExportedHandler<CloudflareEnv>;

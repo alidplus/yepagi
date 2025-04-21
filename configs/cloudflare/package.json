@@ -15,8 +15,8 @@
   },
   "scripts": {
     "wr": "wrangler --persist-to ../../.wrangler/state",
-    "build:page": "wrangler --c ./page.wrangler.jsonc types --env-interface CFPageEnv page.env.d.ts",
-    "build:worker": "wrangler --c ./worker.wrangler.jsonc types --env-interface CFWorkerEnv worker.env.d.ts",
+    "build:page": "wrangler --c ./page.wrangler.jsonc types --env-interface CloudflareEnv page.env.d.ts",
+    "build:worker": "wrangler --c ./worker.wrangler.jsonc types --env-interface CloudflareEnv worker.env.d.ts",
     "build": "yarn build:page && yarn build:worker"
   },
   "devDependencies": {

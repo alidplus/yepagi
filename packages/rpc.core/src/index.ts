@@ -9,5 +9,5 @@ export type { Meta } from './trpc';
 export { BaseCRUD, BaseCtrl, CRUD } from './utils/base';
 export { getTrpcError } from './utils/errors';
 export { KvStore } from './utils/kv-store';
-export { zGeneralSuccesResponse, zQueryResponse } from './utils/schema';
-export type { TGeneralSuccesResponse, TQueryResponse } from './utils/schema';
+export { zGeneralSuccesResponse, zQueryResponse, zQueryRequest } from './utils/schema';
+export type { TGeneralSuccesResponse, TQueryResponse, TQueryRequest } from './utils/schema';

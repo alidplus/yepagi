@@ -1,6 +1,14 @@
 import { eq } from 'drizzle-orm';
 import { SQLiteTableWithColumns, TableConfig } from 'drizzle-orm/sqlite-core';
 import { Context } from '../context';
+import { formatQuery, type FormatQueryOptions } from '@repo/query/server';
+import { TQueryRequest } from './schema';
+import { sql } from 'drizzle-orm';
+
+const qopts: FormatQueryOptions = {
+	format: 'parameterized',
+	parseNumbers: true,
+};
 
 export abstract class BaseCtrl {
 	constructor(protected ctx: Context) {
@@ -11,10 +19,16 @@ export abstract class BaseCtrl {
 export abstract class CRUD<Select, Insert, Patch> {
 	abstract create(data: Insert): Promise<Select>;
 	abstract read(id: number): Promise<Select | undefined>;
+	abstract list(input: TQueryRequest): Promise<Select[]>;
 	abstract update(id: number, data: Patch): Promise<Select | undefined>;
 	abstract delete(id: number): Promise<Select>;
 	// abstract query(filters: unknown): Promise<Select[]>;
 }
+
+const empty = {
+	combinator: 'and',
+	rules: [],
+};
 
 export abstract class BaseCRUD<T extends SQLiteTableWithColumns<TableConfig>, Select, Insert, Patch>
 	extends BaseCtrl
@@ -22,7 +36,6 @@ export abstract class BaseCRUD<T extends SQLiteTableWithColumns<TableConfig>, Se
 {
 	protected abstract table: T;
 
-	async create(data: Insert): Promise<Select>;
 	async create(data: Insert): Promise<Select> {
 		const res = (await this.ctx.db
 			.insert(this.table)
@@ -30,6 +43,21 @@ export abstract class BaseCRUD<T extends SQLiteTableWithColumns<TableConfig>, Se
 			.returning()) as unknown as Select[];
 		if (!res.length) throw '';
 		return res[0];
+	}
+
+	async list(input: TQueryRequest): Promise<Select[]> {
+		const cmd = this.ctx.db.select().from(this.table);
+		if (input.query?.rules.length) {
+			const whereClause = formatQuery(input.query, 'parameterized');
+			console.log('whereClause', input.query, whereClause);
+			const sqlTemplate: TemplateStringsArray = {
+				...new Array(...whereClause.sql.split('?')),
+				raw: whereClause.sql.split('?'),
+			};
+			cmd.where(sql(sqlTemplate, ...whereClause.params));
+		}
+		const data = (await cmd) as unknown as Select[];
+		return data;
 	}
 
 	async read(id: number): Promise<Select> {

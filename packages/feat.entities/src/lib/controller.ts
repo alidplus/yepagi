@@ -3,4 +3,5 @@ import CollectionsModel from './model';
 
 // const collections = defs.collections.table;
 
-export default class CollectionsController extends CollectionsModel {}
+export default class CollectionsController extends CollectionsModel {
+}

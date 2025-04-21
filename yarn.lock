@@ -5935,7 +5935,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@repo/defs@npm:*, @repo/defs@workspace:^, @repo/defs@workspace:packages/defs":
+"@repo/defs@npm:*, @repo/defs@workspace:packages/defs":
   version: 0.0.0-use.local
   resolution: "@repo/defs@workspace:packages/defs"
   dependencies:
@@ -5957,7 +5957,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@repo/feat.context@npm:*, @repo/feat.context@workspace:^, @repo/feat.context@workspace:packages/feat.context":
+"@repo/feat.context@npm:*, @repo/feat.context@workspace:packages/feat.context":
   version: 0.0.0-use.local
   resolution: "@repo/feat.context@workspace:packages/feat.context"
   dependencies:
@@ -6000,14 +6000,18 @@ __metadata:
   resolution: "@repo/feat.entities@workspace:packages/feat.entities"
   dependencies:
     "@eslint/eslintrc": "npm:^3"
-    "@repo/defs": "workspace:^"
-    "@repo/feat.context": "workspace:^"
+    "@repo/autoform": "npm:*"
+    "@repo/defs": "npm:*"
+    "@repo/feat.context": "npm:*"
+    "@repo/gridview": "npm:*"
+    "@repo/query": "npm:*"
     "@repo/rpc.core": "npm:*"
     "@repo/utils": "npm:*"
     "@types/node": "npm:^20"
     "@types/react": "npm:^19"
     "@types/react-dom": "npm:^19"
     "@vitejs/plugin-react": "npm:*"
+    drizzle-orm: "npm:*"
     eslint: "npm:^9"
     eslint-config-next: "npm:15.2.4"
     next: "npm:^15.2.4"
@@ -6016,10 +6020,11 @@ __metadata:
     vite: "npm:*"
     vite-bundle-analyzer: "npm:^0.18.1"
     vite-tsconfig-paths: "npm:*"
+    wrangler: "npm:*"
     zod: "npm:^3.24.3"
   peerDependencies:
-    "@repo/defs": "workspace:^"
-    "@repo/feat.context": "workspace:^"
+    "@repo/defs": "*"
+    "@repo/feat.context": "*"
     "@repo/rpc.core": "*"
     "@repo/utils": "*"
     next: 15.3.1
@@ -6030,19 +6035,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@repo/gridview@workspace:packages/module.gridview":
+"@repo/gridview@npm:*, @repo/gridview@workspace:packages/module.gridview":
   version: 0.0.0-use.local
   resolution: "@repo/gridview@workspace:packages/module.gridview"
   dependencies:
     "@eslint/eslintrc": "npm:^3"
-    "@repo/feat.context": "npm:*"
-    "@repo/rpc": "npm:*"
-    "@repo/utils": "npm:*"
-    "@tanstack/query-core": "npm:^5.71.10"
-    "@tanstack/react-store": "npm:^0.7.0"
-    "@trpc/client": "npm:^11.0.2"
-    "@trpc/react-query": "npm:^11.0.2"
-    "@trpc/tanstack-react-query": "npm:^11.0.2"
     "@types/node": "npm:^20"
     "@types/react": "npm:^19"
     "@types/react-dom": "npm:^19"
@@ -6050,20 +6047,11 @@ __metadata:
     eslint: "npm:^9"
     eslint-config-next: "npm:15.2.4"
     next: "npm:^15.2.4"
-    server-only: "npm:^0.0.1"
     typescript: "npm:*"
     vite: "npm:*"
     vite-bundle-analyzer: "npm:^0.18.1"
     vite-tsconfig-paths: "npm:*"
   peerDependencies:
-    "@repo/feat.context": "*"
-    "@repo/utils": "*"
-    "@tanstack/query-core": "*"
-    "@tanstack/react-query": "*"
-    "@tanstack/react-table": "*"
-    "@trpc/client": "*"
-    "@trpc/react-query": "*"
-    "@trpc/tanstack-react-query": "*"
     next: 15.3.1
     react: 19.0.0
     react-dom: 19.0.0
@@ -6108,11 +6096,39 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@repo/query@npm:*, @repo/query@workspace:packages/module.query":
+  version: 0.0.0-use.local
+  resolution: "@repo/query@workspace:packages/module.query"
+  dependencies:
+    "@eslint/eslintrc": "npm:^3"
+    "@repo/utils": "workspace:^"
+    "@trpc/client": "npm:^11.0.2"
+    "@types/node": "npm:^20"
+    "@types/react": "npm:^19"
+    "@types/react-dom": "npm:^19"
+    "@vitejs/plugin-react": "npm:*"
+    eslint: "npm:^9"
+    eslint-config-next: "npm:15.2.4"
+    next: "npm:^15.2.4"
+    react-querybuilder: "npm:^8.5.0"
+    typescript: "npm:*"
+    vite: "npm:*"
+    vite-bundle-analyzer: "npm:^0.18.1"
+    vite-tsconfig-paths: "npm:*"
+  peerDependencies:
+    next: 15.3.1
+    react: 19.0.0
+    react-dom: 19.0.0
+    server-only: "*"
+  languageName: unknown
+  linkType: soft
+
 "@repo/rpc.core@npm:*, @repo/rpc.core@workspace:packages/rpc.core":
   version: 0.0.0-use.local
   resolution: "@repo/rpc.core@workspace:packages/rpc.core"
   dependencies:
     "@cloudflare/workers-types": "npm:*"
+    "@repo/query": "npm:*"
     "@repo/utils": "npm:*"
     "@trpc/server": "npm:^11.0.0-rc.819"
     "@types/node": "npm:*"
@@ -6239,7 +6255,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@repo/utils@npm:*, @repo/utils@workspace:packages/utils":
+"@repo/utils@npm:*, @repo/utils@workspace:^, @repo/utils@workspace:packages/utils":
   version: 0.0.0-use.local
   resolution: "@repo/utils@workspace:packages/utils"
   dependencies:
@@ -6255,6 +6271,7 @@ __metadata:
     eslint-config-prettier: "npm:^10.1.1"
     eslint-plugin-prettier: "npm:^5.2.3"
     globals: "npm:^16.0.0"
+    react: "npm:*"
     react-querybuilder: "npm:^8.5.0"
     superjson: "npm:^2.2.2"
     tailwind-merge: "npm:^3.0.2"
@@ -19688,17 +19705,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react@npm:*, react@npm:^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0, react@npm:^19.0.0":
+  version: 19.1.0
+  resolution: "react@npm:19.1.0"
+  checksum: 10c0/530fb9a62237d54137a13d2cfb67a7db6a2156faed43eecc423f4713d9b20c6f2728b026b45e28fcd72e8eadb9e9ed4b089e99f5e295d2f0ad3134251bdd3698
+  languageName: node
+  linkType: hard
+
 "react@npm:19.0.0":
   version: 19.0.0
   resolution: "react@npm:19.0.0"
   checksum: 10c0/9cad8f103e8e3a16d15cb18a0d8115d8bd9f9e1ce3420310aea381eb42aa0a4f812cf047bb5441349257a05fba8a291515691e3cb51267279b2d2c3253f38471
-  languageName: node
-  linkType: hard
-
-"react@npm:^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0, react@npm:^19.0.0":
-  version: 19.1.0
-  resolution: "react@npm:19.1.0"
-  checksum: 10c0/530fb9a62237d54137a13d2cfb67a7db6a2156faed43eecc423f4713d9b20c6f2728b026b45e28fcd72e8eadb9e9ed4b089e99f5e295d2f0ad3134251bdd3698
   languageName: node
   linkType: hard
 

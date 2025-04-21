@@ -4,8 +4,8 @@
   "private": true,
   "type": "module",
   "exports": {
-    "./client": {
-      "import": "./dist/client.js",
+    ".": {
+      "import": "./dist/index.js",
       "types": "./dist/lib/index.d.ts"
     },
     "./package.json": "./package.json"

@@ -9,6 +9,10 @@
     ".": {
       "style": "./dist/global.css"
     },
+    "./three-way-theme-toggle.js": {
+      "import": "./dist/three-way-theme-toggle.js",
+      "require": "./dist/three-way-theme-toggle.js"
+    },
     "./skeleton": {
       "import": "./dist/skeleton.js",
       "types": "./dist/skeleton/index.d.ts"
@@ -28,7 +32,7 @@
     "build": "tsc -b && vite build",
     "build:hot": "turbo watch build",
     "storybook": "storybook dev -p 6006",
-    "dev": "yarn storybook --ci"
+    "dev": "yarn ladle serve"
   },
   "peerDependencies": {
     "@repo/utils": "*",
@@ -58,6 +62,7 @@
     "@storybook/react": "^8.5.8",
     "@storybook/react-vite": "^8.5.8",
     "@storybook/test": "^8.5.8",
+    "@tailwindcss/typography": "^0.5.16",
     "@tailwindcss/vite": "^4.0.7",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.2.0",

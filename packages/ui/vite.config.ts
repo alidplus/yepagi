@@ -13,24 +13,7 @@ import preserveDirectives from "rollup-preserve-directives";
 export default defineConfig({
   root: __dirname,
   cacheDir: "./node_modules/.vite/libs/atoms",
-  plugins: [
-    tsconfigPaths(),
-    react(),
-    tailwindcss(),
-    viteStaticCopy({
-      targets: [
-        {
-          src: "src/global.css",
-          dest: ".",
-        },
-      ],
-    }),
-    dts({
-      entryRoot: "src",
-      exclude: ["story.tsx", "./**/story.tsx", "*.mdx"],
-      tsconfigPath: path.join(__dirname, "tsconfig.app.json"),
-    }),
-  ],
+  plugins: [tsconfigPaths(), react(), tailwindcss()],
   build: {
     outDir: "./dist",
     emptyOutDir: true,
@@ -51,6 +34,18 @@ export default defineConfig({
     },
     rollupOptions: {
       plugins: [
+        viteStaticCopy({
+          targets: [
+            {
+              src: "./src/three-way-theme-toggle.js",
+              dest: ".",
+            },
+            {
+              src: "src/global.css",
+              dest: ".",
+            },
+          ],
+        }),
         dts({
           entryRoot: "src",
           exclude: ["story.tsx", "./**/story.tsx", "*.mdx"],

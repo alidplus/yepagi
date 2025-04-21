@@ -1,7 +1,6 @@
-import { superjson } from '@repo/utils';
+import { superjson } from '@repo/utils/superjson';
 import {
   defaultShouldDehydrateQuery,
-  isServer,
   QueryClient,
 } from '@tanstack/react-query';
 
@@ -13,9 +12,12 @@ export function makeQueryClient(mock?: true) {
       },
       dehydrate: {
         serializeData: superjson.serialize,
-        shouldDehydrateQuery: (query) =>
-          defaultShouldDehydrateQuery(query) ||
-          query.state.status === 'pending',
+        shouldDehydrateQuery: (query) => {
+          const shouldDehydrate = defaultShouldDehydrateQuery(query),
+          isPending = query.state.status === 'pending'
+          
+          return shouldDehydrate || isPending
+        }
       },
       hydrate: {
         deserializeData: superjson.deserialize,
@@ -24,16 +26,10 @@ export function makeQueryClient(mock?: true) {
   });
 }
 
-let browserQueryClient: QueryClient | undefined = undefined;
+let qc: QueryClient | undefined;
 
 export function getQueryClient(mock?: true) {
-  console.log('isServer?', isServer);
-  
-  if (isServer) {
-    // Server: always make a new query client
-    return makeQueryClient(mock);
-  } else {
-    if (!browserQueryClient) browserQueryClient = makeQueryClient(mock);
-    return browserQueryClient;
-  }
+  if (qc) return qc
+  qc = makeQueryClient(mock);
+  return qc
 }

@@ -1,4 +1,6 @@
-import { TRPCReactProvider } from "@/lib/trpc/client";
+"use client";
+
+import { TRPCReactProvider } from "./components/provider";
 
 export default function RootLayout({
   children,

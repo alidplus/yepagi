@@ -4,27 +4,25 @@
   "private": true,
   "types": "./types/router.d.ts",
   "scripts": {
-    "wr": "wrangler --persist-to ../../.wrangler/state",
+    "wr": "wrangler --cwd ../..",
     "dev": "yarn wr dev",
     "deploy": "wrangler deploy",
     "start": "wrangler dev --remote",
-    "test": "vitest",
-    "typegen": "wrangler types --env-interface CloudflareEnv env.d.ts"
+    "test": "vitest"
   },
   "devDependencies": {
     "@cloudflare/vitest-pool-workers": "^0.6.4",
-    "@cloudflare/workers-types": "^4.20250224.0",
+    "@cloudflare/workers-types": "*",
     "@types/http-errors": "^2.0.4",
     "@types/jsonwebtoken": "^9",
     "better-sqlite3": "^11.8.1",
     "drizzle-kit": "^0.30.5",
-    "typescript": "^5.7.3",
+    "typescript": "*",
     "vitest": "^3.0.8",
-    "wrangler": "^3.111.0"
+    "wrangler": "*"
   },
   "dependencies": {
     "@repo/defs": "*",
-    "@trpc/server": "^11.0.0-rc.819",
     "@worker-tools/request-cookie-store": "^0.6.0-pre.3",
     "bcryptjs": "^3.0.2",
     "dotenv": "^16.4.7",

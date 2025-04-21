@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { publicProcedure, router } from '../trpc';
+import { publicProcedure, router } from '@repo/rpc.core';
 import * as def from '@repo/defs';
 
 export const tenantRouter = router({

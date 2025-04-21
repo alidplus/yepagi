@@ -1,4 +1,4 @@
-import { prefetch, trpc } from "@repo/context/server";
+import { prefetch, trpc } from "@repo/feat.context/server";
 import ItemList from "./components/ItemList";
 
 export default async function TestPage() {

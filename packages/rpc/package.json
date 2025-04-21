@@ -28,27 +28,30 @@
   },
   "devDependencies": {
     "@cloudflare/vitest-pool-workers": "^0.6.4",
-    "@cloudflare/workers-types": "^4.20250224.0",
+    "@cloudflare/workers-types": "*",
+    "@repo/rpc.core": "*",
     "@types/http-errors": "^2.0.4",
     "@types/jsonwebtoken": "^9",
     "better-sqlite3": "^11.8.1",
     "drizzle-kit": "^0.30.5",
     "eslint": "*",
     "tsup": "*",
-    "typescript": "^5.7.3",
+    "typescript": "*",
     "vitest": "^3.0.8",
-    "wrangler": "^3.111.0"
+    "wrangler": "*"
   },
   "dependencies": {
     "@repo/defs": "*",
-    "@trpc/server": "^11.0.0-rc.819",
     "@worker-tools/request-cookie-store": "^0.6.0-pre.3",
     "bcryptjs": "^3.0.2",
     "dotenv": "^16.4.7",
-    "drizzle-orm": "^0.40.0",
+    "drizzle-orm": "*",
     "drizzle-zod": "^0.7.0",
     "http-errors": "^2.0.0",
     "jsonwebtoken": "^9.0.2",
-    "zod": "^3.24.2"
+    "zod": "*"
+  },
+  "peerDependencies": {
+    "@repo/rpc.core": "*"
   }
 }

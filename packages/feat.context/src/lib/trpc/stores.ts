@@ -1,6 +1,6 @@
-import { superjson } from "@repo/utils";
+import { superjson } from "@repo/utils/superjson";
 import { Store } from "@tanstack/react-store";
-import { getUrl } from "./trpc-options";
+import { getUrl } from "./utils";
 
 export const accessTokenStore = new Store<string | undefined>(undefined);
 

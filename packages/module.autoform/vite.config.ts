@@ -23,10 +23,8 @@ export default defineConfig({
       transformMixedEsModules: true,
     },
     lib: {
-      entry: {
-        client: "src/lib/index.tsx",
-        // server: "src/lib/index.server.ts"
-      },
+      entry: "src/lib/index.tsx",
+      fileName: "index",
       formats: ["es"],
     },
     rollupOptions: {

@@ -1,4 +1,4 @@
-import { prefetch, trpc, HydrateClient } from "@repo/context/server";
+import { prefetch, trpc, HydrateClient } from "@/trpc/server";
 import Link from "next/link";
 import { PropsWithChildren, Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
@@ -10,7 +10,7 @@ type TenantParams = {
 export default async function TenantLayout({ children, params }: PropsWithChildren<RouteParams<TenantParams>>) {
   const { tenant } = await params
 
-  await prefetch(trpc.user.list.queryOptions())
+  await prefetch(trpc.user.list.queryOptions({}))
 
   return (
     <HydrateClient>

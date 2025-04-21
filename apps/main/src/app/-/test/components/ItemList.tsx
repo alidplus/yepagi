@@ -1,9 +1,9 @@
 "use client";
 
-import { useTRPC } from "@repo/context/client";
 import { QueryObserver, useQuery, useQueryClient } from "@tanstack/react-query";
 import ItemCard from "./ItemCard";
 import { useEffect } from "react";
+import { useTRPC } from "@/trpc/client";
 
 export default function ItemList() {
   const queryClient = useQueryClient();

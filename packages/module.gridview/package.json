@@ -4,13 +4,9 @@
   "private": true,
   "type": "module",
   "exports": {
-    "./client": {
-      "import": "./dist/client.js",
-      "types": "./dist/lib/index.client.d.ts"
-    },
-    "./server": {
-      "import": "./dist/server.js",
-      "types": "./dist/lib/index.server.d.ts"
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
     },
     "./package.json": "./package.json"
   },
@@ -22,29 +18,13 @@
     "lint": "next lint"
   },
   "peerDependencies": {
-    "@repo/context": "*",
-    "@repo/utils": "*",
-    "@tanstack/query-core": "*",
-    "@tanstack/react-query": "*",
-    "@tanstack/react-table": "*",
-    "@trpc/client": "*",
-    "@trpc/react-query": "*",
-    "@trpc/tanstack-react-query": "*",
-    "next": "15.2.4",
+    "next": "15.3.1",
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "server-only": "*"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
-    "@repo/context": "*",
-    "@repo/rpc": "*",
-    "@repo/utils": "*",
-    "@tanstack/query-core": "^5.71.10",
-    "@tanstack/react-store": "^0.7.0",
-    "@trpc/client": "^11.0.2",
-    "@trpc/react-query": "^11.0.2",
-    "@trpc/tanstack-react-query": "^11.0.2",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
@@ -52,8 +32,7 @@
     "eslint": "^9",
     "eslint-config-next": "15.2.4",
     "next": "^15.2.4",
-    "server-only": "^0.0.1",
-    "typescript": "^5",
+    "typescript": "*",
     "vite": "*",
     "vite-bundle-analyzer": "^0.18.1",
     "vite-tsconfig-paths": "*"

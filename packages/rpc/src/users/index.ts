@@ -1,9 +1,8 @@
 import * as def from '@repo/defs';
 import { eq } from 'drizzle-orm';
 import { z } from 'zod';
-import { publicProcedure, router } from '../trpc';
+import { publicProcedure, router, zQueryResponse } from '@repo/rpc.core';
 import UsersController from './controller';
-import { zQueryResponse } from '../utils/schema';
 
 export const userRouter = router({
 	list: publicProcedure

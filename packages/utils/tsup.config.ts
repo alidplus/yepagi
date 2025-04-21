@@ -2,7 +2,10 @@ import { defineConfig, type Options } from "tsup";
 import pkg from "./package.json"
 
 export default defineConfig((options: Options) => ({
-  entryPoints: ["src/index.ts"],
+  entryPoints: [
+    "src/superjson.ts",
+    "src/index.ts"
+  ],
   clean: true,
   dts: true,
   format: ["esm"],

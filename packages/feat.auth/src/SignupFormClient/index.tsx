@@ -1,7 +1,7 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useTRPC } from "@repo/context/client";
+import { useTRPC } from "@repo/feat.context/client";
 import { auth } from "@repo/defs";
 import {
   Button,

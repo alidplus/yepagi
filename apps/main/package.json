@@ -15,16 +15,15 @@
   "dependencies": {
     "@hookform/resolvers": "^4.1.3",
     "@repo/auth": "*",
-    "@repo/autoform": "workspace:^",
-    "@repo/context": "*",
+    "@repo/autoform": "*",
     "@repo/defs": "*",
+    "@repo/feat.context": "*",
     "@repo/ui": "*",
     "@repo/utils": "*",
     "@tanstack/react-query": "*",
     "@trpc/client": "^11.0.0-rc.819",
-    "@trpc/server": "^11.0.0-rc.819",
     "@trpc/tanstack-react-query": "^11.0.0-rc.819",
-    "next": "15.2.4",
+    "next": "15.3.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-error-boundary": "^5.0.0",
@@ -42,8 +41,8 @@
     "eslint": "^9.22.0",
     "eslint-config-next": "15.1.7",
     "postcss": "^8.5.3",
-    "typescript": "^5.7.3",
+    "typescript": "*",
     "worker": "*",
-    "wrangler": "^3.111.0"
+    "wrangler": "*"
   }
 }

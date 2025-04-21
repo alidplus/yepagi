@@ -1,0 +1,48 @@
+{
+  "name": "@repo/rpc.core",
+  "version": "0.0.0",
+  "private": true,
+  "types": "./types/router.d.ts",
+  "type": "module",
+  "files": [
+    "./dist"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "lint": "eslint . --fix",
+    "build": "tsup",
+    "build:hot": "turbo watch build",
+    "wr": "wrangler -c ../../configs/cloudflare/worker.wrangler.jsonc",
+    "dev": "yarn wr dev ./src/server.ts",
+    "test": "vitest"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "*",
+    "@repo/utils": "*",
+    "@types/node": "*",
+    "drizzle-orm": "*",
+    "eslint": "*",
+    "tsup": "*",
+    "typescript": "*",
+    "vitest-mock-extended": "^3.1.0",
+    "wrangler": "*",
+    "zod": "*"
+  },
+  "dependencies": {
+    "@repo/query": "*",
+    "@trpc/server": "^11.0.0-rc.819",
+    "@worker-tools/request-cookie-store": "^0.6.0-pre.3",
+    "vitest": "^3.1.1"
+  },
+  "peerDependencies": {
+    "@repo/utils": "*",
+    "drizzle-orm": "*",
+    "zod": "*"
+  }
+}

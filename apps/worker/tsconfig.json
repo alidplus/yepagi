@@ -15,6 +15,7 @@
 		/* Specify type package names to be included without being referenced in a source file. */
 		"types": [
 			"@cloudflare/workers-types/2023-07-01",
+			"@repo/cloudflare/worker",
 			"node"
 		],
 		/* Enable importing .json files */
@@ -43,5 +44,5 @@
 		"experimentalDecorators": true
 	},
 	"exclude": ["test"],
-	"include": ["env.d.ts", "src"]
+	"include": ["src"]
 }

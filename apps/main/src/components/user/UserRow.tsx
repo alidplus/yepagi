@@ -1,4 +1,4 @@
-import { useTRPC } from "@repo/context/client";
+import { useTRPC } from "@/trpc/client";
 import * as defs from "@repo/defs";
 import { useQueryClient, useMutation } from "@tanstack/react-query";
 

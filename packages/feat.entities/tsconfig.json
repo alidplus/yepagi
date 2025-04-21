@@ -1,7 +1,14 @@
 {
-  "files": [],
-  "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" },
-  ]
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "@repo/typescript/nextjs.json",
+  "compilerOptions": {
+    "types": [
+			"@repo/cloudflare/worker"
+    ],
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
 }

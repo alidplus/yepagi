@@ -4,8 +4,8 @@
   "private": true,
   "type": "module",
   "exports": {
-    "./client": {
-      "import": "./dist/client.js",
+    ".": {
+      "import": "./dist/index.js",
       "types": "./dist/lib/index.d.ts"
     },
     "./package.json": "./package.json"
@@ -23,7 +23,7 @@
     "@tanstack/react-form": "*",
     "lodash": "*",
     "lodash-es": "*",
-    "next": "15.2.4",
+    "next": "15.3.1",
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "zod": "*"
@@ -51,7 +51,7 @@
     "vite-tsconfig-paths": "^5.1.4"
   },
   "optionalDependencies": {
-    "@repo/defs": "workspace:^"
+    "@repo/defs": "*"
   },
   "dependencies": {
     "@rjsf/core": "^5.24.8",

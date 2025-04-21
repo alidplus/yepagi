@@ -1,12 +1,10 @@
 import * as defs from '@repo/defs';
-import { TRPCError } from '@trpc/server';
 import AuthService from './jwt';
 import { assertProtectedProcedure, Context } from '../context';
 import { eq } from 'drizzle-orm';
 import bcrypt from 'bcryptjs';
 import UsersController from '../users/controller';
-import { getTrpcError } from '../utils/errors';
-import { TGeneralSuccesResponse } from '../utils/schema';
+import { TGeneralSuccesResponse, getTrpcError, TRPCError } from '@repo/rpc.core';
 import JWT from './jwt';
 
 const users = defs.users.table;

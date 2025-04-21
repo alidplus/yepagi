@@ -1,11 +1,10 @@
-// import { HydrateClient, prefetch, trpc } from "@/lib/trpc/server";
-import { HydrateClient } from "@/lib/index.server";
 import HomeClient from "./client";
+import { HydrateClient, prefetch, trpc } from "./server/prefetch";
 
 export default async function Home() {
-  // prefetch(trpc.auth.whoami.queryOptions())
+  prefetch(trpc.hello.queryOptions())
   return (
-    <HydrateClient>
+    <HydrateClient debug>
       <HomeClient />
     </HydrateClient>
   );

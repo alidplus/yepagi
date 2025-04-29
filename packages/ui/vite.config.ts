@@ -37,10 +37,6 @@ export default defineConfig({
         viteStaticCopy({
           targets: [
             {
-              src: "./src/three-way-theme-toggle.js",
-              dest: ".",
-            },
-            {
               src: "src/global.css",
               dest: ".",
             },

@@ -5,5 +5,9 @@
   },
   "typescript.updateImportsOnPaste.enabled": false,
   "javascript.updateImportsOnPaste.enabled": false,
-  "typescript.tsdk": "node_modules/typescript/lib"
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "tailwindCSS.experimental.configFile": "/home/eudaimonia/www/yepagi/packages/ui/src/global.css",
+  "tailwindCSS.experimental.classRegex": [
+    ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"]
+  ]
 }

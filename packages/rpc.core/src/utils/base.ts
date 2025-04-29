@@ -1,14 +1,8 @@
-import { eq } from 'drizzle-orm';
+import { formatQuery } from '@repo/query/server';
+import { eq, sql } from 'drizzle-orm';
 import { SQLiteTableWithColumns, TableConfig } from 'drizzle-orm/sqlite-core';
 import { Context } from '../context';
-import { formatQuery, type FormatQueryOptions } from '@repo/query/server';
 import { TQueryRequest } from './schema';
-import { sql } from 'drizzle-orm';
-
-const qopts: FormatQueryOptions = {
-	format: 'parameterized',
-	parseNumbers: true,
-};
 
 export abstract class BaseCtrl {
 	constructor(protected ctx: Context) {
@@ -24,11 +18,6 @@ export abstract class CRUD<Select, Insert, Patch> {
 	abstract delete(id: number): Promise<Select>;
 	// abstract query(filters: unknown): Promise<Select[]>;
 }
-
-const empty = {
-	combinator: 'and',
-	rules: [],
-};
 
 export abstract class BaseCRUD<T extends SQLiteTableWithColumns<TableConfig>, Select, Insert, Patch>
 	extends BaseCtrl

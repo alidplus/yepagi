@@ -1,20 +1,24 @@
 {
   "name": "mob",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.2",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "yarn run build && wrangler deploy"
   },
   "dependencies": {
     "@repo/ui": "*",
+    "@repo/utils": "workspace:^",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "wouter": "^3.7.0"
   },
   "devDependencies": {
+    "@cloudflare/vite-plugin": "^1.1.0",
     "@eslint/js": "^9.18.0",
     "@tailwindcss/vite": "^4.1.5",
     "@types/react": "^19.0.8",
@@ -33,7 +37,8 @@
     "vite": "^6.0.11",
     "vite-plugin-pwa": "^1.0.0",
     "workbox-core": "^7.3.0",
-    "workbox-window": "^7.3.0"
+    "workbox-window": "^7.3.0",
+    "wrangler": "*"
   },
   "resolutions": {
     "sharp": "0.32.6",

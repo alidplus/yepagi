@@ -1,0 +1,19 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "dev.workers.qrbni.venli_pwa_app.twa",
+      "sha256_cert_fingerprints": ["0D:A9:27:98:BA:70:40:3F:8F:86:6B:6F:68:2F:A0:33:33:E1:AA:2D:AC:69:B8:62:72:91:53:56:7A:5E:D5:4A"]
+    }
+  },
+  {
+    "relation": [
+      "check_validation"
+    ],
+    "target": {
+      "namespace": "cafebazaar_twa",
+      "package_name": "dev.workers.qrbni.venli_pwa_app.twa"
+    }
+  }
+]

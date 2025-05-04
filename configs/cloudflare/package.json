@@ -11,13 +11,18 @@
     "./worker": {
       "types": "./worker.env.d.ts"
     },
+    "./app/wrangler.jsonc": "./app.wrangler.jsonc",
+    "./app": {
+      "types": "./app.env.d.ts"
+    },
     "./package.json": "./package.json"
   },
   "scripts": {
     "wr": "wrangler --persist-to ../../.wrangler/state",
     "build:page": "wrangler --c ./page.wrangler.jsonc types --env-interface CloudflareEnv page.env.d.ts",
     "build:worker": "wrangler --c ./worker.wrangler.jsonc types --env-interface CloudflareEnv worker.env.d.ts",
-    "build": "yarn build:page && yarn build:worker"
+    "build:app": "wrangler --c ./app.wrangler.jsonc types --env-interface CloudflareEnv app.env.d.ts",
+    "build": "yarn build:page && yarn build:worker && yarn build:app"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20250224.0",

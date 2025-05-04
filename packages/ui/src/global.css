@@ -7,5 +7,8 @@
 @plugin "@tailwindcss/typography";
 @import "tailwindcss-animated";
 
+@theme {
+  --default-font-family: "Vazirmatn", "sans-serif";
+}
 
 /* @custom-variant dark (&:where(.dark, .dark *)); */

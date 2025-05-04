@@ -3,25 +3,14 @@
   "version": "0.0.0",
   "type": "module",
   "files": [
-    "./dist"
+    "./src"
   ],
   "exports": {
     ".": {
-      "style": "./dist/global.css"
-    },
-    "./skeleton": {
-      "import": "./dist/skeleton.js",
-      "types": "./dist/skeleton/index.d.ts"
-    },
-    "./atoms": {
-      "import": "./dist/atoms.js",
-      "types": "./dist/atoms/index.d.ts"
-    },
-    "./molecules": {
-      "import": "./dist/molecules.js",
-      "types": "./dist/molecules/index.d.ts"
-    },
-    "./package.json": "./package.json"
+      "style": "./src/global.css",
+      "import": "./src/atoms.ts",
+      "types": "./src/atoms.ts"
+    }
   },
   "scripts": {
     "build": "tsc -b && vite build",

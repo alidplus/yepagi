@@ -1,4 +1,4 @@
-import { Icon } from "@repo/ui/atoms";
+import { Icon } from "@repo/ui";
 import Link from "next/link";
 
 export default async function HomePage({

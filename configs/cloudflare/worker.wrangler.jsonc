@@ -1,0 +1,36 @@
+/**
+ * For more details on how to configure Wrangler, refer to:
+ * https://developers.cloudflare.com/workers/wrangler/configuration/
+ */
+ {
+	"$schema": "../../node_modules/wrangler/config-schema.json",
+	"name": "venli-rpc-worker",
+	"main": "src/index.ts",
+	"compatibility_date": "2025-02-24",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+	"observability": {
+		"enabled": true
+	},
+  "dev": {
+    "port": 3030
+  },
+  "d1_databases": [{
+    "binding": "DB",
+    "database_id": "1ca56b95-736c-4e1f-a0ad-724f49728850",
+    "database_name": "venli-dev-db",
+    "migrations_table": "drizzle",
+    "migrations_dir": "drizzle"
+  }],
+  "kv_namespaces": [
+    {
+      "binding": "NS",
+      "id": "89cf89cd195945efaf4bfe854f79373c"
+    }
+  ],
+  "vars": {
+    "ACCESS_TOKEN_SECRET": "780db420217dae19db5e94da85313edbca34c96a35c7798d91b307e9a1c008798ec9098f12d70c4dbd29ee15d7e2c2db33dd2788a6289a904db5e99673ef54faab8cfe24042d83897629777da4a914516ac3c74c3c477fbfc556d1c322640eef9668d78932e85f4778e20b1db919806252daeafa2a5a0d66723332690455b4f2",
+    "REFRESH_TOKEN_SECRET": "8fa105e8f4c4106424353c030ed72b78ac7e099f1805c6611d0286ea3014640b38ee86ddf9ee5c7175db87a976d50bace291ceb68e9dc010d7c4c36cda087e8a3c189916763220340f8f7e94a99c48b7ecb7ed8006b16a84ae8f363b8ac55f22fbdf68a5768f62837c207e5d38c4a56c06328cd482ebff83de8dacb37557c145"
+  }
+}

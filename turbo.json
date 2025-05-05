@@ -1,5 +1,8 @@
 {
   "$schema": "https://turbo.build/schema.json",
+  "globalDependencies": [".env"],
+  "envMode": "loose",
+  "ui": "tui",
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
@@ -10,10 +13,8 @@
       "outputs": [".next/**", "!.next/cache/**"]
     },
     "dev": {
-      "persistent": true,
-      "cache": false
+      "persistent": true
     },
-    "typegen": {
-    }
+    "lint": {}
   }
 }

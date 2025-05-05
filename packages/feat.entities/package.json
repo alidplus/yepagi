@@ -1,0 +1,60 @@
+{
+  "name": "@repo/feat.entities",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./client": {
+      "import": "./dist/client.js",
+      "types": "./dist/lib/index.client.d.ts"
+    },
+    "./rpc": {
+      "import": "./dist/rpc.js",
+      "types": "./dist/lib/index.rpc.d.ts"
+    },
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "tsc -b && vite build",
+    "analyzer": "vite build -m analyzer",
+    "build:hot": "turbo watch build",
+    "lint": "next lint"
+  },
+  "peerDependencies": {
+    "@repo/defs": "*",
+    "@repo/feat.context": "*",
+    "@repo/rpc.core": "*",
+    "@repo/utils": "*",
+    "next": "15.3.1",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "server-only": "*",
+    "zod": "*"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@repo/autoform": "*",
+    "@repo/defs": "*",
+    "@repo/feat.context": "*",
+    "@repo/gridview": "*",
+    "@repo/query": "*",
+    "@repo/rpc.core": "*",
+    "@repo/utils": "*",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@vitejs/plugin-react": "*",
+    "drizzle-orm": "*",
+    "eslint": "^9",
+    "eslint-config-next": "15.2.4",
+    "next": "^15.2.4",
+    "server-only": "^0.0.1",
+    "typescript": "*",
+    "vite": "*",
+    "vite-bundle-analyzer": "^0.18.1",
+    "vite-tsconfig-paths": "*",
+    "wrangler": "*",
+    "zod": "^3.24.3"
+  }
+}

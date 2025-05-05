@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400..700&family=Vazirmatn:wght@100..900&display=swap');
+
+@import "tailwindcss";
+@plugin "daisyui" {
+  themes: winter --default;
+}
+@plugin "@tailwindcss/typography";
+@import "tailwindcss-animated";
+
+@theme {
+  --default-font-family: "Vazirmatn", "sans-serif";
+}
+
+/* @custom-variant dark (&:where(.dark, .dark *)); */

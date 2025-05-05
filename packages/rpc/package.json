@@ -1,0 +1,57 @@
+{
+  "name": "@repo/rpc",
+  "version": "0.0.0",
+  "private": true,
+  "types": "./types/router.d.ts",
+  "type": "module",
+  "files": [
+    "./dist"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "wr": "wrangler --persist-to ../../.wrangler/state",
+    "dev": "yarn wr dev",
+    "deploy": "wrangler deploy",
+    "lint": "eslint . --fix",
+    "build": "tsup",
+    "build:hot": "turbo watch build",
+    "start": "wrangler dev --remote",
+    "test": "vitest",
+    "dts": "tsc -p ./tsgenconfig.json",
+    "typegen": "wrangler types --env-interface CloudflareEnv env.d.ts && yarn dts"
+  },
+  "devDependencies": {
+    "@cloudflare/vitest-pool-workers": "^0.6.4",
+    "@cloudflare/workers-types": "*",
+    "@repo/rpc.core": "*",
+    "@types/http-errors": "^2.0.4",
+    "@types/jsonwebtoken": "^9",
+    "better-sqlite3": "^11.8.1",
+    "drizzle-kit": "^0.30.5",
+    "eslint": "*",
+    "tsup": "*",
+    "typescript": "*",
+    "vitest": "^3.0.8",
+    "wrangler": "*"
+  },
+  "dependencies": {
+    "@repo/defs": "*",
+    "@worker-tools/request-cookie-store": "^0.6.0-pre.3",
+    "bcryptjs": "^3.0.2",
+    "dotenv": "^16.4.7",
+    "drizzle-orm": "*",
+    "drizzle-zod": "^0.7.0",
+    "http-errors": "^2.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "zod": "*"
+  },
+  "peerDependencies": {
+    "@repo/rpc.core": "*"
+  }
+}

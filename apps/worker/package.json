@@ -1,0 +1,35 @@
+{
+  "name": "worker",
+  "version": "0.0.0",
+  "private": true,
+  "types": "./types/router.d.ts",
+  "scripts": {
+    "wr": "wrangler --cwd ../..",
+    "dev": "yarn wr dev",
+    "deploy": "wrangler deploy",
+    "start": "wrangler dev --remote",
+    "test": "vitest"
+  },
+  "devDependencies": {
+    "@cloudflare/vitest-pool-workers": "^0.6.4",
+    "@cloudflare/workers-types": "*",
+    "@types/http-errors": "^2.0.4",
+    "@types/jsonwebtoken": "^9",
+    "better-sqlite3": "^11.8.1",
+    "drizzle-kit": "^0.30.5",
+    "typescript": "*",
+    "vitest": "^3.0.8",
+    "wrangler": "*"
+  },
+  "dependencies": {
+    "@repo/defs": "*",
+    "@worker-tools/request-cookie-store": "^0.6.0-pre.3",
+    "bcryptjs": "^3.0.2",
+    "dotenv": "^16.4.7",
+    "drizzle-orm": "^0.40.0",
+    "drizzle-zod": "^0.7.0",
+    "http-errors": "^2.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "zod": "^3.24.2"
+  }
+}

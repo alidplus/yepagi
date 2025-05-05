@@ -9,11 +9,13 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
+    "wr": "wrangler",
     "deploy": "yarn run build && wrangler deploy"
   },
   "dependencies": {
     "@repo/ui": "*",
     "@repo/utils": "workspace:^",
+    "@tanstack/react-store": "^0.7.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "wouter": "^3.7.0"

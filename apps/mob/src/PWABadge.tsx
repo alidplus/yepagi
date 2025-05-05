@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { useRegisterSW } from 'virtual:pwa-register/react'
 
 function PWABadge() {
@@ -20,6 +21,14 @@ function PWABadge() {
       }
     },
   })
+
+  useEffect(() => {
+    if ('navigator' in window) {
+      if ('setAppBadge' in navigator) {
+        navigator.setAppBadge(1)
+      }
+    }
+  }, [])
 
   function close() {
     setNeedRefresh(false)

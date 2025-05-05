@@ -22611,6 +22611,7 @@ __metadata:
     "@repo/ui": "npm:*"
     "@repo/utils": "workspace:^"
     "@tailwindcss/vite": "npm:^4.1.5"
+    "@tanstack/react-store": "npm:^0.7.0"
     "@types/react": "npm:^19.0.8"
     "@types/react-dom": "npm:^19.0.3"
     "@vite-pwa/assets-generator": "npm:^0.2.6"

@@ -2,7 +2,7 @@
 
 @import "tailwindcss";
 @plugin "daisyui" {
-  themes: winter --default;
+  themes: light --default, dark --prefersdark;
 }
 @plugin "@tailwindcss/typography";
 @import "tailwindcss-animated";
@@ -10,5 +10,3 @@
 @theme {
   --default-font-family: "Vazirmatn", "sans-serif";
 }
-
-/* @custom-variant dark (&:where(.dark, .dark *)); */

@@ -78,8 +78,8 @@ export default function Dock() {
       </Link>
 
       <Link
-        href="/settings"
-        className={cn({ 'dock-active': location === '/settings' })}
+        href="/stat"
+        className={cn({ 'dock-active': location === '/stat' })}
       >
         <svg
           className="size-[1.2em]"
@@ -107,7 +107,7 @@ export default function Dock() {
             ></path>
           </g>
         </svg>
-        <span className="dock-label">تنضیمات</span>
+        <span className="dock-label">درباره ما</span>
       </Link>
     </div>
   )

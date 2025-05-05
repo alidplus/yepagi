@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "gen:assets": "pwa-assets-generator",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",

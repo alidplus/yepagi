@@ -22608,6 +22608,7 @@ __metadata:
   dependencies:
     "@cloudflare/vite-plugin": "npm:^1.1.0"
     "@eslint/js": "npm:^9.18.0"
+    "@repo/feat.context": "npm:*"
     "@repo/ui": "npm:*"
     "@repo/utils": "workspace:^"
     "@tailwindcss/vite": "npm:^4.1.5"

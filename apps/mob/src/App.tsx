@@ -4,6 +4,7 @@ import AppLayout from './Layout/AppLayout'
 import BrandLoading from './Layout/BrandLoading'
 import Home from './pages/Home'
 import { ThemeSwitch } from './Layout/SideBar'
+import { TRPCReactProvider } from './trpc/client'
 
 const Login = lazy(() => import('./pages/Login'))
 const Register = lazy(() => import('./pages/Register'))
@@ -44,24 +45,26 @@ function withFullLayout(Component: ComponentType) {
 
 export default function App() {
   return (
-    <Router>
-      <Route
-        path={/\/settings\/?.*/i}
-        component={withAppLayout(Settings, 'تنظیمات', false)}
-      />
-      <Route
-        path={/\/project\/\w+/i}
-        component={withAppLayout(Project, 'پروژه')}
-      />
-      <Route path="/inbox" component={withAppLayout(Notifs, 'پیام‌ها')} />
-      <Route path="/stat" component={withAppLayout(Stat, 'درباره‌ما')} />
-      <Route path="/login" component={withFullLayout(Login)} />
-      <Route path="/register" component={withFullLayout(Register)} />
-      <Route path="/">
-        <AppLayout isMain>
-          <Home />
-        </AppLayout>
-      </Route>
-    </Router>
+    <TRPCReactProvider>
+      <Router>
+        <Route
+          path={/\/settings\/?.*/i}
+          component={withAppLayout(Settings, 'تنظیمات', false)}
+        />
+        <Route
+          path={/\/project\/\w+/i}
+          component={withAppLayout(Project, 'پروژه')}
+        />
+        <Route path="/inbox" component={withAppLayout(Notifs, 'پیام‌ها')} />
+        <Route path="/stat" component={withAppLayout(Stat, 'درباره‌ما')} />
+        <Route path="/login" component={withFullLayout(Login)} />
+        <Route path="/register" component={withFullLayout(Register)} />
+        <Route path="/">
+          <AppLayout isMain>
+            <Home />
+          </AppLayout>
+        </Route>
+      </Router>
+    </TRPCReactProvider>
   )
 }

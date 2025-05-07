@@ -13,6 +13,7 @@
     "deploy": "yarn run build && wrangler deploy"
   },
   "dependencies": {
+    "@repo/feat.context": "*",
     "@repo/ui": "*",
     "@repo/utils": "workspace:^",
     "@tanstack/react-store": "^0.7.0",

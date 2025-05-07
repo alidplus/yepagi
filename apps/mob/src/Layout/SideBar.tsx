@@ -15,11 +15,11 @@ export default function SideBar() {
       </figure>
       <div className="avatar avatar-placeholder relative -mt-16 flex justify-center">
         <div className="ring-primary ring-offset-base-100 w-24 rounded-full bg-white ring-2 ring-offset-2">
-          <img src="https://img.daisyui.com/images/profile/demo/spiderperson@192.webp" />
+          <img src="https://img.daisyui.com/images/profile/demo/2@94.webp" />
           {/* <span className="text-3xl">AG</span> */}
         </div>
       </div>
-      <h1 className="mt-4 text-center font-bold">مهندس فلانی فلانی</h1>
+      <h1 className="mt-4 text-center font-bold">مهندس ایوب اصل</h1>
       <div className="card-body flex flex-1 flex-col p-2">
         <div className="flex items-center">
           <div className="divider w-8" />

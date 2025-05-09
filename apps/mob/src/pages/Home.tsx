@@ -6,7 +6,7 @@ export default function Home() {
           <img src="/arch-eng.jpg" className="w-full rounded-lg shadow-2xl" />
         </div>
         <div>
-          <h1 className="text-5xl font-bold">نرم افزار مهندسی مهدیار</h1>
+          <h1 className="text-5xl font-bold">نرم افزار مهندسی ساخت هوشمند</h1>
           <p className="py-6">
             با کمال خوشحالی به اطلاع می‌رسانیم که نرم‌افزار جدید و پیشرفته
             دستیار مهندسی ما به‌زودی منتشر خواهد شد! این نرم‌افزار با هدف تسهیل

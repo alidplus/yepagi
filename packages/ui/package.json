@@ -20,12 +20,12 @@
     "@tailwindcss/typography": "^0.5.16",
     "daisyui": "^5.0.35",
     "tailwindcss": "^4.1.5",
-    "tailwindcss-animated": "^2.0.0"
+    "tailwindcss-motion": "^1.1.0"
   },
   "peerDependencies": {
     "@tailwindcss/typography": "*",
     "daisyui": "*",
     "tailwindcss": "*",
-    "tailwindcss-animated": "*"
+    "tailwindcss-motion": "*"
   }
 }

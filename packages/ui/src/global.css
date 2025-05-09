@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400..700&family=Vazirmatn:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&family=Noto+Naskh+Arabic:wght@400..700');
 
 @import "tailwindcss";
 @plugin "daisyui" {
   themes: light --default, dark --prefersdark;
 }
 @plugin "@tailwindcss/typography";
-@import "tailwindcss-animated";
+@plugin "tailwindcss-motion";
 
 @theme {
   --default-font-family: "Vazirmatn", "sans-serif";

@@ -1,4 +1,4 @@
-export default function Home() {
+export default function Projects() {
   return (
     <div className="-mx-2 flex flex-col gap-2">
       <figure className="relative block">

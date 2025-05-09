@@ -1,4 +1,6 @@
+import { SignedIn, UserButton } from '@clerk/clerk-react'
 import { PropsWithChildren } from 'react'
+import { useLocation } from 'wouter'
 import Dock from './Dock'
 import SideBar from './SideBar'
 
@@ -12,12 +14,13 @@ export default function AppLayout({
   isMain,
   title = 'خانه',
 }: PropsWithChildren<AppLayoutProps>) {
+  const [, navigate] = useLocation()
   return (
-    <div className="drawer">
+    <div className="drawer min-h-screen">
       <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-content flex flex-col">
+      <div className="drawer-content flex min-h-screen flex-col">
         {/* Navbar */}
-        <div className="navbar bg-base-300 sticky top-0 z-10 w-full">
+        <div className="navbar bg-base-300 sticky top-0 z-10 w-full pe-4">
           <div className="flex-none lg:hidden">
             <label
               htmlFor="my-drawer-3"
@@ -40,12 +43,32 @@ export default function AppLayout({
             </label>
           </div>
           <div className="mx-2 flex-1 px-2">{title}</div>
-          {isMain ? null : <BackButton />}
+          {isMain ? (
+            <SignedIn>
+              <UserButton
+                showName
+                userProfileMode="navigation"
+                userProfileUrl="/profile"
+              >
+                <UserButton.MenuItems>
+                  <UserButton.Action
+                    label="امنیت حساب"
+                    labelIcon={<span>2</span>}
+                    onClick={() => {
+                      navigate('/profile/security')
+                    }}
+                  />
+                </UserButton.MenuItems>
+              </UserButton>
+            </SignedIn>
+          ) : (
+            <BackButton />
+          )}
         </div>
-        <div className="px-2">{children}</div>
+        <div className="flex-1">{children}</div>
         {isMain && (
           <>
-            <div className="mb-12"></div>
+            <div className="mb-16"></div>
             <Dock />
           </>
         )}

@@ -26,7 +26,7 @@ function App() {
               </svg>
             </label>
           </div>
-          <div className="mx-2 flex-1 px-2">مهدیار</div>
+          <div className="mx-2 flex-1 px-2">ساخت هوشمند</div>
           <div className="hidden flex-none lg:block">
             <ul className="menu menu-horizontal">
               {/* Navbar menu content here */}
@@ -46,7 +46,7 @@ function App() {
               className="max-w-sm rounded-lg shadow-2xl"
             />
             <div>
-              <h1 className="text-5xl font-bold">نرم افزار مهندسی مهدیار</h1>
+              <h1 className="text-5xl font-bold">نرم افزار مهندسی ساخت هوشمند</h1>
               <p className="py-6">
                 با کمال خوشحالی به اطلاع می‌رسانیم که نرم‌افزار جدید و پیشرفته
                 دستیار مهندسی ما به‌زودی منتشر خواهد شد! این نرم‌افزار با هدف

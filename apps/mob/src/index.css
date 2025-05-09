@@ -1,3 +1,7 @@
 @import "@repo/ui";
 
 @source ".";
+
+.cl-input, .cl-phoneInputBox { direction: ltr }
+.cl-main svg { transform: rotateY(180deg); }
+/* [class^='cl-internal-'] { display: none; } */

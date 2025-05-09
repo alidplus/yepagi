@@ -1,13 +1,20 @@
+import {
+  RedirectToSignIn,
+  SignedIn,
+  SignedOut,
+  SignIn,
+  SignUp,
+  useUser,
+  Waitlist,
+} from '@clerk/clerk-react'
 import { ComponentType, lazy, Suspense } from 'react'
-import { Route, Router } from 'wouter'
+import { Redirect, Route, Router } from 'wouter'
 import AppLayout from './Layout/AppLayout'
 import BrandLoading from './Layout/BrandLoading'
-import Home from './pages/Home'
 import { ThemeSwitch } from './Layout/SideBar'
-import { TRPCReactProvider } from './trpc/client'
-
-const Login = lazy(() => import('./pages/Login'))
-const Register = lazy(() => import('./pages/Register'))
+import Home from './pages/Home'
+import Profile from './pages/Profile'
+import OnBoarding, { Metadata } from './pages/onboarding'
 
 const Settings = lazy(() => import('./pages/Settings'))
 const Notifs = lazy(() => import('./pages/Notifs'))
@@ -44,27 +51,68 @@ function withFullLayout(Component: ComponentType) {
 }
 
 export default function App() {
+  const { user } = useUser()
+  const { role, field } = (user?.unsafeMetadata ?? {}) as Partial<Metadata>
+
+  const needsOnboarding = !role || !field
+
+  const saveUserMetadata = (metadata: Metadata) => {
+    user?.update({ unsafeMetadata: { ...user?.unsafeMetadata, ...metadata } })
+    user?.reload()
+  }
+
   return (
-    <TRPCReactProvider>
-      <Router>
+    <Router>
+      <SignedIn>
+        <Route path="/signin">
+          <Redirect to="/profile" />
+        </Route>
+        <Route path="/signup">
+          <Redirect to="/profile" />
+        </Route>
         <Route
-          path={/\/settings\/?.*/i}
-          component={withAppLayout(Settings, 'تنظیمات', false)}
+          path={/\/profile(\/\w+)?/i}
+          component={withAppLayout(Profile, 'پنل کاربری', false)}
         />
+        {needsOnboarding ? (
+          <Route path="/">
+            <OnBoarding
+              onFinish={saveUserMetadata}
+              metadata={{ field, role }}
+            />
+          </Route>
+        ) : (
+          <>
+            <Route path="/" component={withAppLayout(Project, 'پروژه')} />
+            <Route
+              path={/\/project(\/\w+)?/i}
+              component={withAppLayout(Project, 'پروژه')}
+            />
+          </>
+        )}
+      </SignedIn>
+
+      <SignedOut>
+        <Route path="/signin" component={withFullLayout(SignIn)} />
+        <Route path="/signup" component={withFullLayout(SignUp)} />
         <Route
-          path={/\/project\/\w+/i}
-          component={withAppLayout(Project, 'پروژه')}
+          path={/\/profile(\/\w+)?/i}
+          component={withFullLayout(RedirectToSignIn)}
         />
-        <Route path="/inbox" component={withAppLayout(Notifs, 'پیام‌ها')} />
-        <Route path="/stat" component={withAppLayout(Stat, 'درباره‌ما')} />
-        <Route path="/login" component={withFullLayout(Login)} />
-        <Route path="/register" component={withFullLayout(Register)} />
         <Route path="/">
           <AppLayout isMain>
             <Home />
           </AppLayout>
         </Route>
-      </Router>
-    </TRPCReactProvider>
+      </SignedOut>
+
+      <Route path="/joinus" component={withFullLayout(Waitlist)} />
+      <Route path="/inbox" component={withAppLayout(Notifs, 'پیام‌ها')} />
+      <Route path="/stat" component={withAppLayout(Stat, 'درباره‌ما')} />
+      <Route
+        path={/\/settings(\/\w+)?/i}
+        component={withAppLayout(Settings, 'تنظیمات', false)}
+      />
+    </Router>
   )
 }

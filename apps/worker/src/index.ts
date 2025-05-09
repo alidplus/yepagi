@@ -13,8 +13,34 @@
 
 import { appRouter, fetchRequestHandler, createWorkerContext } from "@repo/rpc";
 
-export default {
-  async fetch(request, env, ctx): Promise<Response> {
+type T = ExportedHandler<CloudflareEnv>
+
+
+class Worker implements T {
+  constructor() {
+    console.log('.................Worker', {
+      ALL: process.env, SEC: process.env.DEEP_ENV_SECRET, ENV: process.env.NODE_ENV
+    });
+  }
+  tail() {
+    console.log('.................tail');
+  }
+  trace() {
+    console.log('.................trace');
+  }
+  scheduled() {
+    console.log('.................scheduled');
+  }
+  test() {
+    console.log('.................test');
+  }
+  email() {
+    console.log('.................email');
+  }
+  queue() {
+    console.log('.................queue');
+  }
+  fetch: T['fetch'] = async (request, env, ctx) => {
     const isMockCall = !!request.headers.get('x-mock-api-call')
     process.env.ACCESS_TOKEN_SECRET = env.ACCESS_TOKEN_SECRET
     process.env.REFRESH_TOKEN_SECRET = env.REFRESH_TOKEN_SECRET
@@ -120,5 +146,8 @@ export default {
     } else {
       return rawHtmlResponse(DEMO_PAGE);
     }
-  },
-} satisfies ExportedHandler<CloudflareEnv>;
+  }
+}
+
+const w = new Worker()
+export default w

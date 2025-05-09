@@ -1,10 +1,11 @@
 import { FormEvent } from 'react'
-import { Link, useLocation } from 'wouter'
+import { Link } from 'wouter'
+import supabase from '../api/supabase'
 
 export default function Login() {
-  const [, setLocation] = useLocation()
+  // const [, setLocation] = useLocation()
 
-  const handleLogin = (e: FormEvent<HTMLFormElement>) => {
+  const handleLogin = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const formData = new FormData(e.currentTarget)
     const email = formData.get('email') as string
@@ -13,7 +14,15 @@ export default function Login() {
       alert('لطفا ایمیل و رمز عبور را وارد کنید')
       return
     }
-    setLocation('/')
+    try {
+      const { data } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      })
+      console.log('login success', data)
+    } catch (e) {
+      console.log('login error', e)
+    }
   }
 
   return (

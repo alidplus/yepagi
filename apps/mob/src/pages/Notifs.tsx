@@ -1,4 +1,11 @@
+// import { useQuery } from '@tanstack/react-query'
+// import { useTRPC } from '../api/client'
+
 export default function Notifs() {
+  // const trpc = useTRPC()
+  // const qop = trpc.user.list.queryOptions({})
+  // const q = useQuery(qop)
+
   return (
     <div className="px-2 py-8">
       <div className="stack w-full">

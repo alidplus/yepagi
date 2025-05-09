@@ -4,9 +4,21 @@ import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import { cloudflare } from '@cloudflare/vite-plugin'
 import { icons } from './icons.json'
+console.log(process.env.VITE_CLERK_SECRET_KEY)
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  server: {
+    port: 3000,
+    proxy: {
+      // This will proxy any requests starting with /api to localhost:5000
+      '/trpc': {
+        target: 'http://localhost:3030', // Replace with your backend server address
+        changeOrigin: true, // To change the request origin
+        // rewrite: (path) => path.replace(/^\/api/, ''), // Optional: Remove /api prefix
+      },
+    },
+  },
   plugins: [
     react(),
     tailwindcss(),

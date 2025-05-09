@@ -38,6 +38,7 @@
     "@eslint/eslintrc": "^3",
     "@repo/rpc": "*",
     "@tanstack/query-core": "^5.71.10",
+    "@tanstack/react-query": "^5.75.5",
     "@tanstack/react-store": "^0.7.0",
     "@trpc/client": "^11.0.2",
     "@trpc/react-query": "^11.0.2",

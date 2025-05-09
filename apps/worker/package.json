@@ -4,8 +4,8 @@
   "private": true,
   "types": "./types/router.d.ts",
   "scripts": {
-    "wr": "wrangler --cwd ../..",
-    "dev": "yarn wr dev",
+    "wr": "wrangler --cwd ../../ --config ./configs/cloudflare/worker.wrangler.jsonc",
+    "dev": "yarn wr dev ./apps/worker/src/index.ts",
     "deploy": "wrangler deploy",
     "start": "wrangler dev --remote",
     "test": "vitest"

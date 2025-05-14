@@ -1,8 +1,10 @@
 import { SignedIn, SignedOut, useUser } from '@clerk/clerk-react'
 import { cn } from '@repo/utils'
 import { useEffect, useMemo, useRef } from 'react'
-import { Link } from 'wouter'
 import { useLocalStorage } from '../hooks/useLocalStorage'
+import { useQuery } from '@tanstack/react-query'
+import { useSupabase } from '../context'
+import { Link } from 'react-router'
 
 export default function SideBar() {
   const { user, isSignedIn } = useUser()
@@ -52,33 +54,25 @@ export default function SideBar() {
           </button>
         </div>
         <ul className="menu w-full p-0 [&_li>*]:rounded-none">
+          <MyProjectsList />
           <li>
-            <Link asChild to="/project/a">
-              <button>پروژه مرزداران</button>
-            </Link>
-          </li>
-          <li>
-            <Link asChild to="/project/b">
-              <button>پروژه اندیشه</button>
-            </Link>
-          </li>
-          <li>
-            <Link asChild to="/project/c">
-              <button className="btn btn-ghost btn-primary btn-block">
-                <svg
-                  className="size-4 stroke-current"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M4 12H20M12 4V20"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-                پروژه جدید
-              </button>
+            <Link
+              className="btn btn-ghost btn-primary btn-block"
+              to="/project/c"
+            >
+              <svg
+                className="size-4 stroke-current"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M4 12H20M12 4V20"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+              <span>پروژه جدید</span>
             </Link>
           </li>
         </ul>
@@ -86,18 +80,40 @@ export default function SideBar() {
         <ul>
           <SignedIn>
             <li>
-              <Link href="/settings">تنظیمات</Link>
+              <Link to="/settings">تنظیمات</Link>
             </li>
           </SignedIn>
           <SignedOut>
             <li>
-              <Link href="/signin">ورود</Link>
+              <Link to="/signin">ورود</Link>
             </li>
           </SignedOut>
         </ul>
         <div className="flex-1"></div>
       </div>
     </div>
+  )
+}
+
+function MyProjectsList() {
+  const supabase = useSupabase()
+  const q = useQuery({
+    queryKey: ['projects'],
+    async queryFn() {
+      const { data } = await supabase.from('projects').select()
+      return data
+    },
+  })
+  return (
+    <>
+      {q.data?.map((r) => (
+        <li key={r.id}>
+          <Link to={`/project/${r.id}`}>
+            <button>{r.title}</button>
+          </Link>
+        </li>
+      ))}
+    </>
   )
 }
 

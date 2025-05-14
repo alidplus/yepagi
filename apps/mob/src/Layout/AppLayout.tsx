@@ -1,8 +1,8 @@
 import { SignedIn, UserButton } from '@clerk/clerk-react'
 import { PropsWithChildren } from 'react'
-import { useLocation } from 'wouter'
 import Dock from './Dock'
 import SideBar from './SideBar'
+import { useNavigate } from 'react-router'
 
 interface AppLayoutProps {
   isMain?: boolean
@@ -14,13 +14,13 @@ export default function AppLayout({
   isMain,
   title = 'خانه',
 }: PropsWithChildren<AppLayoutProps>) {
-  const [, navigate] = useLocation()
+  const navigate = useNavigate()
   return (
-    <div className="drawer min-h-screen">
+    <div className="drawer">
       <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-content flex min-h-screen flex-col">
+      <div className="drawer-content grid h-screen w-screen grid-rows-[min-content_1fr_min-content]">
         {/* Navbar */}
-        <div className="navbar bg-base-300 sticky top-0 z-10 w-full pe-4">
+        <div className="navbar bg-base-300 sticky top-0 z-10 w-full overflow-auto pe-4">
           <div className="flex-none lg:hidden">
             <label
               htmlFor="my-drawer-3"
@@ -65,13 +65,10 @@ export default function AppLayout({
             <BackButton />
           )}
         </div>
-        <div className="flex-1">{children}</div>
-        {isMain && (
-          <>
-            <div className="mb-16"></div>
-            <Dock />
-          </>
-        )}
+        <div className="w-screen overflow-x-hidden overflow-y-auto">
+          {children}
+        </div>
+        {isMain && <Dock />}
       </div>
       <div className="drawer-side z-20">
         <label

@@ -1,19 +1,15 @@
-import {
-  RedirectToSignIn,
-  SignedIn,
-  SignedOut,
-  SignIn,
-  SignUp,
-  useUser,
-  Waitlist,
-} from '@clerk/clerk-react'
-import { ComponentType, lazy, Suspense } from 'react'
-import { Redirect, Route, Router } from 'wouter'
+import { SignIn, SignUp, useUser, Waitlist } from '@clerk/clerk-react'
+import { useQueryClient } from '@tanstack/react-query'
+import { ComponentType, lazy, Suspense, useCallback, useEffect } from 'react'
+import { Route, Routes, useNavigate } from 'react-router'
 import AppLayout from './Layout/AppLayout'
 import BrandLoading from './Layout/BrandLoading'
 import { ThemeSwitch } from './Layout/SideBar'
+import { useSupabase } from './context'
 import Home from './pages/Home'
 import Profile from './pages/Profile'
+import ProjectEdit from './pages/ProjectEdit'
+import ProjectsHome from './pages/ProjectsHome'
 import OnBoarding, { Metadata } from './pages/onboarding'
 
 const Settings = lazy(() => import('./pages/Settings'))
@@ -51,68 +47,92 @@ function withFullLayout(Component: ComponentType) {
 }
 
 export default function App() {
-  const { user } = useUser()
-  const { role, field } = (user?.unsafeMetadata ?? {}) as Partial<Metadata>
+  const { user, isSignedIn } = useUser()
+  const queryClient = useQueryClient()
+  const supabase = useSupabase()
+  const { role, field, defaultPrj } = (user?.unsafeMetadata ??
+    {}) as Partial<Metadata>
 
   const needsOnboarding = !role || !field
 
-  const saveUserMetadata = (metadata: Metadata) => {
-    user?.update({ unsafeMetadata: { ...user?.unsafeMetadata, ...metadata } })
-    user?.reload()
-  }
+  const saveUserMetadata = useCallback(
+    async (metadata: Metadata) => {
+      let prjId = defaultPrj
+      if (!defaultPrj) {
+        const { data } = await supabase
+          .from('projects')
+          .insert({
+            title: 'پروژه من',
+            created_by: user?.id,
+          })
+          .select()
+        if (data && data.length) {
+          prjId = data[0].id
+        }
+      }
 
-  return (
-    <Router>
-      <SignedIn>
-        <Route path="/signin">
-          <Redirect to="/profile" />
-        </Route>
-        <Route path="/signup">
-          <Redirect to="/profile" />
-        </Route>
-        <Route
-          path={/\/profile(\/\w+)?/i}
-          component={withAppLayout(Profile, 'پنل کاربری', false)}
-        />
-        {needsOnboarding ? (
-          <Route path="/">
-            <OnBoarding
-              onFinish={saveUserMetadata}
-              metadata={{ field, role }}
-            />
-          </Route>
-        ) : (
-          <>
-            <Route path="/" component={withAppLayout(Project, 'پروژه')} />
-            <Route
-              path={/\/project(\/\w+)?/i}
-              component={withAppLayout(Project, 'پروژه')}
-            />
-          </>
-        )}
-      </SignedIn>
+      await user?.update({
+        unsafeMetadata: {
+          ...user?.unsafeMetadata,
+          ...metadata,
+          defaultPrj: prjId,
+        },
+      })
+      await user?.reload()
 
-      <SignedOut>
-        <Route path="/signin" component={withFullLayout(SignIn)} />
-        <Route path="/signup" component={withFullLayout(SignUp)} />
-        <Route
-          path={/\/profile(\/\w+)?/i}
-          component={withFullLayout(RedirectToSignIn)}
-        />
-        <Route path="/">
+      queryClient.invalidateQueries({ queryKey: ['projects'] })
+    },
+    [defaultPrj, queryClient, supabase, user]
+  )
+
+  return !isSignedIn ? (
+    <>
+      <Routes>
+        <Route path="/welcome">
           <AppLayout isMain>
             <Home />
           </AppLayout>
         </Route>
-      </SignedOut>
-
-      <Route path="/joinus" component={withFullLayout(Waitlist)} />
-      <Route path="/inbox" component={withAppLayout(Notifs, 'پیام‌ها')} />
-      <Route path="/stat" component={withAppLayout(Stat, 'درباره‌ما')} />
+        <Route path="/joinus" Component={withFullLayout(Waitlist)} />
+        <Route path="/signin" Component={withFullLayout(SignIn)} />
+        <Route path="/signup" Component={withFullLayout(SignUp)} />
+        <Route path="/">
+          <Redirect to="/signin" />
+        </Route>
+      </Routes>
+    </>
+  ) : needsOnboarding ? (
+    <OnBoarding onFinish={saveUserMetadata} metadata={{ field, role }} />
+  ) : (
+    <Routes>
       <Route
-        path={/\/settings(\/\w+)?/i}
-        component={withAppLayout(Settings, 'تنظیمات', false)}
+        path="/profile/*"
+        Component={withAppLayout(Profile, 'پنل کاربری', false)}
       />
-    </Router>
+      <Route path="/" Component={withAppLayout(ProjectsHome, 'پروژه‌های من')} />
+      <Route
+        path="/project/:id"
+        Component={withAppLayout(Project, '', false)}
+      />
+      <Route
+        path="/project/edit/:id"
+        Component={withAppLayout(ProjectEdit, 'ویرایش', false)}
+      />
+
+      <Route path="/inbox" Component={withAppLayout(Notifs, 'پیام‌ها')} />
+      <Route path="/stat" Component={withAppLayout(Stat, 'درباره‌ما')} />
+      <Route
+        path="/settings/*"
+        Component={withAppLayout(Settings, 'تنظیمات', false)}
+      />
+    </Routes>
   )
+}
+
+function Redirect({ to }: { to: string }) {
+  const navigate = useNavigate()
+  useEffect(() => {
+    navigate(to, { replace: true })
+  }, [])
+  return null
 }

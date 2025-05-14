@@ -1,7 +1,7 @@
 import { SignedIn, SignedOut } from '@clerk/clerk-react'
 import { animated, useSpring } from '@react-spring/web'
 import { useEffect } from 'react'
-import { Link } from 'wouter'
+import { Link } from 'react-router'
 
 interface StepProps {
   minify: boolean

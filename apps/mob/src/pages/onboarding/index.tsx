@@ -8,6 +8,7 @@ import FinalStep from './FinalStep'
 export interface Metadata {
   field: 'architect' | 'civil' | 'mechanic'
   role: 'design' | 'supervision' | 'execution'
+  defaultPrj?: number
 }
 
 interface OnBoardingProps {

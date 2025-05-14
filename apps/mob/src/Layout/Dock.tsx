@@ -1,13 +1,24 @@
 import { cn } from '@repo/utils'
-import { Link, useLocation } from 'wouter'
+import { Link, useLocation } from 'react-router'
 
-export default function Dock() {
-  const [location] = useLocation()
+interface Props {
+  fixed?: true
+}
+
+export default function Dock({ fixed }: Props) {
+  const location = useLocation()
   return (
-    <div className="dock">
+    <div
+      className={cn(
+        'dock',
+        fixed
+          ? 'fixed right-5 bottom-5 left-5 w-auto rounded-2xl bg-stone-900'
+          : ''
+      )}
+    >
       <Link
-        href="/inbox"
-        className={cn({ 'dock-active': location === '/inbox' })}
+        to="/inbox"
+        className={cn({ 'dock-active': location.pathname === '/inbox' })}
       >
         <svg
           className="size-[1.2em]"
@@ -39,7 +50,7 @@ export default function Dock() {
         </svg>
         <span className="dock-label">صندوق</span>
       </Link>
-      <Link href="/" className={cn({ 'dock-active': location === '/' })}>
+      <Link to="/" className={cn({ 'dock-active': location.pathname === '/' })}>
         <svg
           className="size-[1.2em]"
           xmlns="http://www.w3.org/2000/svg"
@@ -78,8 +89,8 @@ export default function Dock() {
       </Link>
 
       <Link
-        href="/stat"
-        className={cn({ 'dock-active': location === '/stat' })}
+        to="/stat"
+        className={cn({ 'dock-active': location.pathname === '/stat' })}
       >
         <svg
           className="size-[1.2em]"

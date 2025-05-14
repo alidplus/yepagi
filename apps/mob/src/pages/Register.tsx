@@ -1,8 +1,8 @@
 import { FormEvent } from 'react'
-import { Link, useLocation } from 'wouter'
+import { Link, useNavigate } from 'react-router'
 
 export default function Register() {
-  const [, setLocation] = useLocation()
+  const navigate = useNavigate()
 
   const handleLogin = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -13,7 +13,7 @@ export default function Register() {
       alert('لطفا ایمیل و رمز عبور را وارد کنید')
       return
     }
-    setLocation('/')
+    navigate('/')
   }
 
   return (

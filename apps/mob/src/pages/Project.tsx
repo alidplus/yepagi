@@ -1,10 +1,44 @@
+import { useQuery } from '@tanstack/react-query'
+import { useSupabase } from '../context'
+import { Metadata } from './onboarding'
+import { useUser } from '@clerk/clerk-react'
+import { TwicPicture } from '@twicpics/components/react'
+import { Icon } from '@repo/ui.icons'
+import { Link, useParams } from 'react-router'
+
 export default function Projects() {
+  const params = useParams()
+  const { user } = useUser()
+  const { defaultPrj } = (user?.unsafeMetadata ?? {}) as Partial<Metadata>
+
+  const id = Number(params[0]?.replace('/', '') ?? defaultPrj ?? '0')
+
+  const supabase = useSupabase()
+  const q = useQuery({
+    queryKey: ['projects', id],
+    enabled: !!id,
+    async queryFn() {
+      const { data } = await supabase.from('projects').select().eq('id', id)
+      return data?.[0]
+    },
+  })
   return (
     <div className="-mx-2 flex flex-col gap-2">
       <figure className="relative block">
-        <img src="/mocks/proj.jpg" alt="Shoes" />
-        <div className="prose bg-base-content/40 prose-headings:text-white absolute bottom-0 w-full p-4">
-          <h1>البرز</h1>
+        <TwicPicture src={q.data?.image || '404.png'} ratio="16/9" />
+        <div className="prose bg-base-content/40 prose-headings:text-accent-content absolute bottom-0 w-full p-4">
+          <h1>{q.data?.title}</h1>
+        </div>
+        <div className="absolute top-0 flex w-full gap-3 px-3">
+          <Link
+            to={`/project/edit/${id}`}
+            className="btn btn-ghost btn-sm btn-primary btn-square"
+          >
+            <Icon
+              name="administrator"
+              className="size-6 fill-current text-black"
+            />
+          </Link>
         </div>
       </figure>
       <div className="tabs tabs-lift sticky top-0">
@@ -13,9 +47,14 @@ export default function Projects() {
           name="my_tabs_2"
           className="tab"
           aria-label="توضیحات"
+          defaultChecked
         />
         <div className="tab-content border-t-base-300 bg-base-100 rounded-t-none p-4">
-          {article}
+          <article className="proce">
+            <p className="lead">{q.data?.title}</p>
+
+            <p className="text-justify">{q.data?.text}</p>
+          </article>
         </div>
 
         <input
@@ -23,7 +62,6 @@ export default function Projects() {
           name="my_tabs_2"
           className="tab"
           aria-label="زمانبندی"
-          defaultChecked
         />
         <div className="tab-content border-t-base-300 bg-base-100 rounded-t-none p-4">
           {timeline}
@@ -42,30 +80,6 @@ export default function Projects() {
     </div>
   )
 }
-
-const article = (
-  <article className="proce">
-    <p className="lead">مجتمع تجاری مسکونی البرز</p>
-
-    <p className="text-justify">
-      پروژه البرز با قرارگیری در یکی از بهترین موقعیت های منطقه ۲۲ تهران با
-      استقبال خوبی از طرف خریداران روبرو شده است موقعیت قرارگیری پروژه البرز
-      به‌عنوان یکی از بهترین مناطق شهرک گلستان برای سرمایه‌گذاری شناخته می‌شود
-      همچنین دارا بودن سهم تجاری در این پروژه فرصت جذابی برای سرمایه‌گذاری در
-      ملک برای افراد به وجود آورده است. منطقه ۲۲ به علت پیشرفت و دارا بودن
-      امکانات مناسب شهری بسیار مورد توجه متقاضیان حوزه املاک می باشد. این منطقه
-      از تهران به علت کوهپایه‌ای بودن و قرارگرفتن در کنار پارک جنگلی چیتگر و
-      مجموعه‌های بزرگ دیگر مانند: مجموعه ورزشی آزادی و مجموعه تفریحی ارم، از
-      دیرباز منطقه‌ای جذاب چه برای سازندگان و چه برای خریداران ملک بوده است.
-      پروژه البرز نیز به‌عنوان یکی از پروژه‌های جدید در این منطقه موقعیتی بی
-      نظیری برای سرمایه‌گذاری به شمار می‌رود . همچنین قرارگیری این پروژه دقیقا
-      روبروی بیمارستان برکت امتیاز خوبی برای سهام داران تجاری این مجموعه می
-      باشد. جذاب‌ترین و بهترین نقطه برای گسترش تهران قسمت شمال غربی آن است که هم
-      آب‌وهوای مناسبی دارد و هم‌زمین‌های زیادی برای ساخت پروژه‌های جدید برای
-      پاسخگویی به نیاز مردم در این کلان‌شهر را دارد.
-    </p>
-  </article>
-)
 
 const bulletSvg = (
   <svg

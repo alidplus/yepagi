@@ -7,8 +7,8 @@
   },
   "scripts": {
     "dev": "dotenv -- turbo worker#dev",
-    "dev:deps": "turbo @repo/utils#build:hot @repo/ui#build:hot @repo/defs#build:hot @repo/feat.context#build:hot @repo/auth#build:hot @repo/rpc#build:hot",
-    "build:deps": "turbo @repo/utils#build @repo/ui#build @repo/defs#build @repo/feat.context#build @repo/auth#build @repo/rpc#build",
+    "dev:deps": "turbo @repo/utils#build:hot @repo/ui#build:hot @repo/db.d1#build:hot @repo/feat.context#build:hot @repo/auth#build:hot @repo/rpc#build:hot",
+    "build:deps": "turbo @repo/utils#build @repo/ui#build @repo/db.d1#build @repo/feat.context#build @repo/auth#build @repo/rpc#build",
     "lint:deps": "npx check-dependency-version-consistency . --fix",
     "commit": "cz"
   },

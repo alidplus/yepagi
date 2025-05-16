@@ -22,7 +22,7 @@
     "lint": "next lint"
   },
   "peerDependencies": {
-    "@repo/defs": "*",
+    "@repo/db.d1": "*",
     "@repo/feat.context": "*",
     "@repo/rpc.core": "*",
     "@repo/utils": "*",
@@ -35,7 +35,7 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@repo/autoform": "*",
-    "@repo/defs": "*",
+    "@repo/db.d1": "*",
     "@repo/feat.context": "*",
     "@repo/gridview": "*",
     "@repo/query": "*",

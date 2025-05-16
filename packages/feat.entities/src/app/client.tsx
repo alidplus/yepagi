@@ -5,7 +5,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import AutoForm from "@repo/autoform";
 import GridView from "@repo/gridview";
 import QueryBuilder, { RuleGroup, Field, formatQuery } from "@repo/query";
-import { collections } from "@repo/defs";
+import { collections } from "@repo/db.d1";
 import { useMemo, useState } from "react";
 import 'react-querybuilder/dist/query-builder.css';
 

@@ -2,7 +2,7 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { setToken, useTRPC } from "@repo/feat.context/client";
-import { auth } from "@repo/defs";
+import { auth } from "@repo/db.d1";
 import {
   Button,
   Form,

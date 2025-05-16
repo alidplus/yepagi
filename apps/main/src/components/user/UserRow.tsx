@@ -1,5 +1,5 @@
 import { useTRPC } from "@/trpc/client";
-import * as defs from "@repo/defs";
+import * as defs from "@repo/db.d1";
 import { useQueryClient, useMutation } from "@tanstack/react-query";
 
 export default function UserRow({ user }: { user: defs.users.TSelect }) {

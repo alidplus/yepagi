@@ -22,7 +22,7 @@
     "wrangler": "*"
   },
   "dependencies": {
-    "@repo/defs": "*",
+    "@repo/db.d1": "*",
     "@worker-tools/request-cookie-store": "^0.6.0-pre.3",
     "bcryptjs": "^3.0.2",
     "dotenv": "^16.4.7",

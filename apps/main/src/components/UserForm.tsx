@@ -1,4 +1,4 @@
-import * as defs from "@repo/defs";
+import * as defs from "@repo/db.d1";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form";

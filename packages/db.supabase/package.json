@@ -1,0 +1,51 @@
+{
+  "name": "@repo/db.supabase",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "files": [
+    "dist/**"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "lint": "eslint . --fix",
+    "build": "tsup",
+    "build:hot": "turbo watch build",
+    "test": "vitest run --silent",
+    "dev": "vitest --ui --coverage",
+    "wr": "wrangler --local --persist-to ../../.wrangler/state",
+    "migration": "yarn wr d1 migrations",
+    "studio": "drizzle-kit studio",
+    "migration:generate": "drizzle-kit generate",
+    "migration:create": "yarn migration create venli-dev-db",
+    "migration:list": "yarn migration list venli-dev-db",
+    "migration:apply": "yarn migration apply venli-dev-db"
+  },
+  "jest": {
+    "preset": "@repo/jest-presets/node"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.22.0",
+    "@jest/globals": "^29.7.0",
+    "@repo/typescript": "*",
+    "@types/node": "^22.13.4",
+    "drizzle-kit": "^0.30.5",
+    "eslint": "^9.22.0",
+    "eslint-config-prettier": "^10.1.1",
+    "eslint-plugin-prettier": "^5.2.3",
+    "jest": "^29.7.0",
+    "tsup": "^8.3.6",
+    "typescript": "*",
+    "typescript-eslint": "^8.26.1",
+    "vitest": "^3.0.8",
+    "wrangler": "*"
+  },
+  "dependencies": {
+    "zod-to-json-schema": "^3.24.5"
+  }
+}

@@ -1,4 +1,4 @@
-import * as defs from '@repo/defs';
+import * as defs from '@repo/db.d1';
 import AuthService from './jwt';
 import { assertProtectedProcedure, Context } from '../context';
 import { eq } from 'drizzle-orm';

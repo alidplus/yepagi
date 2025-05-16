@@ -1,4 +1,4 @@
-// import * as defs from '@repo/defs';
+// import * as defs from '@repo/db.d1';
 import UsersModel from './model';
 
 // const users = defs.users.table;

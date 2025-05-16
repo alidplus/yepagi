@@ -1,4 +1,4 @@
-import * as def from '@repo/defs';
+import * as def from '@repo/db.d1';
 import { eq } from 'drizzle-orm';
 import { z } from 'zod';
 import { publicProcedure, router, zQueryResponse } from '@repo/rpc.core';

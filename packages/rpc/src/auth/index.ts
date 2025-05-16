@@ -1,5 +1,5 @@
 import { protectedProcedure, publicProcedure, router } from '../trpc';
-import * as def from '@repo/defs';
+import * as def from '@repo/db.d1';
 import AuthController from './controller';
 import { zGeneralSuccesResponse } from '../utils/schema';
 

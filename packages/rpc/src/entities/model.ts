@@ -1,4 +1,4 @@
-import { collections } from '@repo/defs';
+import { collections } from '@repo/db.d1';
 import { BaseCRUD } from '@repo/rpc.core';
 
 export default abstract class CollectionsModel extends BaseCRUD<

@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import { publicProcedure, router } from '@repo/rpc.core';
-import * as def from '@repo/defs';
+import * as def from '@repo/db.d1';
 
 export const tenantRouter = router({
 	list: publicProcedure.output(z.array(def.users.zSelectSchema)).query(async ({ ctx }) => {

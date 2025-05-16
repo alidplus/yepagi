@@ -1,5 +1,5 @@
 import { health, publicProcedure, router, zQueryRequest } from "@repo/rpc.core";
-import { collections } from "@repo/defs";
+import { collections } from "@repo/db.d1";
 import CollectionsController from "./controller";
 import { z } from "zod";
 

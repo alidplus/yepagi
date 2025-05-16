@@ -1,4 +1,4 @@
-import * as defs from '@repo/defs';
+import * as defs from '@repo/db.d1';
 import { type WithRequiredProperty } from '@repo/utils';
 import { RequestCookieStore } from '@worker-tools/request-cookie-store';
 import { drizzle } from 'drizzle-orm/d1';

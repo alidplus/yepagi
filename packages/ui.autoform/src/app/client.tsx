@@ -1,6 +1,6 @@
 "use client";
 import AutoForm from '@/lib';
-import { users } from '@repo/defs'
+import { users } from '@repo/db.d1'
 
 export default function HomeClient() {
   return (

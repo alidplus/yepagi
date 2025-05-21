@@ -50,6 +50,6 @@ createRoot(document.getElementById('root')!).render(
       </ClerkLoaded>
     </ClerkProvider>
     <PWABadge />
-    <Toaster />
+    <Toaster position="bottom-center" />
   </StrictMode>
 )

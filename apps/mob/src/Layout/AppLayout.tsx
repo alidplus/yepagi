@@ -20,7 +20,7 @@ export default function AppLayout({
       <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content grid h-screen w-screen grid-rows-[min-content_1fr_min-content]">
         {/* Navbar */}
-        <div className="navbar bg-base-300 sticky top-0 z-10 w-full overflow-auto pe-4">
+        <div className="navbar bg-base-300 sticky top-0 z-10 w-full overflow-auto">
           <div className="flex-none lg:hidden">
             <label
               htmlFor="my-drawer-3"

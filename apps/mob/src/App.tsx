@@ -7,11 +7,13 @@ import BrandLoading from './Layout/BrandLoading'
 import { ThemeSwitch } from './Layout/SideBar'
 import { useSupabase } from './context'
 import Home from './pages/Home'
-import Profile from './pages/Profile'
-import ProjectEdit from './pages/ProjectEdit'
-import ProjectsHome from './pages/ProjectsHome'
-import OnBoarding, { Metadata } from './pages/onboarding'
+import type { Metadata } from './pages/onboarding'
 
+const ChecklistItemDetails = lazy(() => import('./pages/Checklist'))
+const ProjectEdit = lazy(() => import('./pages/ProjectEdit'))
+const OnBoarding = lazy(() => import('./pages/onboarding'))
+const Profile = lazy(() => import('./pages/Profile'))
+const ProjectsHome = lazy(() => import('./pages/ProjectsHome'))
 const Settings = lazy(() => import('./pages/Settings'))
 const Notifs = lazy(() => import('./pages/Notifs'))
 const Stat = lazy(() => import('./pages/Stat'))
@@ -86,21 +88,20 @@ export default function App() {
   )
 
   return !isSignedIn ? (
-    <>
-      <Routes>
-        <Route path="/welcome">
+    <Routes>
+      <Route
+        path="/welcome"
+        element={
           <AppLayout isMain>
             <Home />
           </AppLayout>
-        </Route>
-        <Route path="/joinus" Component={withFullLayout(Waitlist)} />
-        <Route path="/signin" Component={withFullLayout(SignIn)} />
-        <Route path="/signup" Component={withFullLayout(SignUp)} />
-        <Route path="/">
-          <Redirect to="/signin" />
-        </Route>
-      </Routes>
-    </>
+        }
+      />
+      <Route path="/joinus" Component={withFullLayout(Waitlist)} />
+      <Route path="/signin" Component={withFullLayout(SignIn)} />
+      <Route path="/signup" Component={withFullLayout(SignUp)} />
+      <Route path="/" element={<Redirect to="/signin" />} />
+    </Routes>
   ) : needsOnboarding ? (
     <OnBoarding onFinish={saveUserMetadata} metadata={{ field, role }} />
   ) : (
@@ -111,12 +112,17 @@ export default function App() {
       />
       <Route path="/" Component={withAppLayout(ProjectsHome, 'پروژه‌های من')} />
       <Route
-        path="/project/:id"
-        Component={withAppLayout(Project, '', false)}
+        path="/new/project"
+        Component={withAppLayout(ProjectEdit, 'ثبت پروژه جدید', false)}
       />
       <Route
-        path="/project/edit/:id"
-        Component={withAppLayout(ProjectEdit, 'ویرایش', false)}
+        path="/project/:id/:state?"
+        Component={withAppLayout(Project, '', false)}
+      />
+
+      <Route
+        path="/checklist-item/:id"
+        Component={withAppLayout(ChecklistItemDetails, '', false)}
       />
 
       <Route path="/inbox" Component={withAppLayout(Notifs, 'پیام‌ها')} />

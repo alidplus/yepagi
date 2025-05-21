@@ -6901,9 +6901,31 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@repo/db.d1@npm:*, @repo/db.d1@workspace:packages/defs":
+"@repo/db.d1@npm:*, @repo/db.d1@workspace:packages/db.d1":
   version: 0.0.0-use.local
-  resolution: "@repo/db.d1@workspace:packages/defs"
+  resolution: "@repo/db.d1@workspace:packages/db.d1"
+  dependencies:
+    "@eslint/js": "npm:^9.22.0"
+    "@jest/globals": "npm:^29.7.0"
+    "@repo/typescript": "npm:*"
+    "@types/node": "npm:^22.13.4"
+    drizzle-kit: "npm:^0.30.5"
+    eslint: "npm:^9.22.0"
+    eslint-config-prettier: "npm:^10.1.1"
+    eslint-plugin-prettier: "npm:^5.2.3"
+    jest: "npm:^29.7.0"
+    tsup: "npm:^8.3.6"
+    typescript: "npm:*"
+    typescript-eslint: "npm:^8.26.1"
+    vitest: "npm:^3.0.8"
+    wrangler: "npm:*"
+    zod-to-json-schema: "npm:^3.24.5"
+  languageName: unknown
+  linkType: soft
+
+"@repo/db.supabase@workspace:packages/db.supabase":
+  version: 0.0.0-use.local
+  resolution: "@repo/db.supabase@workspace:packages/db.supabase"
   dependencies:
     "@eslint/js": "npm:^9.22.0"
     "@jest/globals": "npm:^29.7.0"
@@ -7153,7 +7175,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@repo/ui.icons@workspace:packages/ui.icons":
+"@repo/ui.icons@npm:*, @repo/ui.icons@workspace:packages/ui.icons":
   version: 0.0.0-use.local
   resolution: "@repo/ui.icons@workspace:packages/ui.icons"
   dependencies:
@@ -22930,6 +22952,7 @@ __metadata:
     "@react-spring/web": "npm:^9.7.5"
     "@repo/feat.context": "npm:*"
     "@repo/ui": "npm:*"
+    "@repo/ui.icons": "npm:*"
     "@repo/utils": "npm:*"
     "@supabase/supabase-js": "npm:^2.49.4"
     "@tailwindcss/vite": "npm:^4.1.5"
@@ -22956,6 +22979,7 @@ __metadata:
     tailwindcss-motion: "npm:*"
     typescript: "npm:~5.7.2"
     typescript-eslint: "npm:^8.20.0"
+    use-long-press: "npm:^3.3.0"
     vite: "npm:^6.0.11"
     vite-plugin-pwa: "npm:^1.0.0"
     workbox-core: "npm:^7.3.0"
@@ -30348,6 +30372,15 @@ __metadata:
     "@types/react":
       optional: true
   checksum: 10c0/f887488c6e6075cdad4962979da1714b217bcb1ee009a9e57ce9a844bcfc4c3a99e93983dfc2e5af9e0913824d24e730090ff255e902c516dcb58d2d3837e01c
+  languageName: node
+  linkType: hard
+
+"use-long-press@npm:^3.3.0":
+  version: 3.3.0
+  resolution: "use-long-press@npm:3.3.0"
+  peerDependencies:
+    react: ">=16.8.0"
+  checksum: 10c0/75708e06adfae539d6d9aac56f77c2f55e7aa5e0f8a9f423d406b8f2904a1db1eace600aa38ac24fdf638321691377038f2e46ec3acd3b6c5c195b480a935322
   languageName: node
   linkType: hard
 

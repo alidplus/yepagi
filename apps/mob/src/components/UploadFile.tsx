@@ -1,48 +1,41 @@
 import { useUser } from '@clerk/clerk-react'
+import { cn } from '@repo/utils'
 import {
   ComponentProps,
   forwardRef,
   ForwardRefRenderFunction,
   memo,
-  useCallback,
+  PropsWithChildren,
   useEffect,
   useImperativeHandle,
-  useMemo,
   useRef,
   useState,
 } from 'react'
-import { DropzoneOptions, useDropzone } from 'react-dropzone'
+import { useDropzone } from 'react-dropzone'
 import { useSupabase } from '../context'
 
-// (Optional) Import component styles. If you are using Less, import the `index.less` file.
-type Options = Required<DropzoneOptions>
-
 interface Props extends ComponentProps<'input'> {
-  folder: string
-  bucket?: string
+  path: string
 }
 
 export interface UploadHandle extends Pick<Props, 'value'> {
   upload: () => Promise<void>
 }
 
-const UploadImage: ForwardRefRenderFunction<UploadHandle, Props> = (
-  { value, folder, bucket = 'ugc', ...restProps },
-  ref
-) => {
+const UploadImage: ForwardRefRenderFunction<
+  UploadHandle,
+  PropsWithChildren<Props>
+> = ({ value, path: folder, className, children, ...restProps }, ref) => {
   const innerRef = useRef<HTMLInputElement>(null)
   const [preview, setPreview] = useState<string | undefined>()
   const [file, setFile] = useState<File | undefined>()
   const { user } = useUser()
   const supabase = useSupabase()
-  const { onChange } = restProps
+  const { onChange, disabled } = restProps
+  const path = user?.id ? `${user?.id}/${folder}` : folder
 
-  const onDrop = useCallback<Options['onDrop']>((acceptedFiles) => {
-    // Do something with the files
-    console.log({ acceptedFiles })
-  }, [])
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({
-    onDrop,
+  const { getRootProps, getInputProps } = useDropzone({
+    disabled,
     onDropAccepted(files) {
       const file = files.pop()
       if (file) {
@@ -52,19 +45,9 @@ const UploadImage: ForwardRefRenderFunction<UploadHandle, Props> = (
     },
   })
 
-  const path = useMemo(
-    () => (file ? `${user?.id ?? 'anod'}/${folder}/${file.name}` : undefined),
-    [file, folder, user?.id]
-  )
-
-  const newValue = useMemo(
-    () => (file ? `${bucket}/${path}` : value),
-    [bucket, file, path, value]
-  )
-
   useEffect(() => {
     if (innerRef.current && onChange) {
-      innerRef.current.value = String(newValue ?? '')
+      innerRef.current.value = String(path ?? '')
       const event = new Event('input')
       onChange({
         ...event,
@@ -76,28 +59,31 @@ const UploadImage: ForwardRefRenderFunction<UploadHandle, Props> = (
         persist: () => {},
       })
     }
-  }, [newValue, onChange])
+  }, [path, onChange])
 
   useImperativeHandle(ref, (): UploadHandle => {
     return {
-      value: newValue,
+      value: path,
       async upload() {
         if (!file || !path) return
-        const up = await supabase.storage.from(bucket).upload(path, file, {
+        await supabase.storage.from('ugc').upload(path, file, {
+          metadata: {
+            name: file.name,
+            type: file.type,
+            user: user?.id,
+          },
           cacheControl: '3600',
           upsert: true,
         })
-
-        console.log('uppppp', up)
       },
     }
-  }, [bucket, file, newValue, path, supabase.storage])
+  }, [file, path, supabase.storage, user?.id])
 
   return (
-    <div className="w-full overflow-x-hidden">
+    <div className={cn('overflow-x-hidden', className)}>
       <div
         {...getRootProps()}
-        className="btn btn-dash relative aspect-16/9 h-auto w-full rounded-md"
+        className="btn btn-dash relative aspect-16/9 h-auto w-full rounded-md border-gray-600"
       >
         <input
           {...restProps}
@@ -106,14 +92,14 @@ const UploadImage: ForwardRefRenderFunction<UploadHandle, Props> = (
           defaultValue={value}
         />
         <input {...getInputProps()} />
-        {isDragActive ? (
-          <p>Drop the files here ...</p>
-        ) : (
-          <p>Drag 'n' drop some files here, or click to select files</p>
-        )}
         {preview ? (
-          <img src={preview} className="absolute size-full object-cover" />
+          <img src={preview} />
+        ) : children ? (
+          <div className="absolute size-full opacity-25">{children}</div>
         ) : null}
+        <p className="absolute z-10 rounded bg-black/60 px-2 py-1 shadow">
+          انتخاب کنید
+        </p>
       </div>
     </div>
   )

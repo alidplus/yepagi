@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100">
+  <symbol id="border" viewBox="0 0 10 10">
+    <rect width="10" height="10" y="0" x="0" fill="#e9e9da" stroke-width="1" />
+  </symbol>
+  <g>
+    <use xlink:href="#border" width="8" y="0" x="0" />
+    <use xlink:href="/icons.svg#plus" width="8" y="0" x="0" />
+    <use xlink:href="#border" width="8" y="0" x="10" />
+    <use xlink:href="/icons.svg#time" width="8" y="0" x="10" />
+    <use xlink:href="#border" width="8" y="0" x="20" />
+    <use xlink:href="/icons.svg#time" width="8" y="0" x="20" />
+    <use xlink:href="#border" width="8" y="0" x="30" />
+    <use xlink:href="/icons.svg#time" width="8" y="0" x="30" />
+    <use xlink:href="#border" width="8" y="0" x="40" />
+    <use xlink:href="/icons.svg#time" width="8" y="0" x="40" />
+  </g>
+  <g style="transform:translateY(10px)">
+    <use xlink:href="#border" width="8" y="0" x="0" />
+    <use xlink:href="/icons.svg#plus" width="8" y="0" x="0" />
+  </g>
+  <g style="transform:translateY(20px)">
+    <use xlink:href="#border" width="8" y="0" x="0" />
+    <use xlink:href="/icons.svg#plus" width="8" y="0" x="0" />
+  </g>
+  <g style="transform:translateY(30px)">
+    <use xlink:href="#border" width="8" y="0" x="0" />
+    <use xlink:href="/icons.svg#plus" width="8" y="0" x="0" />
+  </g>
+  <g style="transform:translateY(40px)">
+    <use xlink:href="#border" width="8" y="0" x="0" />
+    <use xlink:href="/icons.svg#plus" width="8" y="0" x="0" />
+  </g>
+</svg>

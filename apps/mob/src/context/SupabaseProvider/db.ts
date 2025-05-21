@@ -34,6 +34,166 @@ export type Database = {
   }
   public: {
     Tables: {
+      checklist_data: {
+        Row: {
+          createdAt: string
+          createdBy: string | null
+          id: number
+          tags: string[] | null
+          text: string | null
+          title: string | null
+          updatedAt: string
+        }
+        Insert: {
+          createdAt?: string
+          createdBy?: string | null
+          id?: number
+          tags?: string[] | null
+          text?: string | null
+          title?: string | null
+          updatedAt?: string
+        }
+        Update: {
+          createdAt?: string
+          createdBy?: string | null
+          id?: number
+          tags?: string[] | null
+          text?: string | null
+          title?: string | null
+          updatedAt?: string
+        }
+        Relationships: []
+      }
+      checklist_items: {
+        Row: {
+          checklistDataId: number
+          checklistId: number
+          createdAt: string
+          createdBy: string | null
+          id: number
+          note: string | null
+          parentId: number | null
+          status: Database['public']['Enums']['ChecklistStatus'] | null
+          submitId: number | null
+          updatedAt: string | null
+        }
+        Insert: {
+          checklistDataId: number
+          checklistId: number
+          createdAt?: string
+          createdBy?: string | null
+          id?: number
+          note?: string | null
+          parentId?: number | null
+          status?: Database['public']['Enums']['ChecklistStatus'] | null
+          submitId?: number | null
+          updatedAt?: string | null
+        }
+        Update: {
+          checklistDataId?: number
+          checklistId?: number
+          createdAt?: string
+          createdBy?: string | null
+          id?: number
+          note?: string | null
+          parentId?: number | null
+          status?: Database['public']['Enums']['ChecklistStatus'] | null
+          submitId?: number | null
+          updatedAt?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: 'checklist_items_checklistDataId_fkey'
+            columns: ['checklistDataId']
+            isOneToOne: false
+            referencedRelation: 'checklist_data'
+            referencedColumns: ['id']
+          },
+          {
+            foreignKeyName: 'checklist_items_checklistId_fkey'
+            columns: ['checklistId']
+            isOneToOne: false
+            referencedRelation: 'checklists'
+            referencedColumns: ['id']
+          },
+          {
+            foreignKeyName: 'checklist_items_parentId_fkey'
+            columns: ['parentId']
+            isOneToOne: false
+            referencedRelation: 'checklist_items'
+            referencedColumns: ['id']
+          },
+          {
+            foreignKeyName: 'checklist_items_submitId_fkey'
+            columns: ['submitId']
+            isOneToOne: false
+            referencedRelation: 'checklist_submits'
+            referencedColumns: ['id']
+          },
+        ]
+      }
+      checklist_submits: {
+        Row: {
+          createdAt: string
+          createdBy: string
+          id: number
+          text: string | null
+          updatedAt: string | null
+        }
+        Insert: {
+          createdAt?: string
+          createdBy: string
+          id?: number
+          text?: string | null
+          updatedAt?: string | null
+        }
+        Update: {
+          createdAt?: string
+          createdBy?: string
+          id?: number
+          text?: string | null
+          updatedAt?: string | null
+        }
+        Relationships: []
+      }
+      checklists: {
+        Row: {
+          createdAt: string
+          createdBy: string | null
+          id: number
+          projectId: number
+          role: Database['public']['Enums']['RoleTypes']
+          title: string | null
+          updatedAt: string | null
+        }
+        Insert: {
+          createdAt?: string
+          createdBy?: string | null
+          id?: number
+          projectId: number
+          role: Database['public']['Enums']['RoleTypes']
+          title?: string | null
+          updatedAt?: string | null
+        }
+        Update: {
+          createdAt?: string
+          createdBy?: string | null
+          id?: number
+          projectId?: number
+          role?: Database['public']['Enums']['RoleTypes']
+          title?: string | null
+          updatedAt?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: 'checklists_projectId_fkey'
+            columns: ['projectId']
+            isOneToOne: false
+            referencedRelation: 'projects'
+            referencedColumns: ['id']
+          },
+        ]
+      }
       company: {
         Row: {
           address: string | null
@@ -58,33 +218,111 @@ export type Database = {
         }
         Relationships: []
       }
+      contacts: {
+        Row: {
+          address: string | null
+          createdAt: string
+          createdBy: string
+          email: string | null
+          icon: Json | null
+          id: number
+          name: string | null
+          tel: string | null
+          updatedAt: string
+        }
+        Insert: {
+          address?: string | null
+          createdAt?: string
+          createdBy: string
+          email?: string | null
+          icon?: Json | null
+          id?: number
+          name?: string | null
+          tel?: string | null
+          updatedAt?: string
+        }
+        Update: {
+          address?: string | null
+          createdAt?: string
+          createdBy?: string
+          email?: string | null
+          icon?: Json | null
+          id?: number
+          name?: string | null
+          tel?: string | null
+          updatedAt?: string
+        }
+        Relationships: []
+      }
+      project_contacts: {
+        Row: {
+          as: Database['public']['Enums']['ContactTypes']
+          contactId: number
+          createdBy: string
+          projectId: number
+        }
+        Insert: {
+          as: Database['public']['Enums']['ContactTypes']
+          contactId: number
+          createdBy: string
+          projectId: number
+        }
+        Update: {
+          as?: Database['public']['Enums']['ContactTypes']
+          contactId?: number
+          createdBy?: string
+          projectId?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: 'project_contacts_contactId_fkey'
+            columns: ['contactId']
+            isOneToOne: false
+            referencedRelation: 'contacts'
+            referencedColumns: ['id']
+          },
+          {
+            foreignKeyName: 'project_contacts_projectId_fkey'
+            columns: ['projectId']
+            isOneToOne: false
+            referencedRelation: 'projects'
+            referencedColumns: ['id']
+          },
+        ]
+      }
       projects: {
         Row: {
-          created_at: string
-          created_by: string
+          address: string | null
+          code: string
+          createdAt: string
+          createdBy: string
           id: number
           image: string | null
           text: string | null
           title: string
-          updated_at: string | null
+          updatedAt: string | null
         }
         Insert: {
-          created_at?: string
-          created_by?: string
+          address?: string | null
+          code?: string
+          createdAt?: string
+          createdBy?: string
           id?: number
           image?: string | null
           text?: string | null
           title: string
-          updated_at?: string | null
+          updatedAt?: string | null
         }
         Update: {
-          created_at?: string
-          created_by?: string
+          address?: string | null
+          code?: string
+          createdAt?: string
+          createdBy?: string
           id?: number
           image?: string | null
           text?: string | null
           title?: string
-          updated_at?: string | null
+          updatedAt?: string | null
         }
         Relationships: []
       }
@@ -96,7 +334,26 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      ChecklistStatus: 'accepted' | 'rejected' | 'skipped'
+      ContactTypes:
+        | 'owner'
+        | 'executor'
+        | 'assist_executive'
+        | 'coordinating_supervisor'
+        | 'architectural_supervisor'
+        | 'structural_supervisor'
+        | 'mechanical_supervisor'
+        | 'electrical_supervisor'
+        | 'surveying_supervisor'
+        | 'urban_and_traffic_supervisor'
+      FieldTypes:
+        | 'architectural'
+        | 'civil'
+        | 'mechanical'
+        | 'electrical'
+        | 'surveying'
+        | 'urban_and_traffic'
+      RoleTypes: 'design' | 'supervision' | 'execution'
     }
     CompositeTypes: {
       [_ in never]: never
@@ -214,6 +471,29 @@ export const Constants = {
     Enums: {},
   },
   public: {
-    Enums: {},
+    Enums: {
+      ChecklistStatus: ['accepted', 'rejected', 'skipped'],
+      ContactTypes: [
+        'owner',
+        'executor',
+        'assist_executive',
+        'coordinating_supervisor',
+        'architectural_supervisor',
+        'structural_supervisor',
+        'mechanical_supervisor',
+        'electrical_supervisor',
+        'surveying_supervisor',
+        'urban_and_traffic_supervisor',
+      ],
+      FieldTypes: [
+        'architectural',
+        'civil',
+        'mechanical',
+        'electrical',
+        'surveying',
+        'urban_and_traffic',
+      ],
+      RoleTypes: ['design', 'supervision', 'execution'],
+    },
   },
 } as const

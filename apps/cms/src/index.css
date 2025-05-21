@@ -1,0 +1,8 @@
+@import "@repo/ui";
+
+@source ".";
+@source "../../../packages/ui.icons/src/";
+
+.cl-input, .cl-phoneInputBox { direction: ltr }
+.cl-main svg { transform: rotateY(180deg); }
+/* [class^='cl-internal-'] { display: none; } */
